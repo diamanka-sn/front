@@ -1,0 +1,7 @@
+<nb-card>
+    <nb-card-header>Chiffre d'affaire:<nb-toggle (checkedChange)="toggle($event)"></nb-toggle>
+    </nb-card-header>
+    <nb-card-body>
+        <chart type="line" [data]="data" [options]="options"></chart>
+    </nb-card-body>
+</nb-card>

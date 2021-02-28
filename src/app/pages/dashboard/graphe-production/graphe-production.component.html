@@ -1,0 +1,9 @@
+<nb-card>
+    <nb-card-header>Production:<nb-select selected="2">
+        <nb-option value="1">Semaine</nb-option>
+        <nb-option value="2">Mois</nb-option>
+        <nb-option value="3">Année</nb-option></nb-select></nb-card-header>
+    <nb-card-body>
+        <chart type="line" [data]="data" [options]="options"></chart>
+    </nb-card-body>
+</nb-card>

@@ -1,0 +1,12 @@
+
+    ngx-chiffre-affaire {
+        display: flex;
+        height: 522px;
+        width: 100%;
+    
+        ::ng-deep chart {
+          display: flex;
+          height: 100%;
+          width: 530px;
+        }
+  }

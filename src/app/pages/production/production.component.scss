@@ -1,0 +1,16 @@
+@import '../../@theme/styles/themes';
+
+@include nb-install-component() {
+ 
+    ngx-courbe-production ,ngx-periodicite{
+      display: flex;
+      height: 522px;
+      width: 100%;
+  
+      ::ng-deep chart {
+        display: flex;
+        height: 100%;
+        width: 530px;
+      }
+  }
+}

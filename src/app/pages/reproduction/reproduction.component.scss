@@ -1,0 +1,20 @@
+ 
+@import '../../@theme/styles/themes';
+@import '~bootstrap/scss/mixins/breakpoints';
+@import '~@nebular/theme/styles/global/breakpoints';
+
+@include nb-install-component() {
+  ngx-accroissement,ngx-courbe-velage,
+  ngx-courbe-periode{
+    display: flex;
+    height: 522px;
+    width: 100%;
+
+    ::ng-deep chart {
+      display: flex;
+      height: 100%;
+      width: 530px;
+    }
+    
+  } 
+}

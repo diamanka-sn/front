@@ -1,0 +1,14 @@
+
+    
+    ngx-card-aliment,ngx-card-periode {
+      display: block;
+      height: nb-theme(card-height-medium);
+      width: 100%;
+  
+      ::ng-deep chart {
+        display: block;
+        height: 100%;
+        width: 100%;
+      }
+    }
+  
