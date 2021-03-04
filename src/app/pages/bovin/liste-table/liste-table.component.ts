@@ -1,101 +1,92 @@
-import { Component, Input } from '@angular/core';
-import { NbSortDirection, NbSortRequest, NbTreeGridDataSource, NbTreeGridDataSourceBuilder } from '@nebular/theme';
+import { AfterViewInit, Component, OnInit, OnDestroy } from '@angular/core';
+import { BovinService } from './../../../service/bovin.service';
 
-interface TreeNode<T> {
-  data: T;
-  children?: TreeNode<T>[];
-  expanded?: boolean;
-}
+import { NbThemeService } from '@nebular/theme';
 
-interface FSEntry {
+import { AchatService } from '../../../service/achat.service';
+
+
+interface TableBovin {
   Nom: string;
   dateNaissance: string;
   race: string;
   phase: string;
 
 }
- 
+
 @Component({
   selector: 'ngx-liste-table',
   templateUrl: './liste-table.component.html',
   styleUrls: ['./liste-table.component.scss']
 })
-export class ListeTableComponent {
-
-  customColumn = 'Nom';
-  defaultColumns = ['dateNaissance', 'race', 'phase'];
-  allColumns = [this.customColumn, ...this.defaultColumns];
-
-  dataSource: NbTreeGridDataSource<FSEntry>;
-
-  sortColumn: string;
-  sortDirection: NbSortDirection = NbSortDirection.NONE;
-  row: number;
-
-  constructor(private dataSourceBuilder: NbTreeGridDataSourceBuilder<FSEntry>) {
-    this.dataSource = this.dataSourceBuilder.create(this.data);
+export class ListeTableComponent implements AfterViewInit, OnInit, OnDestroy {
+ 
+  nbreRace:any;
+  nbreVache:any;
+  nbreAchat:any;
+  bovinnbre: any;
+  bovin: any;
+  themeSubscription: any;
+  constructor(  private bs: BovinService,
+                private theme: NbThemeService,
+                private ab: AchatService) { 
+   
   }
-
-  updateSort(sortRequest: NbSortRequest): void {
-    this.sortColumn = sortRequest.column;
-    this.sortDirection = sortRequest.direction;
+  ngAfterViewInit() {
+    this.themeSubscription = this.theme.getJsTheme().subscribe(config => {
+    });
   }
-
-  getSortDirection(column: string): NbSortDirection {
-    if (this.sortColumn === column) {
-      return this.sortDirection;
-    }
-    return NbSortDirection.NONE;
+  ngOnInit(): void {
+    this.showAllBovin(); 
   }
-
-  private data: TreeNode<FSEntry>[] = [
-    {
-      data: { Nom: 'pouye', dateNaissance: '17 fev 2019', phase: '-', race: 'holsain' },
-    }, {
-      data: { Nom: 'modou', dateNaissance: '05 Avr 2018', phase: 'gestation', race: 'Monbeliar' },
-    }, {
-      data: { Nom: 'sagna', dateNaissance: '14 Dec 2020', phase: 'non gestation', race: 'Monbeliar' },
-    }, {
-      data: { Nom: 'badiane', dateNaissance: '14 Jan 2020', phase: 'non gestation', race: 'holsain' },
-    }, {
-      data: { Nom: 'sarr', dateNaissance: '14 Juin 2020', phase: '-', race: 'Monbeliar' },
-    },
-    {
-      data: { Nom: 'sarr', dateNaissance: '14 Juin 2020', phase: '-', race: 'Monbeliar' },
-    }, {
-      data: { Nom: 'momo', dateNaissance: '14 Juin 2020', phase: '-', race: 'Holsain ' },
-    },
-  ];
+  //nombre de race dans la ferme
+  
+  //liste nombre de bovin achetes
+  showNombreAchatBovin(){
+    this.ab.getNombreAchatBovin().subscribe(res =>{
+      this.nbreAchat = res;
+      console.log("le nombre d'achat de bovins"+this.nbreAchat);
+    })
+  }
+  //nbre de vache
+  showNombreVache(){
+    this.bs.getNombreVache().subscribe(res =>{
+        this.nbreVache = res;
+        console.log("le nombre de vache dans la ferme"+this.nbreVache)
+    })
+  }
+  //liste des bovin
+  showAllBovin() {
+    this.bs.getBovin().subscribe(res => {
+      this.bovin = res;
+      // this.bovin = bovin;
+      // let obj = JSON.stringify(this.bovin)
+      // console.log(obj);
+    })
+  }
+  showNombreBovin() {
+    this.bs.getNombreBovin().subscribe(res => {
+      this.bovinnbre = res;
+      console.log("Le nombre de bovin est :"+this.bovinnbre)
+      // this.bovin = bovin;
+      // let obj = JSON.stringify(this.bovin)
+      // console.log(obj);
+    })
+  }
 
   getShowOn(index: number) {
     const minWithForMultipleColumns = 400;
     const nextColumnStep = 100;
     return minWithForMultipleColumns + (nextColumnStep * index);
   }
-
+  ngOnDestroy(): void {
+    this.themeSubscription.unsubscribe();
+  }
   options = [
     { value: 'Vache', label: 'Vache' },
     { value: 'taureau', label: 'Taureau' },
     { value: 'veau', label: 'Veau' },
     { value: 'tout', label: 'Tout' },
   ];
-  details(row:number){
-    alert("je suis un details d'un bovin en particulier")
-  }
-}
-
-@Component({
-  selector: 'ngx-fs-icon',
-  template: `
-    <nb-tree-grid-row-toggle (click)="details()">
-      je suis un detaails
-    </nb-tree-grid-row-toggle>
-  `,
-})
-export class FsIconComponent {
-  @Input() phase: string;
-  @Input() expanded: boolean;
-  details(){
-    console.log('l\'ensemble des details concernant un bovin en particulier')
-  }
+ 
 }

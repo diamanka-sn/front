@@ -25,7 +25,6 @@ import { BovinComponent } from './bovin.component';
 import { EnsembleBovinComponent } from './ensemble-bovin/ensemble-bovin.component';
 import { CardNombreComponent } from './card-nombre/card-nombre.component';
 import { ListeTableComponent } from './liste-table/liste-table.component';
-import {FsIconComponent} from './liste-table/liste-table.component';
 import { RaceComponent } from './race/race.component';
 import { BovinAchatsComponent } from './bovin-achats/bovin-achats.component';
 import { DetailBovinComponent } from './liste-table/detail-bovin/detail-bovin.component';
@@ -38,7 +37,6 @@ import { ListeBovinComponent } from './liste-bovin/liste-bovin.component';
     EnsembleBovinComponent,
     CardNombreComponent,
     ListeTableComponent,
-    FsIconComponent,
     RaceComponent,
     BovinAchatsComponent,
     DetailBovinComponent,

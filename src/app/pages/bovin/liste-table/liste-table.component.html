@@ -1,38 +1,27 @@
 <nb-card>
   <nb-card-body>
 
-    <label class="search-label" for="search">Recherche...:</label>
-    <input nbInput [nbFilterInput]="dataSource" id="search" class="search-input" placeholder="Bovin....">&nbsp;&nbsp;&nbsp;&nbsp;
-    <nb-radio-group  value="vache">
-      <nb-radio *ngFor="let option of options" [value]="option.value">
-        {{ option.label }}
-      </nb-radio>
-    </nb-radio-group>
-    <table [nbTreeGrid]="dataSource" [nbSort]="dataSource" (sort)="updateSort($event)">
-  
-      <tr nbTreeGridHeaderRow *nbTreeGridHeaderRowDef="allColumns"></tr>
-      <tr nbTreeGridRow *nbTreeGridRowDef="let row; columns: allColumns"></tr>
+    <label class="search-label" for="search">Recherche un bovin:</label>
+    <input nbInput id="search" class="search-input" placeholder="Bovin....">&nbsp;&nbsp;&nbsp;&nbsp; le nombre de boin
+    est <b>1452</b>
 
-      <ng-container [nbTreeGridColumnDef]="customColumn">
-        <th nbTreeGridHeaderCell [nbSortHeader]="getSortDirection(customColumn)" *nbTreeGridHeaderCellDef>
-          {{customColumn}}
-        </th> 
-        <td nbTreeGridCell *nbTreeGridCellDef="let row">
-          <nb-tree-grid-row-toggle (click)="details">
-          </nb-tree-grid-row-toggle>
-          {{row.data[customColumn]}}
-        </td>
-      </ng-container>
 
-      <ng-container *ngFor="let column of defaultColumns; let index = index" [nbTreeGridColumnDef]="column"
-        [showOn]="getShowOn(index)">
-        <th nbTreeGridHeaderCell [nbSortHeader]="getSortDirection(column)" *nbTreeGridHeaderCellDef>
-          {{column}}
-        </th>
-        <td nbTreeGridCell *nbTreeGridCellDef="let row">{{row.data[column] || '-'}}</td>
-      </ng-container>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Nom bovin</th>
+          <th scope="col">Situation</th>
+          <th scope="col">Etat de santé</th>
 
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let b of bovin">
+          <th scope="row">{{ b.nom}}</th>
+          <th>{{ b.situation}}</th>
+          <th>{{ b.etatDeSante}}</th>
+        </tr>
+      </tbody>
     </table>
-
   </nb-card-body>
 </nb-card>
