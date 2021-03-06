@@ -19,6 +19,7 @@ import {
 } from '@nebular/theme';
 import { NgxEchartsModule } from 'ngx-echarts';
 import { Ng2SmartTableModule } from 'ng2-smart-table';
+import { FormsModule as ngFormsModule } from '@angular/forms';
 
 import { ThemeModule } from '../../@theme/theme.module';
 import { BovinComponent } from './bovin.component';
@@ -29,6 +30,10 @@ import { RaceComponent } from './race/race.component';
 import { BovinAchatsComponent } from './bovin-achats/bovin-achats.component';
 import { DetailBovinComponent } from './liste-table/detail-bovin/detail-bovin.component';
 import { ListeBovinComponent } from './liste-bovin/liste-bovin.component';
+
+import { Ng2OrderModule } from 'ng2-order-pipe';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 
 @NgModule({
@@ -59,6 +64,11 @@ import { ListeBovinComponent } from './liste-bovin/liste-bovin.component';
     NbInputModule, NbTreeGridModule ,
     NgxChartsModule,ChartModule,  NbToggleModule,
     NbAccordionModule,
+
+    ngFormsModule,
+    Ng2OrderModule,
+    Ng2SearchPipeModule,
+    NgxPaginationModule,
   ]
 })
 export class BovinModule { }

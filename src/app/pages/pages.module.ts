@@ -20,6 +20,10 @@ import { AlimentationModule } from './alimentation/alimentation.module';
 import { ProductionModule } from './production/production.module';
 import { ProfilComponent } from './profil/profil.component';
 
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { Ng2OrderModule } from 'ng2-order-pipe';
+import { NgxPaginationModule } from 'ngx-pagination';
+
 @NgModule({
   imports: [
     PagesRoutingModule,
@@ -36,6 +40,8 @@ import { ProfilComponent } from './profil/profil.component';
     RapportModule,
     AlimentationModule,
     ProductionModule,
+
+   
   ],
   declarations: [
     PagesComponent,

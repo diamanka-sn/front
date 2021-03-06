@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Bovins } from '../_models/Bovins';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,7 @@ export class BovinService {
   constructor(private http: HttpClient) { }
 
   getBovin() {
-    return this.http.get(this.api + '/api/bovin/')
+    return this.http.get<Bovins[]>(this.api + '/api/bovin/')
   }
 
   getNombreBovin() {
