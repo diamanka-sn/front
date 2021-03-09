@@ -1,26 +1,18 @@
-import { AfterViewInit, Component, OnInit, OnDestroy } from '@angular/core';
+import {  Component, OnInit,  } from '@angular/core';
 import { BovinService } from './../../../service/bovin.service';
-
-import { NbThemeService } from '@nebular/theme';
 
 import { AchatService } from '../../../service/achat.service';
 import { Bovins } from '../../../_models/Bovins';
 
 
-interface TableBovin {
-  Nom: string;
-  dateNaissance: string;
-  race: string;
-  phase: string;
-
-}
+import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'ngx-liste-table',
   templateUrl: './liste-table.component.html',
   styleUrls: ['./liste-table.component.scss']
 })
-export class ListeTableComponent implements  OnInit, OnDestroy {
+export class ListeTableComponent implements  OnInit {
 
   nbreRace: any;
   nbreVache: any;
@@ -28,13 +20,15 @@ export class ListeTableComponent implements  OnInit, OnDestroy {
   bovinnbre: any;
   bovin: any;
   nom: any;
+  situation : any;
   themeSubscription: any;
 
 
   bovins: Bovins[] = [];
   p: number = 1;
   constructor(private bs: BovinService,
-    private ab: AchatService) { }
+    private ab: AchatService,
+    private modalService: NgbModal) { }
  
   ngOnInit(): void {
     this.bs.getBovin().subscribe((response) => {
@@ -92,9 +86,6 @@ export class ListeTableComponent implements  OnInit, OnDestroy {
     const nextColumnStep = 100;
     return minWithForMultipleColumns + (nextColumnStep * index);
   }
-  ngOnDestroy(): void {
-    this.themeSubscription.unsubscribe();
-  }
   options = [
     { value: 5, label: 'Vache' },
     { value: 10, label: 'Taureau' },
@@ -102,4 +93,22 @@ export class ListeTableComponent implements  OnInit, OnDestroy {
     { value: 20, label: 'Tout' },
   ];
 
+  closeResult = '';
+  open(content,idBovin) {
+    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
+      this.closeResult = `Closed with: ${result}`;
+    }, (reason) => {
+      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+    });
+  }
+
+  private getDismissReason(reason: any): string {
+    if (reason === ModalDismissReasons.ESC) {
+      return 'by pressing ESC';
+    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+      return 'by clicking on a backdrop';
+    } else {
+      return `with: ${reason}`;
+    }
+  }
 }

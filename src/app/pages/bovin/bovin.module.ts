@@ -34,6 +34,7 @@ import { ListeBovinComponent } from './liste-bovin/liste-bovin.component';
 import { Ng2OrderModule } from 'ng2-order-pipe';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 
 @NgModule({
@@ -69,6 +70,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
     Ng2OrderModule,
     Ng2SearchPipeModule,
     NgxPaginationModule,
+    NgbModule,
   ]
 })
 export class BovinModule { }

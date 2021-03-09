@@ -8,16 +8,19 @@
           <th scope="col" (click)="Trier('nom')">Nom bovin&nbsp;<i class="fa fa-sort"></i></th>
           <th scope="col" (click)="Trier('situation')">Situation&nbsp;<i class="fa fa-sort"></i></th>
           <th scope="col" (click)="Trier('etatDeSante')">Etat de santé&nbsp;<i class="fa fa-sort"></i></th>
-          <th scope="col">Action</th>
+          <th scope="col" (click)="Trier('idBovin')">Action</th>
 
         </tr>
       </thead>
       <tbody>
         <tr *ngFor="let bovin of bovins | orderBy: key: reverse | paginate: {itemsPerPage:25,currentPage:p};">
-          <th scope="row">{{ bovin.nom}}</th>
-          <th>{{ bovin.situation}}</th>
-          <th>{{ bovin.etatDeSante}}</th>
-          <th><button class="btn btn-info" data-toggle="modal" data-target="#Modal_details">Détails</button></th>
+          <th scope="row">{{ bovin.nom }}</th>
+          <th>{{ bovin.situation }}</th>
+          <th>{{ bovin.etatDeSante }}</th>
+
+          <!-- <th><button type="button" class="btn btn-info" (click)="open(content,idBovin)">Détails</button></th> -->
+          <th><button type="button" class="btn btn-primary" data-bs-toggle="modal"
+              data-bs-target="#exampleModal">Détails</button></th>
         </tr>
       </tbody>
       <nb-select selected="1" class="float-right">
@@ -31,21 +34,84 @@
   </nb-card-body>
 </nb-card>
 
-<div class="modal fade" id="mMdal_details" role="dialog">
-  <div class="modal-dialog" role="document">
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-tiltle" id="exampleModalLabel">Details</h5>
-        <button class="clode" type="button" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
+        <h5 class="modal-title" id="exampleModalLabel">Détails Bovin</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">X</button>
       </div>
       <div class="modal-body">
-        <div class="row">
-          <div class="col">Nom Bovin</div>
-          <H5><b>Contenu sur les details d'un bovin</b></H5>
-        </div>
+        Lorem Ipsum est simplement un faux texte de l'industrie
+        de l'impression et de la composition. Lorem Ipsum a été le texte factice
+        standard de l'industrie depuis les
+        années 1500, quand un imprimeur inconnu a pris une galère de caractères
+        et l'a brouillée pour en faire un livre
+        de spécimens. Il a survécu non seulement cinq siècles, mais aussi
+        le saut <br> dans la composition électronique,
+        demeurant essentiellement inchangé. Il a été popularisé dans
+        les années 1960 avec la sortie de feuilles Letraset
+        contenant des passages du Lorem Ipsum, et plus récemment
+        avec un logiciel de publication assistée par ordinateur
+        comme Aldus PageMaker comprenant des versions de Lorem Ipsum.
+
+        Pourquoi l'utilisons-nous?
+        C'est un fait établi depuis longtemps qu'un lecteur sera distrait par le contenu lisible d'une page lorsqu'il
+        regarde sa mise en page. L'intérêt d'utiliser Lorem Ipsum est qu'il a une distribution plus ou moins normale des
+        lettres, par opposition à l'utilisation de `` Contenu ici, contenu ici '', ce qui le fait ressembler à un
+        anglais lisible. <br> De nombreux progiciels de publication assistée par ordinateur et éditeurs de pages Web
+        utilisent maintenant Lorem Ipsum comme modèle de texte par défaut, et une recherche sur «lorem ipsum» permettra
+        de découvrir de nombreux sites Web encore à leurs balbutiements. Différentes versions ont évolué au fil des
+        années, parfois par accident, parfois exprès (humour injecté, etc.).
+
+
+        D'où est ce que ça vient?
+        Contrairement à la croyance populaire, Lorem Ipsum n'est pas simplement un texte aléatoire. Il a ses racines
+        dans un morceau de littérature latine classique de 45 avant JC, ce qui en fait plus de 2000 ans. Richard
+        McClintock, professeur de latin au Hampden-Sydney College en Virginie, a recherché l'un des mots latins les plus
+        obscurs, consectetur, <br> d'un passage du Lorem Ipsum, et en parcourant les citations du mot dans la
+        littérature classique, a découvert la source incontestable. Lorem Ipsum provient des sections 1.10.32 et 1.10.33
+        de "de Finibus Bonorum et Malorum" (Les Extrêmes du Bien et du Mal) de Cicéron, écrit en 45 av. Ce livre est un
+        traité sur la théorie de l'éthique, très populaire à la Renaissance. La première ligne du Lorem Ipsum, "Lorem
+        ipsum dolor sit amet ..", <br>provient d'une ligne de la section 1.10.32.
+
+        Le morceau standard de Lorem Ipsum utilisé depuis les années 1500 est reproduit ci-dessous pour les personnes
+        intéressées. Les sections 1.10.32 et 1.10.33 de "de Finibus Bonorum et Malorum" de Cicéron sont également
+        reproduites dans leur forme originale exacte, accompagnées des versions anglaises de la traduction de 1914 par
+        H. Rackham.
+
+        Où puis-je en obtenir?
+        Il existe de nombreuses variantes de passages du Lorem Ipsum disponibles, mais la majorité ont subi des
+        altérations sous une forme ou une autre, par de l'humour injecté ou des mots aléatoires qui ne semblent même pas
+        légèrement crédibles. Si vous comptez utiliser un passage du Lorem Ipsum, vous devez vous assurer qu'il n'y a
+        rien d'embarrassant <br> caché au milieu du texte. Tous les générateurs Lorem Ipsum sur Internet ont tendance à
+        répéter des morceaux prédéfinis si nécessaire, ce qui en fait le premier véritable générateur sur Internet. Il
+        utilise un dictionnaire de plus de 200 mots latins, combiné avec une poignée de structures de phrases modèles,
+        pour générer Lorem Ipsum qui semble raisonnable. Le Lorem Ipsum généré est donc toujours exempt de répétition,
+        d'humour injecté, <br>de mots non caractéristiques etc.
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
       </div>
     </div>
   </div>
 </div>
+
+<script src="bovin.js"></script>
+
+<!-- <ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Details Bovin</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    Je suis un details de bovin
+  </div>
+  <div class="modal-footer">
+   
+  </div>
+</ng-template> -->
