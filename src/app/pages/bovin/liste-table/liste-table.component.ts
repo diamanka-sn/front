@@ -3,9 +3,11 @@ import { BovinService } from './../../../service/bovin.service';
 
 import { AchatService } from '../../../service/achat.service';
 import { Bovins } from '../../../_models/Bovins';
+import { DetailsBovin } from '../../../_models/DetailsBovin';
 
 
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
+import { subscribeOn } from 'rxjs/operators';
 
 @Component({
   selector: 'ngx-liste-table',
@@ -25,6 +27,7 @@ export class ListeTableComponent implements  OnInit {
 
 
   bovins: Bovins[] = [];
+  details : DetailsBovin [] = [];
   p: number = 1;
   constructor(private bs: BovinService,
     private ab: AchatService,
@@ -81,11 +84,16 @@ export class ListeTableComponent implements  OnInit {
     })
   }
 
-  getShowOn(index: number) {
-    const minWithForMultipleColumns = 400;
-    const nextColumnStep = 100;
-    return minWithForMultipleColumns + (nextColumnStep * index);
+  showBovinDetail(idBovin){
+    this.bovins.forEach(el =>{
+      if(idBovin == el.idBovin){
+        this.bs.getBovinDetails(idBovin).subscribe(res => {
+            this.details = res;
+        })
+      }
+    })
   }
+
   options = [
     { value: 5, label: 'Vache' },
     { value: 10, label: 'Taureau' },
@@ -93,22 +101,4 @@ export class ListeTableComponent implements  OnInit {
     { value: 20, label: 'Tout' },
   ];
 
-  closeResult = '';
-  open(content,idBovin) {
-    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
-      this.closeResult = `Closed with: ${result}`;
-    }, (reason) => {
-      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
-    });
-  }
-
-  private getDismissReason(reason: any): string {
-    if (reason === ModalDismissReasons.ESC) {
-      return 'by pressing ESC';
-    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
-      return 'by clicking on a backdrop';
-    } else {
-      return `with: ${reason}`;
-    }
-  }
 }

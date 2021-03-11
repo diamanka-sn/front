@@ -1,6 +1,6 @@
 import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core';
 import { NbThemeService } from '@nebular/theme';
-import { BovinService } from '../../../service/bovin.service';
+import { RaceService } from '../../../service/race.service';
 
 @Component({
   selector: 'ngx-race',
@@ -13,18 +13,14 @@ export class RaceComponent implements AfterViewInit, OnDestroy,OnInit {
   options: any = {};
   themeSubscription: any;
 
-  constructor(private theme: NbThemeService, private bs: BovinService) {
+  constructor(private theme: NbThemeService, private rs: RaceService) {
   }
   ngOnInit(): void {
-  
-  }
-
-  showNombreRace(){
-    this.bs.getRace().subscribe(res => {
+    this.rs.getNombreRace().subscribe(res => {
       this.nbreRace = res;
-      console.log("le nombre de RAce dans la ferme sont :"+this.nbreRace)
     })
   }
+
   ngAfterViewInit() {
     this.themeSubscription = this.theme.getJsTheme().subscribe(config => {
 

@@ -4,11 +4,11 @@ import { Injectable } from '@angular/core';
 @Injectable({
   providedIn: 'root'
 })
-export class AchatService {
+export class RaceService {
   api: string = 'http://localhost:8000/api';
   constructor(private http: HttpClient) { }
 
-  getNombreAchatBovin(){
-    return this.http.get(this.api+'/nbreachatbovin/')
+  getNombreRace(){
+    return this.http.get(this.api+'/nbrerace/')
   }
 }
