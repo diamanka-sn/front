@@ -81,8 +81,10 @@ export class RaceComponent implements AfterViewInit, OnDestroy, OnInit {
       this.rs.getRaceExistant()
         .subscribe(res => {
           const labels = res.map(res => res.race);
-          const data = res.map(res => res.nombre);
-
+          const data = res.map(res => ({
+            value : res.nombre,
+            name :res.race
+          }));
           this.options = {
         
             backgroundColor: echarts.bg,

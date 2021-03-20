@@ -36,7 +36,8 @@ export class CardNombreComponent implements OnInit, OnDestroy {
           data: [this.random(), this.random(), this.random(), this.random(), this.random(), this.random(), this.random(), this.random(), this.random(), this.random(), this.random(), this.random()],
           label: 'Genisse',
           backgroundColor: colors.success,
-        }
+        },
+        
         ],
       };
 
