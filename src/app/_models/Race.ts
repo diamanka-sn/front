@@ -6,3 +6,9 @@ export class Race{
         this.nomRace = nomRace;
     }
 }
+
+export interface RaceExistant {
+    nombre : number;
+    race : string;
+
+}

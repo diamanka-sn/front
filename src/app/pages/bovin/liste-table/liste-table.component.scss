@@ -6,20 +6,6 @@
     border: none;
     padding: 0;
   }
-  nb-radio{
-    display:inline;
-  }
-  .search-label {
-    display: block;
-  }
-  .search-input {
-    margin-bottom: 1rem;
-  }
-
-  .nb-column-name {
-    width: 100%;
-  }
-
   ::ng-deep .row-toggle-button {
     color: nb-theme(text-basic-color);
   }

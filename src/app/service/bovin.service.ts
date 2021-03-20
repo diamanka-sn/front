@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Bovins } from '../_models/Bovins';
+import { Bovins, Santebovin } from '../_models/Bovins';
 import { DetailsBovin } from '../_models/DetailsBovin';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -14,9 +15,9 @@ export class BovinService {
   getBovin() {
     return this.http.get<Bovins[]>(this.api + '/api/bovin/')
   }
-  
-  getBovinDetails(idBovin){
-    return this.http.get<DetailsBovin[]>(this.api+ '/api/listBovinAvecDetaille/'+idBovin)
+
+  getBovinDetails(idBovin) {
+    return this.http.get<DetailsBovin[]>(this.api + '/api/listBovinAvecDetaille/' + idBovin)
   }
   getNombreBovin() {
     return this.http.get(this.api + '/api/nbrebovin/')
@@ -27,5 +28,10 @@ export class BovinService {
   }
   getRace() {
     return this.http.get(this.api + '/api/nbrerace/')
+  }
+
+  getSanteBovin(): Observable<Santebovin[]> {
+    return this.http.get<Santebovin[]>(this.api + '/api/santeBovin')
+      .map(resultat => resultat)
   }
 }

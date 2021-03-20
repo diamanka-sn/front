@@ -34,7 +34,7 @@ export class TrafficBarChartComponent implements AfterViewInit, OnDestroy, OnCha
       )
       .subscribe(() => this.resizeChart());
   }
-
+ 
   onChartInit(ec) {
     this.echartsInstance = ec;
   }

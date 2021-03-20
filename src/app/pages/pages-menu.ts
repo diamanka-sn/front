@@ -47,7 +47,7 @@ export const MENU_ITEMS: NbMenuItem[] = [
     icon: 'file-outline',
     link: '/pages/rapport',
   },
-/*
+
   {
     title: 'FEATURES',
     group: true,
@@ -233,5 +233,5 @@ export const MENU_ITEMS: NbMenuItem[] = [
         link: '/auth/reset-password',
       },
     ],
-  },*/
+  },
 ];

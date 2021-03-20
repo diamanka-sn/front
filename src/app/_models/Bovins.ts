@@ -11,3 +11,9 @@ export class Bovins {
         this.etatDeSante = etatDeSante;
     }
 }
+
+export interface Santebovin {
+  nombre : number;
+  sante : string;
+
+}

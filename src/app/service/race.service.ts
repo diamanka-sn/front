@@ -1,5 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+
+import 'rxjs/add/operator/map'
+import { RaceExistant } from '../_models/Race';
 
 @Injectable({
   providedIn: 'root'
@@ -10,5 +14,10 @@ export class RaceService {
 
   getNombreRace(){
     return this.http.get(this.api+'/nbrerace/')
+  }
+
+  getRaceExistant() : Observable<RaceExistant[]>{
+    return this.http.get<RaceExistant[]>(this.api+'/raceExistant')
+      .map(resultat =>resultat)
   }
 }

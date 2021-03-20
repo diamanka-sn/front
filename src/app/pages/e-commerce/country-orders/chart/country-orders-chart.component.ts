@@ -20,7 +20,7 @@ import { LayoutService } from '../../../../@core/utils/layout.service';
   `,
 })
 export class CountryOrdersChartComponent implements AfterViewInit, OnDestroy, OnChanges {
-
+ 
   @Input() countryName: string;
   @Input() data: number[];
   @Input() maxValue: number;
