@@ -17,8 +17,6 @@ import { ThemeModule } from '../../@theme/theme.module';
 import { NgxEchartsModule } from 'ngx-echarts';
 import { ChartModule } from 'angular2-chartjs';
 import { ReproductionComponent } from './reproduction.component';
-import { CardNataliteComponent } from '../dashboard/card-natalite/card-natalite.component';
-import { CardMortaliteComponent } from '../dashboard/card-mortalite/card-mortalite.component';
 import { CardVelageComponent } from '../dashboard/card-velage/card-velage.component';
 import { CourbePeriodeComponent } from './courbe-periode/courbe-periode.component';
 import { CourbeVelageComponent } from './courbe-velage/courbe-velage.component';

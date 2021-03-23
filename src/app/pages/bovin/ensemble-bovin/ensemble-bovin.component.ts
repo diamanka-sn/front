@@ -1,16 +1,19 @@
 import { AfterViewInit, Component, OnDestroy } from '@angular/core';
 import { NbThemeService } from '@nebular/theme';
- 
+import { BovinService } from '../../../service/bovin.service';
+import { VacheService } from '../../../service/vache.service';
+
 @Component({
   selector: 'ngx-ensemble-bovin',
   templateUrl: './ensemble-bovin.component.html',
   styleUrls: ['./ensemble-bovin.component.scss']
 })
-export class EnsembleBovinComponent  implements AfterViewInit, OnDestroy {
+export class EnsembleBovinComponent implements AfterViewInit, OnDestroy {
   options: any = {};
   themeSubscription: any;
+  dataVache: any;
 
-  constructor(private theme: NbThemeService) {
+  constructor(private theme: NbThemeService, private bv: BovinService) {
   }
 
   ngAfterViewInit() {
@@ -19,58 +22,81 @@ export class EnsembleBovinComponent  implements AfterViewInit, OnDestroy {
       const colors = config.variables;
       const echarts: any = config.variables.echarts;
 
-      this.options = {
-        backgroundColor: echarts.bg,
-        color: [colors.warningLight, colors.infoLight, colors.dangerLight, colors.successLight, colors.primaryLight],
-        tooltip: {
-          trigger: 'item',
-          formatter: '{a} <br/>{b} : {c} ({d}%)',
-        },
-        legend: {
-          orient: 'vertical',
-          left: 'left',
-          data: ['Vache', 'Taureau', 'Veau', 'Velle', 'Genisse'],
-          textStyle: {
-            color: echarts.textColor,
-          },
-        },
-        series: [
-          {
-            name: 'Bovin',
-            type: 'pie',
-            radius: '70%',
-            center: ['50%', '50%'],
-            data: [
-              { value: this.random(), name: 'Vache' },
-              { value: this.random(), name: 'Taureau' },
-              { value: this.random(), name: 'Veau' },
-              { value: this.random(), name: 'Velle' },
-              { value: this.random(), name: 'Genisse' },
-            ],
-            itemStyle: {
-              emphasis: {
-                shadowBlur: 10,
-                shadowOffsetX: 0,
-                shadowColor: echarts.itemHoverShadowColor,
-              },
-            },
-            label: {
-              normal: {
-                textStyle: {
-                  color: echarts.textColor,
-                },
-              },
-            },
-           /* labelLine: {
-              normal: {
-                lineStyle: {
-                  color: echarts.axisLineColor,
-                },
-              },
-            },*/
-          },
-        ],
-      };
+      this.bv.getNombreVache()
+        .subscribe(res => {
+          const dataTaureau = res
+          
+          this.bv.getNombreTaureau()
+            .subscribe(res => {
+              const dataVache = res
+
+              const dataVeau = this.bv.getNombreVeau()
+                .subscribe(res => {
+                const dataVeau = res
+
+                  const dataVelle = this.bv.getNombreVelle()
+                    .subscribe(res => {
+                       const dataVelle = res
+
+                      const dataGenisse = this.bv.getNombreGenisse()
+                        .subscribe(res => {
+                         const dataGenisse = res
+                          this.options = {
+                            backgroundColor: echarts.bg,
+                            color: [colors.warningLight, colors.infoLight, colors.dangerLight, colors.successLight, colors.primaryLight],
+                            tooltip: {
+                              trigger: 'item',
+                              formatter: '{a} <br/>{b} : {c} ({d}%)',
+                            },
+                            legend: {
+                              orient: 'horizontal',
+                              left: 'left',
+                              data: ['Vache', 'Taureau', 'Veau', 'Velle', 'Genisse'],
+                              textStyle: {
+                                color: echarts.textColor,
+                              },
+                            },
+                            series: [
+                              {
+                                name: 'Bovin',
+                                type: 'pie',
+                                radius: '70%',
+                                center: ['50%', '50%'],
+                                data: [{ value: dataVache, name: 'Vache' },
+                                { value: dataTaureau, name: 'Taureau' },
+                                { value: dataVeau, name: 'Veau' },
+                                { value: dataVelle, name: 'Velle' },
+                                { value: dataGenisse, name: 'Genisse' },
+                                ],
+                                itemStyle: {
+                                  emphasis: {
+                                    shadowBlur: 10,
+                                    shadowOffsetX: 0,
+                                    shadowColor: echarts.itemHoverShadowColor,
+                                  },
+                                },
+                                label: {
+                                  normal: {
+                                    textStyle: {
+                                      color: echarts.textColor,
+                                    },
+                                  },
+                                },
+                                /* labelLine: {
+                                   normal: {
+                                     lineStyle: {
+                                       color: echarts.axisLineColor,
+                                     },
+                                   },
+                                 },*/
+                              },
+                            ],
+                          };
+                        });
+                    });
+                });
+            });
+        });
     });
   }
 

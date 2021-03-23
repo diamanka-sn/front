@@ -1,5 +1,6 @@
 import { AfterViewInit, Component, OnDestroy } from '@angular/core';
 import { NbThemeService } from '@nebular/theme';
+import { AlimentationService } from '../../../service/alimentation.service';
 
 
 @Component({
@@ -10,8 +11,9 @@ import { NbThemeService } from '@nebular/theme';
 export class StockComponent implements AfterViewInit, OnDestroy {
   options: any = {};
   themeSubscription: any;
- 
-  constructor(private theme: NbThemeService) {
+
+  constructor(private theme: NbThemeService,
+    private al: AlimentationService) {
   }
 
   ngAfterViewInit() {
@@ -19,59 +21,61 @@ export class StockComponent implements AfterViewInit, OnDestroy {
 
       const colors = config.variables;
       const echarts: any = config.variables.echarts;
-
-      this.options = {
-        backgroundColor: echarts.bg,
-        //color: [colors.warningLight, colors.infoLight],
-        tooltip: {
-          trigger: 'item',
-          formatter: '{a} <br/>{b} : {c} Kg ({d}%)',
-        },
-        legend: {
-          orient: 'horizontal',
-          left: 'left',
-          data: ['Sorgo','Sorgos', 'Mais','Cereale','Aliment vache laitiere'],
-          textStyle: {
-            color: echarts.textColor,
-          },
-        },
-        series: [
-          {
-            name: 'Aliment',
-            type: 'pie',
-            radius: '70%',
-            center: ['50%', '50%'],
-            data: [
-              { value: this.random(), name: 'Sorgo' },
-              { value: this.random(), name: 'Sorgos' },
-              { value: this.random(), name: 'Mais' },
-              { value: this.random(), name: 'Cereale' },
-              { value: this.random(), name: 'Aliment vache laitiere' },
+      this.al.getStockAliment()
+        .subscribe(res => {
+          const labels = res['2021'].map(res => res.aliment);
+          const data = res['2021'].map(res => ({
+            value: res.stock,
+            name: res.aliment
+          }));
+         
+          this.options = {
+            backgroundColor: echarts.bg,
+            //color: [colors.warningLight, colors.infoLight],
+            tooltip: {
+              trigger: 'item',
+              formatter: '{a} <br/>{b} : {c} Kg ({d}%)',
+            },
+            legend: {
+              orient: 'horizontal',
+              left: 'left',
+              data: labels,
+              textStyle: {
+                color: echarts.textColor,
+              },
+            },
+            series: [
+              {
+                name: 'Aliment',
+                type: 'pie',
+                radius: '70%',
+                center: ['50%', '50%'],
+                data: data,
+                itemStyle: {
+                  emphasis: {
+                    shadowBlur: 10,
+                    shadowOffsetX: 0,
+                    shadowColor: echarts.itemHoverShadowColor/*'rgb(0,0,0,0.5)'*/,
+                  },
+                },
+                label: {
+                  normal: {
+                    textStyle: {
+                      color: echarts.textColor,
+                    },
+                  },
+                },
+                /* labelLine: {
+                   normal: {
+                     lineStyle: {
+                       color: echarts.axisLineColor,
+                     },
+                    },
+                 },*/
+              },
             ],
-            itemStyle: {
-              emphasis: {
-                shadowBlur: 10,
-                shadowOffsetX: 0,
-                shadowColor: echarts.itemHoverShadowColor/*'rgb(0,0,0,0.5)'*/,
-              },
-            },
-            label: {
-              normal: {
-                textStyle: {
-                  color: echarts.textColor,
-                },
-              },
-            },
-           /* labelLine: {
-              normal: {
-                lineStyle: {
-                  color: echarts.axisLineColor,
-                },
-               },
-            },*/
-          },
-        ],
-      };
+          };
+        })
     });
   }
 

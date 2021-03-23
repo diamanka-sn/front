@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CardMortaliteComponent } from './card-mortalite.component';
+import { DemographieComponent } from './demographie.component';
 
-describe('CardMortaliteComponent', () => {
-  let component: CardMortaliteComponent;
-  let fixture: ComponentFixture<CardMortaliteComponent>;
+describe('DemographieComponent', () => {
+  let component: DemographieComponent;
+  let fixture: ComponentFixture<DemographieComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ CardMortaliteComponent ]
+      declarations: [ DemographieComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(CardMortaliteComponent);
+    fixture = TestBed.createComponent(DemographieComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

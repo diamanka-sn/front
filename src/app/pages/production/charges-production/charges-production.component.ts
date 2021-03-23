@@ -1,5 +1,7 @@
 import { AfterViewInit, Component, OnDestroy } from '@angular/core';
 import { NbThemeService } from '@nebular/theme';
+import { AlimentationService } from '../../../service/alimentation.service';
+import { FinanceService } from '../../../service/finance.service';
 
 @Component({
   selector: 'ngx-charges-production',
@@ -9,8 +11,8 @@ import { NbThemeService } from '@nebular/theme';
 export class ChargesProductionComponent implements AfterViewInit, OnDestroy {
   options: any = {};
   themeSubscription: any;
-
-  constructor(private theme: NbThemeService) {
+  g:string='2021';
+  constructor(private theme: NbThemeService, private fn: FinanceService, private al: AlimentationService) {
   }
 
   ngAfterViewInit() {
@@ -18,7 +20,26 @@ export class ChargesProductionComponent implements AfterViewInit, OnDestroy {
 
       const colors = config.variables;
       const echarts: any = config.variables.echarts;
+      this.al.getChargeAlimentation().subscribe(res => {
 
+        const coutAlimentation = res[this.g].map(res => res.achetes)
+        
+        const cout = parseInt(coutAlimentation[0].toString())
+        
+
+        this.fn.getChargeAutreDepense().subscribe(res => {
+
+          const depense = res[this.g].map(res => res.achetes)
+
+          const coutDepense = parseInt(depense[0].toString())
+
+          
+        this.fn.getCoutBovin().subscribe(res => {
+
+          const coutBovin =parseInt(res[0].prix.toString())
+          
+          const autreDepense = coutBovin + coutDepense
+         
       this.options = {
         backgroundColor: echarts.bg,
         //color: [colors.warningLight, colors.infoLight],
@@ -69,6 +90,9 @@ export class ChargesProductionComponent implements AfterViewInit, OnDestroy {
         ],
       };
     });
+    });
+    });
+  });
   }
 
   ngOnDestroy(): void {

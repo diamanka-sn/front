@@ -17,3 +17,10 @@ export interface Santebovin {
   sante : string;
 
 }
+
+export interface bovinMois {
+  nombre:number;
+  mois:any;
+  annee:string;
+
+}

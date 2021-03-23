@@ -1,6 +1,6 @@
 <nb-card>
-    <nb-card-header>chiffres d'affaires</nb-card-header>
+    <nb-card-header>CA: <b>{{ ca | currency : 'XOF'}}</b></nb-card-header>
     <nb-card-body>
-       <b>XOF:45K</b><span>+3,6%</span><chart type="bar" [data]="data" ></chart>
+        <chart type="pie" [data]="data" [options]="options"></chart>
     </nb-card-body>
 </nb-card>

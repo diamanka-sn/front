@@ -1,5 +1,6 @@
 import { Component, OnDestroy } from '@angular/core';
 import { NbThemeService } from '@nebular/theme';
+import { VacheService } from '../../../service/vache.service';
 
 @Component({
   selector: 'ngx-periode',
@@ -12,16 +13,20 @@ export class PeriodeComponent implements OnDestroy {
   options: any;
   themeSubscription: any;
 
-  constructor(private theme: NbThemeService) {
+  constructor(private theme: NbThemeService,
+        private vc:VacheService) {
     this.themeSubscription = this.theme.getJsTheme().subscribe(config => {
 
       const colors: any = config.variables;
       const chartjs: any = config.variables.chartjs;
-
+      this.vc.getPhaseVache()
+      .subscribe(res => {
+        const labels = res.map(res => res.phase);
+        const data = res.map(res => res.nombre);
       this.data = {
-        labels: ['Gest.', 'Non gest.'],
+        labels: labels,
         datasets: [{
-          data: [300, 100],
+          data: data,
           backgroundColor: [colors.primaryLight, colors.successLight],
         }],
       };
@@ -47,6 +52,7 @@ export class PeriodeComponent implements OnDestroy {
           },
         },
       };
+      })
     });
   }
 

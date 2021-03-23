@@ -1,28 +1,21 @@
 <nb-card>
-    <nb-card-header>Consommation du jour:</nb-card-header>
-    <nb-card-body>
-        <table [nbTreeGrid]="dataSource" [nbSort]="dataSource" (sort)="updateSort($event)">
-      
-          <tr nbTreeGridHeaderRow *nbTreeGridHeaderRowDef="allColumns"></tr>
-          <tr nbTreeGridRow *nbTreeGridRowDef="let row; columns: allColumns"></tr>
-    
-          <ng-container [nbTreeGridColumnDef]="customColumn">
-            <th nbTreeGridHeaderCell [nbSortHeader]="getSortDirection(customColumn)" *nbTreeGridHeaderCellDef>
-              {{customColumn}}
-            </th> 
-            <td nbTreeGridCell *nbTreeGridCellDef="let row">
-              {{row.data[customColumn]}}
-            </td>
-          </ng-container>
-    
-          <ng-container *ngFor="let column of defaultColumns; let index = index" [nbTreeGridColumnDef]="column"
-            [showOn]="getShowOn(index)">
-            <th nbTreeGridHeaderCell [nbSortHeader]="getSortDirection(column)" *nbTreeGridHeaderCellDef>
-              {{column}}
-            </th>
-            <td nbTreeGridCell *nbTreeGridCellDef="let row">{{row.data[column] || '-'}}</td>
-          </ng-container>
-    
-        </table>
-    </nb-card-body>
+  <nb-card-header>Consommation du jour: <b>{{date | date : 'fullDate' : 'fr'}}</b></nb-card-header>
+  <nb-card-body>
+
+
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col" (click)="Trier('nomAlimentation')">Nom Aliment&nbsp;<i class="fa fa-sort"></i></th>
+          <th scope="col" (click)="Trier('quantiteAlimentation')">Quantite&nbsp;<i class="fa fa-sort"></i></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let al of aliments ">
+          <th scope="row">{{al.nomAlimentation}}</th>
+          <th>{{al.quantiteAlimentation}} Kg</th>
+        </tr>
+      </tbody>
+    </table>
+  </nb-card-body>
 </nb-card>

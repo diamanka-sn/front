@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CardNataliteComponent } from './card-natalite.component';
+import { BNataliteComponent } from './b-natalite.component';
 
-describe('CardNataliteComponent', () => {
-  let component: CardNataliteComponent;
-  let fixture: ComponentFixture<CardNataliteComponent>;
+describe('BNataliteComponent', () => {
+  let component: BNataliteComponent;
+  let fixture: ComponentFixture<BNataliteComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ CardNataliteComponent ]
+      declarations: [ BNataliteComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(CardNataliteComponent);
+    fixture = TestBed.createComponent(BNataliteComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

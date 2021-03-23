@@ -20,8 +20,8 @@ export class RaceComponent implements AfterViewInit, OnDestroy, OnInit {
   themeSubscription: any;
   existant: any;
 
-  public races = [];
-  public nombre = [];
+  // public races = [];
+  // public nombre = [];
 
 
   echartsInstance;

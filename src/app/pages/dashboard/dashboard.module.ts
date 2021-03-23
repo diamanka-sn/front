@@ -26,8 +26,6 @@ import { CardSanteComponent } from './card-sante/card-sante.component';
 import { CardAlimentationComponent } from './card-alimentation/card-alimentation.component';
 import { CardVelageComponent } from './card-velage/card-velage.component';
 import { VentesComponent } from './ventes/ventes.component';
-import { CardMortaliteComponent } from './card-mortalite/card-mortalite.component';
-import { CardNataliteComponent } from './card-natalite/card-natalite.component';
 import { ActiviteComponent } from './activite/activite.component';
 import { GrapheProductionComponent } from './graphe-production/graphe-production.component';
 import {CardPeriode} from './card-alimentation/card-periode.component';
@@ -38,6 +36,9 @@ import { PeriodeComponent } from './periode/periode.component';
 import { PhaseComponent } from './phase/phase.component';
 import { FrontComponent } from './card-vente/front/front.component';
 import { BackComponent } from './card-vente/back/back.component';
+import { DemographieComponent } from './demographie/demographie.component';
+import { FNataliteComponent } from './demographie/f-natalite/f-natalite.component';
+import { BNataliteComponent } from './demographie/b-natalite/b-natalite.component';
 
 @NgModule({
   imports: [
@@ -68,8 +69,7 @@ import { BackComponent } from './card-vente/back/back.component';
     CardVelageComponent,
     VentesComponent,
     
-    CardMortaliteComponent,
-    CardNataliteComponent,
+   
     ActiviteComponent,
     GrapheProductionComponent,
     
@@ -80,6 +80,10 @@ import { BackComponent } from './card-vente/back/back.component';
     PhaseComponent,
     FrontComponent,
     BackComponent,
+    DemographieComponent,
+    FNataliteComponent,
+    BNataliteComponent,
+   
   ],
 })
 export class DashboardModule { }

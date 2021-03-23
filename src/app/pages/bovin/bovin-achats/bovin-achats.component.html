@@ -1,5 +1,5 @@
 <nb-card>
-    <nb-card-header>Bovin acheté :<b>78 Bovins</b></nb-card-header>
+    <nb-card-header>Bovins achetés : <b>{{ cout | currency : 'XOF' }}</b><b class="b">{{achetes}} Bovins</b></nb-card-header>
     <nb-card-body>
         <div echarts [options]="options" class="echart"></div>
     </nb-card-body>
