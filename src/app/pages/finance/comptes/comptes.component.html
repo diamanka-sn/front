@@ -1,9 +1,45 @@
 <nb-card>
-    <nb-card-header>Comptes resultat:<nb-select selected="2">
-        <nb-option value="1">2017</nb-option>
-        <nb-option value="2">2018</nb-option>
-        <nb-option value="3">2019</nb-option></nb-select></nb-card-header>
+    <nb-card-header><b>Cout de revient:</b>
+        <nb-select selected="2">
+            <nb-option value="1">2017</nb-option>
+            <nb-option value="2">2018</nb-option>
+            <nb-option value="3">2019</nb-option>
+        </nb-select>
+    </nb-card-header>
     <nb-card-body>
-        tableau
+        <table class="table" border="2">
+            <thead>
+                <tr>
+                    <td rowspan="2">Elements</td>
+                    <td colspan="3">Lait</td>
+                    <!-- <td colspan="3">Bovins</td> -->
+                </tr>
+                <tr>
+                    <td>QU</td>
+                    <td>CU</td>
+                </tr> 
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row"></th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </tbody>
+            <tbody>
+
+            </tbody>
+        </table>
+        <!-- <table border="2">
+            <tr>
+                <td rowspan="2">Elements</td>
+                <td colspan="3">lait</td>
+            </tr>
+            <tr>
+                <td>QU</td>
+                <td>CU</td>
+                <td>Montants</td>
+            </tr>
+        </table> -->
     </nb-card-body>
 </nb-card>

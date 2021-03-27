@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, OnDestroy } from '@angular/core';
+import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core';
 import { NbThemeService } from '@nebular/theme';
 import { BovinService } from '../../../service/bovin.service';
 import { VacheService } from '../../../service/vache.service';
@@ -8,12 +8,20 @@ import { VacheService } from '../../../service/vache.service';
   templateUrl: './ensemble-bovin.component.html',
   styleUrls: ['./ensemble-bovin.component.scss']
 })
-export class EnsembleBovinComponent implements AfterViewInit, OnDestroy {
+export class EnsembleBovinComponent implements AfterViewInit, OnDestroy, OnInit {
   options: any = {};
   themeSubscription: any;
   dataVache: any;
 
+  nbreTaureau:any;
   constructor(private theme: NbThemeService, private bv: BovinService) {
+  }
+  ngOnInit(): void {
+    this.bv.getNombreTaureau()
+            .subscribe(res => {
+              this.nbreTaureau = res;
+              console.log(this.nbreTaureau)
+            })
   }
 
   ngAfterViewInit() {
@@ -24,11 +32,11 @@ export class EnsembleBovinComponent implements AfterViewInit, OnDestroy {
 
       this.bv.getNombreVache()
         .subscribe(res => {
-          const dataTaureau = res
+          const dataVache = res
           
           this.bv.getNombreTaureau()
             .subscribe(res => {
-              const dataVache = res
+              const dataTaureau = res
 
               const dataVeau = this.bv.getNombreVeau()
                 .subscribe(res => {

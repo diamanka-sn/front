@@ -1,5 +1,7 @@
 export interface type{
     type:string;
+    name:string;
+    value:string;
 }
 
 export interface stock {

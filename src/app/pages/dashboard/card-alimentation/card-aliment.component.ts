@@ -13,7 +13,7 @@ import { stock, type } from '../../../_models/Aliment';
 export class CardAliment implements OnDestroy, OnInit {
   data: any;
   options: any;
-  option: any;
+  option:any = [];
   themeSubscription: any;
   existant: any;
   xlabel: any = []
@@ -22,6 +22,8 @@ export class CardAliment implements OnDestroy, OnInit {
   consommees: any;
   types: type[] = []
   stoks: stock[] = []
+
+  typ: string = 'mais';
   constructor(private theme: NbThemeService,
     private al: AlimentationService
   ) {
@@ -36,8 +38,6 @@ export class CardAliment implements OnDestroy, OnInit {
         this.al.getQuantiteStock().subscribe(res => {
           this.achetes = res.map(res => res.achetes)
           this.stock = this.achetes - this.consommees;
-
-          console.log(this.stock)
           this.data = {
             labels: ['Consommées', 'Stock'],
             datasets: [{
@@ -73,10 +73,11 @@ export class CardAliment implements OnDestroy, OnInit {
   }
   ngOnInit(): void {
     this.al.getTypeAliment().subscribe((res) => {
-      const option = res.map(res => ({
+      this.option = res.map(res => ({
         value: res.type,
         name: res.type
       }));
+    
     })
 
 

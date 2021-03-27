@@ -18,10 +18,5 @@ export class ConsommationJourComponent implements OnInit {
       this.date = response[0].date
     })
   }
-  key: string = 'nomAlimentation';
-  reverse: boolean = false;
-  Trier(key) {
-    this.key = key;
-    this.reverse = !this.reverse;
-  }
+ 
 }

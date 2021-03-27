@@ -1,6 +1,30 @@
 <nb-card>
-    <nb-card-header>Depenses:<nb-toggle (checkedChange)="toggle($event)"></nb-toggle></nb-card-header>
+    <nb-card-header><b>liste des dépenses:</b>
+        <nb-select selected="2">
+            <nb-option value="1">2017</nb-option>
+            <nb-option value="2">2018</nb-option>
+            <nb-option value="3">2019</nb-option>
+            <nb-option value="4">2021</nb-option>
+        </nb-select>
+        <nb-toggle (checkedChange)="toggle($event)"></nb-toggle>
+    </nb-card-header>
     <nb-card-body>
-        courbe des depenses
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Nom bovin</th>
+                    <th scope="col">Situation</th>
+                    <th scope="col">Etat de santé</th>
+                    <th scope="col">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row"></th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </tbody>
+        </table>
     </nb-card-body>
 </nb-card>

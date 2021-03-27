@@ -34,31 +34,7 @@ export class ConsommationComponent implements OnDestroy {
           fill: false,
           pointRadius: 3,
           pointHoverRadius: 10,
-        }, {
-          label: 'Aliment vache laitiere',
-          data: [this.random(), this.random(), this.random(), this.random(), this.random(), this.random(),this.random(), this.random(), this.random(), this.random(), this.random(), this.random()],
-          borderColor: colors.primary,
-          backgroundColor: colors.primary,
-          fill: false,
-          pointRadius: 3,
-          pointHoverRadius: 10,
-        },{
-          label: 'Cereales',
-          data: [this.random(), this.random(), this.random(), this.random(), this.random(), this.random(),this.random(), this.random(), this.random(), this.random(), this.random(), this.random()],
-          borderColor: colors.success,
-          backgroundColor: colors.success,
-          fill: false,
-          pointRadius: 3,
-          pointHoverRadius: 10,
-        },{
-          label: 'Cereales',
-          data: [this.random(), this.random(), this.random(), this.random(), this.random(), this.random(),this.random(), this.random(), this.random(), this.random(), this.random(), this.random()],
-          borderColor: colors.danger,
-          backgroundColor: colors.danger,
-          fill: false,
-          pointRadius: 3,
-          pointHoverRadius: 10,
-        }
+        },
       ],
       };
 

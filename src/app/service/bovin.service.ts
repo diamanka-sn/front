@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class BovinService {
-  api: string = 'http://localhost:8000';
+  api: string = 'http://10.156.93.190:8000';
 
   constructor(private http: HttpClient) { }
 
@@ -32,13 +32,13 @@ export class BovinService {
   getNombreTaureau() {
     return this.http.get(this.api + '/api/nombreTaureau/')
   }
-  getNombreGenisse(){
+  getNombreGenisse() {
     return this.http.get(this.api + '/api/nombreGenisse/')
   }
-  getNombreVeau(){
+  getNombreVeau() {
     return this.http.get(this.api + '/api/nombreVeau/')
   }
-  getNombreVelle(){
+  getNombreVelle() {
     return this.http.get(this.api + '/api/nombreVelle/')
   }
   getRace() {
@@ -50,25 +50,25 @@ export class BovinService {
       .map(resultat => resultat)
   }
 
-  getVacheMois():Observable<bovinMois[]>{
+  getVacheMois(): Observable<bovinMois[]> {
     return this.http.get<bovinMois[]>(this.api + '/api/evolutionVache')
-    .map(resultat => resultat)
+      .map(resultat => resultat)
   }
 
-  getTaureauMois():Observable<bovinMois[]>{
+  getTaureauMois(): Observable<bovinMois[]> {
     return this.http.get<bovinMois[]>(this.api + '/api/evolutionTaureau')
-    .map(resultat => resultat)
+      .map(resultat => resultat)
   }
-  getVelleMois():Observable<bovinMois[]>{
+  getVelleMois(): Observable<bovinMois[]> {
     return this.http.get<bovinMois[]>(this.api + '/api/nombreVelleMois')
-    .map(resultat => resultat)
+      .map(resultat => resultat)
   }
-  getVeauMois():Observable<bovinMois[]>{
+  getVeauMois(): Observable<bovinMois[]> {
     return this.http.get<bovinMois[]>(this.api + '/api/nombreVeauMois')
-    .map(resultat => resultat)
+      .map(resultat => resultat)
   }
-  getGenisseMois():Observable<bovinMois[]>{
+  getGenisseMois(): Observable<bovinMois[]> {
     return this.http.get<bovinMois[]>(this.api + '/api/nombreGenisseMois')
-    .map(resultat => resultat)
+      .map(resultat => resultat)
   }
 }
