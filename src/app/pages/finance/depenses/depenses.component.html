@@ -12,19 +12,23 @@
         <table class="table">
             <thead>
                 <tr>
-                    <th scope="col">Nom bovin</th>
-                    <th scope="col">Situation</th>
-                    <th scope="col">Etat de santé</th>
-                    <th scope="col">Action</th>
+                    <th scope="col">Type depense </th>
+                    <th scope="col">Libelle</th>
+                    <th scope="col">Montant</th>
+                    <th scope="col">date depense</th>
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <th scope="row"></th>
-                    <th></th>
-                    <th></th>
+                <tr *ngFor="let bovin of depense | paginate: {itemsPerPage:10,currentPage:p};">
+                    <th scope="row">{{ bovin.type }}</th>
+                    <th>{{ bovin.libelle }}</th>
+                    <th>{{ bovin.montant }}</th>
+                    <th>{{ bovin.dateDepenses }}</th>
+
+                    <!-- <th><button type="button" class="btn btn-info" (click)="open(content,idBovin)">Détails</button></th> -->
                 </tr>
             </tbody>
+            <pagination-controls (pageChange)="p = $event"></pagination-controls>
         </table>
     </nb-card-body>
 </nb-card>

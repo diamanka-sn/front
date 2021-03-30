@@ -20,14 +20,17 @@ export class BovinAchatsComponent implements AfterViewInit, OnDestroy, OnInit {
   ngOnInit(): void {
     this.bv.getNombreBovinAchetes()
       .subscribe(res => {
-        this.achetes = res
+        if (res == null) {
+          this.achetes = 0
+        } else {
+          this.achetes = res
+
+        }
       })
 
     this.fn.getCoutBovin()
       .subscribe(res => {
-       this.cout= res[0].prix
-      
-       
+        this.cout = res[0].prix
       })
   }
 

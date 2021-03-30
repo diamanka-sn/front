@@ -7,18 +7,22 @@ import { phaseVache, productionLait, productionTotale } from '../_models/Product
   providedIn: 'root'
 })
 export class ProductionService {
-  api: string = 'http://localhost:8000/api';
+  api: string = 'http://10.156.93.190:5000/api';
 
   constructor(private http: HttpClient) { }
 
   getProductionLait(): Observable<productionLait[]> {
-    return this.http.get<productionLait[]>(this.api + '/production/')
+    return this.http.get<productionLait[]>(this.api + '/productionLaitM/')
       .map(resultat => resultat)
   }
 
-  getQuantiteProduite(): Observable<productionTotale[]> {
-    return this.http.get<productionTotale[]>(this.api + '/quantiteLaitProduite/')
-      .map(resultat => resultat)
+  getQuantiteProduite() {
+    return this.http.get(this.api + '/productionM/')
+    
+  } 
+  getQuantiteVendue() {
+    return this.http.get(this.api + '/quantiteVenduM/')
+    
   }
 
   getPhaseVache() {

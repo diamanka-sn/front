@@ -6,7 +6,7 @@ import { chiffreAffaire } from '../_models/Vente';
   providedIn: 'root'
 })
 export class CommandeService {
-  api: string = 'http://localhost:8000/api';
+  api: string = 'http://10.156.93.190:5000/api';
 
   constructor(private http: HttpClient) { }
 

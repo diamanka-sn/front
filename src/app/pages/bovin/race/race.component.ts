@@ -33,6 +33,7 @@ export class RaceComponent implements AfterViewInit, OnDestroy, OnInit {
   ngOnInit(): void {
     this.rs.getNombreRace().subscribe(res => {
       this.nbreRace = res;
+     
     })
 
 

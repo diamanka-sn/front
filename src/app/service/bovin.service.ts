@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class BovinService {
-  api: string = 'http://10.156.93.190:8000';
+  api: string = 'http://10.156.93.190:5000';
 
   constructor(private http: HttpClient) { }
 
@@ -20,7 +20,7 @@ export class BovinService {
     return this.http.get<DetailsBovin[]>(this.api + '/api/listBovinAvecDetaille/' + idBovin)
   }
   getNombreBovin() {
-    return this.http.get(this.api + '/api/nbrebovin/')
+    return this.http.get(this.api + '/api/nombreBovin/')
   }
   getNombreBovinAchetes() {
     return this.http.get(this.api + '/api/nbreachatbovin/')

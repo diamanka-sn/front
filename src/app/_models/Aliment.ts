@@ -17,6 +17,6 @@ export interface stockAliment{
 
 export interface alimentationJour{
     nomAlimenation :string;
-    quantiteAlimentation:number;
+    quantite:number;
     date:Date;
 }

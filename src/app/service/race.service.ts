@@ -9,7 +9,7 @@ import { RaceExistant } from '../_models/Race';
   providedIn: 'root'
 })
 export class RaceService {
-  api: string = 'http://localhost:8000/api';
+  api: string = 'http://10.156.93.190:5000/api';
   constructor(private http: HttpClient) { }
 
   getNombreRace(){
@@ -17,7 +17,7 @@ export class RaceService {
   }
 
   getRaceExistant() : Observable<RaceExistant[]>{
-    return this.http.get<RaceExistant[]>(this.api+'/raceExistant')
+    return this.http.get<RaceExistant[]>(this.api+'/bovins')
       .map(resultat =>resultat)
   }
 }

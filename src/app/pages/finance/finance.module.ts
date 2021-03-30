@@ -33,6 +33,10 @@ import { AchatsComponent } from './achats/achats.component';
 import { CoutProductionComponent } from './cout-production/cout-production.component';
 import { BudgetComponent } from './budget/budget.component';
 
+import { Ng2OrderModule } from 'ng2-order-pipe';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { NgxPaginationModule } from 'ngx-pagination';
+import { NgbModule} from '@ng-bootstrap/ng-bootstrap';
 @NgModule({
   declarations: [
     FinanceComponent,
@@ -65,7 +69,15 @@ import { BudgetComponent } from './budget/budget.component';
     NbToggleModule,
     NbInputModule, NbTreeGridModule,
     ChartModule,
-    NgxChartsModule
+    NgxChartsModule,
+
+
+
+    
+    Ng2OrderModule,
+    Ng2SearchPipeModule,
+    NgxPaginationModule,
+    NgbModule,
   ]
 })
 export class FinanceModule { }

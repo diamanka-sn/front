@@ -27,11 +27,11 @@ export class VentesComponent implements OnDestroy, OnInit {
       const chartjs: any = config.variables.chartjs;
       this.com.getChiffreAffaireBovin().subscribe(res => {
         const dataBovin = res['2021'].map(res => res.chiffre);
-
+        console.log(dataBovin)
       this.com.getChiffreAffaireLait()
         .subscribe(res => {
           const dataLait = res['2021'].map(res => res.chiffre);
-          
+          console.log(dataLait)
           this.data = {
             labels: ['Jan', 'Fev', 'Mars', 'Avr', 'Mai', 'Juin', 'Juil', 'Aout', 'Sept', 'Oct', 'Nov', 'Dec'],
             datasets: [{

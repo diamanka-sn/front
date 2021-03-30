@@ -8,7 +8,7 @@ import { vente } from '../_models/Vente';
 })
 export class VenteService {
 
-  api: string = 'http://localhost:8000';
+  api: string = 'http://10.156.93.190:5000';
 
   constructor(private http: HttpClient) { }
 

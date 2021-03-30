@@ -18,6 +18,8 @@ import { SanteComponent } from './sante.component';
 import { ConsultationComponent } from './consultation/consultation.component';
 import { MaladieDetecterComponent } from './maladie-detecter/maladie-detecter.component';
 import { ChargeSanteComponent } from './charge-sante/charge-sante.component';
+import { MaladieComponent } from './maladie/maladie.component';
+import { MedicamentComponent } from './medicament/medicament.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +27,8 @@ import { ChargeSanteComponent } from './charge-sante/charge-sante.component';
     ConsultationComponent,
     MaladieDetecterComponent,
     ChargeSanteComponent,
+    MaladieComponent,
+    MedicamentComponent,
   ],
   imports: [
     NgxEchartsModule,

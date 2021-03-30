@@ -6,7 +6,7 @@ import { alimentationJour, stock, stockAliment, type } from '../_models/Aliment'
   providedIn: 'root'
 })
 export class AlimentationService {
-  api: string = 'http://localhost:8000/api';
+  api: string = 'http://10.156.93.190:5000/api';
 
   constructor(private http: HttpClient) { }
 

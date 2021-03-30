@@ -39,7 +39,7 @@ export class CardAliment implements OnDestroy, OnInit {
           this.achetes = res.map(res => res.achetes)
           this.stock = this.achetes - this.consommees;
           this.data = {
-            labels: ['Consommées', 'Stock'],
+            labels: ['Consommées', 'Stockées'],
             datasets: [{
               data: [this.consommees, this.stock],
               backgroundColor: [colors.primaryLight, colors.successLight],

@@ -8,13 +8,16 @@ import { ProductionService } from '../../../service/production.service';
 })
 export class LaitComponent implements OnInit {
 quantite : any;
+vendue: any;
   constructor( private pd:ProductionService) { }
 
   ngOnInit(): void {
     this.pd.getQuantiteProduite().subscribe(res => {
-     this.quantite= res.map(res  => res.total)
-    
+     this.quantite = res;
     })
+    this.pd.getQuantiteVendue().subscribe(res => {
+      this.vendue = res;
+     })
   }
 
 }
