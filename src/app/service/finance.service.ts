@@ -6,7 +6,7 @@ import { chiffreAffaire, chiffreAnnuelle } from '../_models/Finance';
   providedIn: 'root'
 })
 export class FinanceService {
-  api: string = 'http://10.156.93.190:5000/api';
+  api: string = 'http://localhost:8000/api';
 
   constructor(private http: HttpClient) { }
 

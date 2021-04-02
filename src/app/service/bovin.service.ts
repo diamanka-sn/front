@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class BovinService {
-  api: string = 'http://10.156.93.190:5000';
+  api: string = 'http://localhost:8000';
 
   constructor(private http: HttpClient) { }
 

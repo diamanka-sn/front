@@ -7,7 +7,7 @@ import { phaseVache, productionLait, productionTotale } from '../_models/Product
   providedIn: 'root'
 })
 export class ProductionService {
-  api: string = 'http://10.156.93.190:5000/api';
+  api: string = 'http://localhost:8000/api';
 
   constructor(private http: HttpClient) { }
 

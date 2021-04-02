@@ -9,7 +9,7 @@ import { RaceExistant } from '../_models/Race';
   providedIn: 'root'
 })
 export class RaceService {
-  api: string = 'http://10.156.93.190:5000/api';
+  api: string = 'http://localhost:8000/api';
   constructor(private http: HttpClient) { }
 
   getNombreRace(){
