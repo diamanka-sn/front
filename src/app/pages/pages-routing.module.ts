@@ -13,6 +13,7 @@ import { ReproductionComponent } from './reproduction/reproduction.component';
 import { SanteComponent } from './sante/sante.component';
 import { RapportComponent } from './rapport/rapport.component';
 import { ProfilComponent } from './profil/profil.component';
+// import { AuthentificationComponent } from './authentification/authentification.component';
 
 
 const routes: Routes = [{
@@ -79,6 +80,7 @@ const routes: Routes = [{
       redirectTo: 'dashboard',
       pathMatch: 'full',
     },
+    
     {
       path: '**',
       component: NotFoundComponent,

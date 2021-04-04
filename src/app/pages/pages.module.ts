@@ -23,6 +23,7 @@ import { ProfilComponent } from './profil/profil.component';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { Ng2OrderModule } from 'ng2-order-pipe';
 import { NgxPaginationModule } from 'ngx-pagination';
+// import { AuthentificationModule } from './authentification/authentification.module';
 
 @NgModule({
   imports: [
@@ -35,7 +36,8 @@ import { NgxPaginationModule } from 'ngx-pagination';
     FinanceModule,
     BovinModule,
     ReproductionModule,
- 
+    // AuthentificationModule,
+
     SanteModule,
     RapportModule,
     AlimentationModule,
@@ -46,7 +48,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
   declarations: [
     PagesComponent,
     ProfilComponent,
-    
+   
   ],
 })
 export class PagesModule {

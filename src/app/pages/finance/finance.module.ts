@@ -37,6 +37,9 @@ import { Ng2OrderModule } from 'ng2-order-pipe';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { FacturesComponent } from './factures/factures.component';
+import { LaitComponent } from './factures/lait/lait.component';
+import { BovinsFComponent } from './factures/bovins-f/bovins-f.component';
 @NgModule({
   declarations: [
     FinanceComponent,
@@ -51,6 +54,9 @@ import { NgbModule} from '@ng-bootstrap/ng-bootstrap';
     AchatsComponent,
     CoutProductionComponent,
     BudgetComponent,
+    FacturesComponent,
+    LaitComponent,
+    BovinsFComponent,
   ],
   imports: [
     NbDatepickerModule,

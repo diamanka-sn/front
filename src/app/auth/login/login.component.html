@@ -1,0 +1,27 @@
+<h1 id="title" class="title">Tolluwaay</h1>
+<style>
+  ::ng-deep .navigation .link nb-icon {
+    display: none !important;
+  }
+</style>
+<p class="sub-title">La connexion est requise.</p>
+<form aria-labelledby="title">
+
+  <div class="form-control-group">
+    <label class="label" for="input-text">Nom d'utilisateur:</label>
+    <input nbInput fullWidth name="name" id="input-text"  placeholder="Saisir le nom d'utilisateur"
+      fieldSize="large" autofocus>
+  </div>
+
+  <div class="form-control-group">
+    <span class="label-with-link">
+      <label class="label" for="input-password">Mot de passe:</label>
+    </span>
+    <input nbInput fullWidth name="password" type="password" id="input-password" placeholder="Saisir le mot de passe"
+      fieldSize="large">
+  </div>
+
+  <button nbButton fullWidth status="primary" size="large">
+    Se Connecter
+  </button>
+</form>

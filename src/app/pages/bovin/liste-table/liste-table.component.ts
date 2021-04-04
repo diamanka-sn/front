@@ -1,20 +1,22 @@
-import {  Component, OnInit,  } from '@angular/core';
+import { Component, OnInit, } from '@angular/core';
 import { BovinService } from './../../../service/bovin.service';
 
 import { AchatService } from '../../../service/achat.service';
 import { Bovins } from '../../../_models/Bovins';
 import { DetailsBovin } from '../../../_models/DetailsBovin';
+import { poidsBovin } from '../../../_models/Bovins';
 
 
-import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
+import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { subscribeOn } from 'rxjs/operators';
+import { NbThemeService, NbColorHelper } from '@nebular/theme';
 
 @Component({
   selector: 'ngx-liste-table',
   templateUrl: './liste-table.component.html',
   styleUrls: ['./liste-table.component.scss']
 })
-export class ListeTableComponent implements  OnInit {
+export class ListeTableComponent implements OnInit {
 
   nbreRace: any;
   nbreVache: any;
@@ -22,17 +24,23 @@ export class ListeTableComponent implements  OnInit {
   bovinnbre: any;
   bovin: any;
   nom: any;
-  situation : any;
+  situation: any;
   themeSubscription: any;
 
 
+  data: any;
+  options: any;
+
+
   bovins: Bovins[] = [];
-  details : DetailsBovin [] = [];
+  details: DetailsBovin[] = [];
   p: number = 1;
-  constructor(private bs: BovinService,
+  constructor(private theme: NbThemeService, private bs: BovinService,
     private ab: AchatService,
-    private modalService: NgbModal) { }
- 
+    private modalService: NgbModal) {
+
+  }
+
   ngOnInit(): void {
     this.bs.getBovin().subscribe((response) => {
       this.bovins = response;
@@ -48,8 +56,8 @@ export class ListeTableComponent implements  OnInit {
       });
     }
   }
-  Details(){
-    
+  Details() {
+
   }
   key: string = 'nom';
   reverse: boolean = false;
@@ -84,21 +92,66 @@ export class ListeTableComponent implements  OnInit {
     })
   }
 
-  showBovinDetail(idBovin){
-    this.bovins.forEach(el =>{
-      if(idBovin == el.idBovin){
-        this.bs.getBovinDetails(idBovin).subscribe(res => {
-            this.details = res;
+  showBovinDetail(idBovin) {
+    this.bovins.forEach(el => {
+      if (idBovin == el.idBovin) {
+        this.bs.getPoidsBovin(idBovin).subscribe(res => {
+          const lactation = res['2021'].map(res => res.poids)
+
+          this.themeSubscription = this.theme.getJsTheme().subscribe(config => {
+
+            const colors: any = config.variables;
+            const chartjs: any = config.variables.chartjs;
+
+            console.log(lactation)
+            this.data = {
+              labels: ['Jan', 'Fev', 'Mars', 'Av', 'Mai', 'Juin', 'Juil', 'Aout', 'Sept', 'Oct', 'Nov', 'Dec'],
+              datasets: [{
+                data: lactation,
+                label: 'Poids',
+                backgroundColor: NbColorHelper.hexToRgbA(colors.primaryLight, 0.9),
+              }]
+            };
+
+
+            this.options = {
+              maintainAspectRatio: false,
+              responsive: true,
+              legend: {
+                labels: {
+                  fontColor: chartjs.textColor,
+                },
+              },
+              scales: {
+                xAxes: [
+                  {
+                    gridLines: {
+                      display: false,
+                      color: chartjs.axisLineColor,
+                    },
+                    ticks: {
+                      fontColor: chartjs.textColor,
+                    },
+                  },
+                ],
+                yAxes: [
+                  {
+                    gridLines: {
+                      display: false,
+                      color: chartjs.axisLineColor,
+                    },
+                    ticks: {
+                      fontColor: chartjs.textColor,
+                    },
+                  },
+                ],
+              },
+            };
+          })
+
         })
       }
     })
   }
-
-  options = [
-    { value: 5, label: 'Vache' },
-    { value: 10, label: 'Taureau' },
-    { value: 15, label: 'Veau' },
-    { value: 20, label: 'Tout' },
-  ];
 
 }

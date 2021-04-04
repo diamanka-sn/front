@@ -20,7 +20,7 @@ export class EnsembleBovinComponent implements AfterViewInit, OnDestroy, OnInit 
     this.bv.getNombreTaureau()
             .subscribe(res => {
               this.nbreTaureau = res;
-              console.log(this.nbreTaureau)
+            
             })
   }
 

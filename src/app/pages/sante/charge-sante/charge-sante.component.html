@@ -1,6 +1,22 @@
 <nb-card>
-    <nb-card-header>Cout suivi sanitaire:</nb-card-header>
+    <nb-card-header>Cout suivi sanitaire: <span>{{cout | currency : 'XOF' }}</span></nb-card-header>
     <nb-card-body>
-        
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Libelle</th>
+                    <th scope="col">Montant</th>
+                    <th scope="col">Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let bovin of depenseSante | paginate: {itemsPerPage:7,currentPage:p};">
+                    <th scope="row">{{bovin.libelle}}</th>
+                    <th>{{bovin.montant}}</th>
+                    <th>{{bovin.date}}</th>
+                </tr>
+            </tbody>
+            <pagination-controls (pageChange)="p = $event"></pagination-controls>
+        </table>
     </nb-card-body>
 </nb-card>

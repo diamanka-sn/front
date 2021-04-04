@@ -1,6 +1,6 @@
 import { ModuleWithProviders, NgModule, Optional, SkipSelf } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { NbAuthModule, NbDummyAuthStrategy } from '@nebular/auth';
+import { NbAuthJWTToken, NbAuthModule, NbDummyAuthStrategy, NbPasswordAuthStrategy } from '@nebular/auth';
 import { NbSecurityModule, NbRoleProvider } from '@nebular/security';
 import { of as observableOf } from 'rxjs';
 
@@ -12,6 +12,8 @@ import {
   SeoService,
   StateService,
 } from './utils';
+import {config} from '../_models/config'
+
 import { UserData } from './data/users';
 import { ElectricityData } from './data/electricity';
 import { SmartTableData } from './data/smart-table';
@@ -106,19 +108,27 @@ export const NB_CORE_PROVIDERS = [
   ...NbAuthModule.forRoot({
 
     strategies: [
-      NbDummyAuthStrategy.setup({
+      NbPasswordAuthStrategy.setup({
         name: 'email',
-        delay: 3000,
-      }),
-    ],
-    forms: {
+
+        token: {
+          class: NbAuthJWTToken,
+          key: 'token', // this parameter tells where to look for the token
+        },
+        baseEndpoint: `${config.apiUrl}`,
+
       login: {
-        socialLinks: socialLinks,
+        endpoint : '/auth/login/tokenbybody',
+        method: 'post'
       },
-      register: {
-        socialLinks: socialLinks,
+      logout: {
+        endpoint : '/aut/logout',
+        method: 'post',
       },
-    },
+    
+    }),
+  ],
+ 
   }).providers,
 
   NbSecurityModule.forRoot({

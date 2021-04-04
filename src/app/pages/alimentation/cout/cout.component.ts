@@ -27,22 +27,21 @@ export class CoutComponent implements AfterViewInit, OnDestroy {
         const coutAlimentation = res[this.g].map(res => res.achetes)
 
         const cout = parseInt(coutAlimentation[0].toString())
-        console.log(cout)
-        console.log(coutAlimentation)
+       
         this.charge = cout;
         this.fn.getChargeAutreDepense().subscribe(res => {
 
           const depense = res[this.g].map(res => res.achetes)
-          console.log(depense)
+         
           const coutDepense = parseInt(depense[0].toString())
-          console.log(coutDepense)
+        
 
           this.fn.getCoutBovin().subscribe(res => {
 
             const coutBovin = parseInt(res[0].prix.toString())
-            console.log(coutBovin)
+         
             const autreDepense = coutBovin + coutDepense
-            console.log(autreDepense)
+         
 
             this.options = {
               backgroundColor: echarts.bg,

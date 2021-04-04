@@ -1,0 +1,56 @@
+<nb-card-header><b>Factures Lait:</b>
+</nb-card-header>
+<nb-card-body>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">N° Facture</th>
+                <th scope="col">Date commande</th>
+                <th scope="col">Date paiement</th>
+                <th scope="col">Moyen de paiement</th>
+                <th scope="col">Montant</th>
+                <!-- <th scope="col">Moyen de paiement</th> -->
+                <th scope="col">Details facture</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let bovin of factureLaits">
+                <td>{{ bovin.idFacture}}</td>
+                <td>{{ bovin.dateCom }}</td>
+                <td>{{bovin.datePaiement}}</td>
+                <td>{{bovin.moyenDePaiement}}</td>
+                <td>{{bovin.prixTotale}}</td>
+                <th><button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                    >Détails</button></th>
+            </tr>
+        </tbody>
+    </table>
+</nb-card-body>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Evolution poids Bovin</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">X</button>
+        </div>
+        <div class="modal-body">
+          <img src="../../../../assets/images/favicon.png" class="rounded float-start" alt="photo Bovin"
+            style="width:100px; height:100px">
+  
+  
+          <div class="body">
+            <!-- <chart type="bar" [data]="data" [options]="options"></chart> -->
+  
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+<script src="./../factures.js"></script>

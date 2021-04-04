@@ -11,6 +11,7 @@ import { CoreModule } from './@core/core.module';
 import { ThemeModule } from './@theme/theme.module';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
+import {NgxAuthModule} from './auth/auth.module'
 import {
   NbChatModule,
   NbDatepickerModule,
@@ -30,6 +31,7 @@ import {
     HttpClientModule,
     AppRoutingModule,
     NbCalendarRangeModule,
+    NgxAuthModule,
     NbSidebarModule.forRoot(),
     NbMenuModule.forRoot(),
     NbDatepickerModule.forRoot(),

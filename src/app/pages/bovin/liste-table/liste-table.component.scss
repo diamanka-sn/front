@@ -43,4 +43,15 @@
   nb-select{
     float: right;
   }
+  .body {
+  display: block;
+  height: nb-theme(card-height-medium);
+  width: 100%;
+
+  ::ng-deep chart {
+    display: flex;
+    height: 85%;
+    width: 95%;
+  }
+}
 }

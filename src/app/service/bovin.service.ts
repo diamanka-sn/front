@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { bovinMois, Bovins, Santebovin } from '../_models/Bovins';
+import { bovinMois, Bovins, poidsBovin, Santebovin } from '../_models/Bovins';
 import { DetailsBovin } from '../_models/DetailsBovin';
 import { Observable } from 'rxjs';
 
@@ -69,6 +69,10 @@ export class BovinService {
   }
   getGenisseMois(): Observable<bovinMois[]> {
     return this.http.get<bovinMois[]>(this.api + '/api/nombreGenisseMois')
+      .map(resultat => resultat)
+  }
+  getPoidsBovin(idBovin): Observable<poidsBovin[]> {
+    return this.http.get<poidsBovin[]>(this.api + '/api/evolutionPoids/'+ idBovin)
       .map(resultat => resultat)
   }
 }

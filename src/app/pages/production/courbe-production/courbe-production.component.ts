@@ -28,12 +28,12 @@ export class CourbeProductionComponent  implements OnDestroy,OnInit {
         labels: ['Jan', 'Fev', 'Mars', 'Av', 'Mai', 'Juin', 'Juil','Aout','Sept','Oct','Nov','Dec'],
         datasets: [{
           data: matin,
-          label: 'Trait Matin',
+          label: 'Traite Matin',
           backgroundColor: NbColorHelper.hexToRgbA(colors.primaryLight,0.9),
         },
         {
           data: soir,
-          label: 'Trait Soir',
+          label: 'Traite Soir',
           backgroundColor: NbColorHelper.hexToRgbA(colors.successLight,0.9),
         },]
       };

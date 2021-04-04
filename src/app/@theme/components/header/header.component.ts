@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { NbMediaBreakpointsService, NbMenuService, NbSidebarService, NbThemeService,NbCalendarRange, NbDateService } from '@nebular/theme';
+import { NbMediaBreakpointsService, NbMenuService, NbSidebarService, NbThemeService, NbCalendarRange, NbDateService } from '@nebular/theme';
 
 import { UserData } from '../../../@core/data/users';
 import { LayoutService } from '../../../@core/utils';
@@ -31,41 +31,43 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   currentTheme = 'default';
 
-  userMenu = [ 
-    { title: 'Profil',
+  userMenu = [
+    {
+      title: 'Profil',
       link: '/pages/profil',
-    }, 
-    { title: 'Se deconnecter',
+    },
+    {
+      title: 'Se deconnecter',
       link: '/pages/authentification'
-    } 
+    }
   ];
- 
-  
+
+
   constructor(private sidebarService: NbSidebarService,
-              private menuService: NbMenuService,
-              private themeService: NbThemeService,
-              private userService: UserData,
-              private layoutService: LayoutService,
-              private breakpointService: NbMediaBreakpointsService,){
-              
+    private menuService: NbMenuService,
+    private themeService: NbThemeService,
+    private userService: UserData,
+    private layoutService: LayoutService,
+    private breakpointService: NbMediaBreakpointsService,) {
+
   }
   checked = false;
 
   toggle(checked: boolean) {
-    this.checked =checked;
-    if(this.checked==true){
+    this.checked = checked;
+    if (this.checked == true) {
       this.themeService.changeTheme("dark")
     } else {
       this.themeService.changeTheme("default")
     }
-    
-    
-  } 
+
+
+  }
 
   ngOnInit() {
     this.currentTheme = this.themeService.currentTheme;
 
-  this.userService.getUsers()
+    this.userService.getUsers()
       .pipe(takeUntil(this.destroy$))
       .subscribe((users: any) => this.user = users.nick);
 
@@ -105,6 +107,4 @@ export class HeaderComponent implements OnInit, OnDestroy {
     this.menuService.navigateHome();
     return false;
   }
-
-  
 }

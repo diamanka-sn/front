@@ -1,4 +1,4 @@
-import { Component, OnDestroy } from '@angular/core';
+import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core';
 import { NbThemeService, NbColorHelper } from '@nebular/theme';
 import { ProductionService } from '../../../service/production.service';
 
@@ -7,75 +7,91 @@ import { ProductionService } from '../../../service/production.service';
   templateUrl: './periodicite.component.html',
   styleUrls: ['./periodicite.component.scss']
 })
-export class PeriodiciteComponent implements OnDestroy {
+export class PeriodiciteComponent implements AfterViewInit, OnDestroy, OnInit {
 
-  data: any;
-  options: any;
+
+  nbreRace: any;
+  options: any = {};
   themeSubscription: any;
+  existant: any;
+
+  // public races = [];
+  // public nombre = [];
 
 
-  constructor(private theme: NbThemeService,private prod:ProductionService) {
+  echartsInstance;
+
+  constructor(private theme: NbThemeService, private prod:ProductionService) {
+
+  }
+
+  ngOnInit(): void {
+       
+    }
+
+
+  ngAfterViewInit() {
     this.themeSubscription = this.theme.getJsTheme().subscribe(config => {
-
-      const colors: any = config.variables;
-      const chartjs: any = config.variables.chartjs;
-    this.prod.getPhaseVache().subscribe(res => {
-      const lactation= res['lactation'].map(res  => res.nombre)
-      const tarissement = res['tarissement'].map(res  => res.nombre)
-    
-
-      this.data = {
-        labels: ['Jan', 'Fev', 'Mars', 'Av', 'Mai', 'Juin', 'Juil','Aout','Sept','Oct','Nov','Dec'],
-        datasets: [{
-          data: lactation,
-          label: 'Lactation',
-          backgroundColor: NbColorHelper.hexToRgbA(colors.primaryLight,0.9),
-        }, {
-          data: tarissement,
-          label: 'Tarissement',
-          backgroundColor: NbColorHelper.hexToRgbA(colors.warningLight, 0.9),
-        }]
-      };
-    })
-      this.options = {
-        maintainAspectRatio: false,
-        responsive: true,
-        legend: {
-          labels: {
-            fontColor: chartjs.textColor,
-          },
-        },
-        scales: {
-          xAxes: [
-            {
-              gridLines: {
-                display: false,
-                color: chartjs.axisLineColor,
-              },
-              ticks: {
-                fontColor: chartjs.textColor,
+      const colors = config.variables;
+      const echarts: any = config.variables.echarts;
+      this.prod.getPhaseVache()
+        .subscribe(res => {
+          const labels = res['2021'].map(res => res.periode);
+          const data = res['2021'].map(res => ({
+            value : res.nombre,
+            name :res.periode
+          }));
+          this.options = {
+        
+            backgroundColor: echarts.bg,
+           // color: [colors.warningLight, colors.infoLight, colors.dangerLight, colors.successLight, colors.primaryLight],
+            tooltip: {
+              trigger: 'item',
+              formatter: '{a} <br/>{b} : {c} ({d}%)',
+            },
+            legend: {
+              orient: 'vertical',
+              left: 'left',
+              data: labels,
+              textStyle: {
+                color: echarts.textColor,
               },
             },
-          ],
-          yAxes: [
-            {
-              gridLines: {
-                display: false,
-                color: chartjs.axisLineColor,
+            series: [
+              {
+                name: 'Phase',
+                type: 'pie',
+                radius: '70%',
+                center: ['50%', '50%'],
+                data: data,
+                itemStyle: {
+                  emphasis: {
+                    shadowBlur: 10,
+                    shadowOffsetX: 0,
+                    shadowColor: 'rgb(0,0,1,0.5)',
+                  },
+                },
+                label: {
+                  normal: {
+                    textStyle: {
+                      color: echarts.textColor,
+                    },
+                  },
+                },
               },
-              ticks: {
-                fontColor: chartjs.textColor,
-              },
-            },
-          ],
-        },
-      };
+            ],
+          }
+
+        });
+
+
+
     });
   }
 
   ngOnDestroy(): void {
     this.themeSubscription.unsubscribe();
-  } 
+  }
  
 
 }

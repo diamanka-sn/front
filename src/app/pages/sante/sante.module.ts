@@ -21,6 +21,10 @@ import { ChargeSanteComponent } from './charge-sante/charge-sante.component';
 import { MaladieComponent } from './maladie/maladie.component';
 import { MedicamentComponent } from './medicament/medicament.component';
 
+import { Ng2OrderModule } from 'ng2-order-pipe';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { NgxPaginationModule } from 'ngx-pagination';
+import { NgbModule} from '@ng-bootstrap/ng-bootstrap';
 @NgModule({
   declarations: [
     SanteComponent,
@@ -43,6 +47,11 @@ import { MedicamentComponent } from './medicament/medicament.component';
     NbSelectModule,
     NbListModule,
     NbIconModule,
+
+    Ng2OrderModule,
+    NgbModule,
+    NgxPaginationModule,
+    Ng2SearchPipeModule,
   ]
 })
 export class SanteModule { }

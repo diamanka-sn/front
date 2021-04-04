@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { factureLait } from '../_models/Factures';
 import { chiffreAffaire, chiffreAnnuelle } from '../_models/Finance';
 
 @Injectable({
@@ -32,6 +33,14 @@ export class FinanceService {
 
   getChargeAutreDepense(){
     return this.http.get(this.api + '/chargeAutreDepense/')
+    .map(resultat => resultat)
+  }
+
+
+
+  //factures Lait
+  getFactureLait(){
+    return this.http.get<factureLait[]>(this.api + '/listFactureLaitDetaille/')
     .map(resultat => resultat)
   }
 }

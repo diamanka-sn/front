@@ -1,6 +1,25 @@
 <nb-card>
     <nb-card-header>Liste bovins malades: </nb-card-header>
     <nb-card-body>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Nom bovin</th>
+                    <th scope="col">Maladie</th>
+                    <th scope="col">Date Maladie</th>
 
+
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let bovin of malades">
+                    <th scope="row">{{bovin.nom}}</th>
+                    <th>{{bovin.maladie}}</th>
+                    <th>{{bovin.date}}</th>
+
+                </tr>
+            </tbody>
+            <!-- <pagination-controls (pageChange)="p = $event"></pagination-controls> -->
+        </table>
     </nb-card-body>
 </nb-card>

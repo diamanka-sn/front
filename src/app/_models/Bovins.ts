@@ -23,3 +23,9 @@ export interface bovinMois {
   mois: any;
   annee: string;
 }
+
+export interface poidsBovin {
+  poids : number;
+  mois:number;
+  annee:number;
+}

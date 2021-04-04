@@ -20,7 +20,7 @@
 
           <!-- <th><button type="button" class="btn btn-info" (click)="open(content,idBovin)">Détails</button></th> -->
           <th><button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal"
-              (click)="showBovinDetail(bovin.idBovin)">Détails{{bovin.idBovin}}</button></th>
+              (click)="showBovinDetail(bovin.idBovin)">Variation poids</button></th>
         </tr>
       </tbody>
       <pagination-controls (pageChange)="p = $event"></pagination-controls>
@@ -33,28 +33,18 @@
   <div class="modal-dialog modal-dialog-centered modal-lg">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Détails Bovin</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Evolution poids Bovin</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">X</button>
       </div>
       <div class="modal-body">
         <img src="../../../../assets/images/favicon.png" class="rounded float-start" alt="photo Bovin"
           style="width:100px; height:100px">
-       
-        
-          <div class="body">
-            <div *ngFor="let d of details">
-              <div>Nom bovin : {{d.nom}}</div>
-              <div>Poids Bovin : {{d.poids}}</div>
-              Race <b>{{d.nomRace}}</b> <br>
-              situation <b>{{d.situation}}</b> <br>
-              Etat de Sante <b>{{d.etatDeSante}}</b> <br>
-              Date de Naissance <b>{{d.dateNaiss}}</b> <br>
-              Pedigre:&nbsp;
-              Geniteur <b>{{d.geniteur}}</b>&nbsp;
-              Genitrice <b>{{d.genitrice}}</b> <br>
-              Date pesage <b>{{d.datePesee}}</b> <br>
-            </div>
-          </div>
+
+
+        <div class="body">
+          <chart type="bar" [data]="data" [options]="options"></chart>
+
+        </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
