@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ComptesComponent } from './comptes.component';
+import { CoutRevientComponent } from './cout-revient.component';
 
-describe('ComptesComponent', () => {
-  let component: ComptesComponent;
-  let fixture: ComponentFixture<ComptesComponent>;
+describe('CoutRevientComponent', () => {
+  let component: CoutRevientComponent;
+  let fixture: ComponentFixture<CoutRevientComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ComptesComponent ]
+      declarations: [ CoutRevientComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ComptesComponent);
+    fixture = TestBed.createComponent(CoutRevientComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -22,6 +22,9 @@ export class BovinService {
   getNombreBovin() {
     return this.http.get(this.api + '/api/nombreBovin/')
   }
+  getNombreBovinM() {
+    return this.http.get(this.api + '/api/nombreBovinM/')
+  }
   getNombreBovinAchetes() {
     return this.http.get(this.api + '/api/nbreachatbovin/')
   }
@@ -72,7 +75,11 @@ export class BovinService {
       .map(resultat => resultat)
   }
   getPoidsBovin(idBovin): Observable<poidsBovin[]> {
-    return this.http.get<poidsBovin[]>(this.api + '/api/evolutionPoids/'+ idBovin)
+    return this.http.get<poidsBovin[]>(this.api + '/api/evolutionPoids/' + idBovin)
       .map(resultat => resultat)
+  }
+
+  getNombreBovinVendu() {
+    return this.http.get(this.api + '/api/nombreBovinVendueM/')
   }
 }

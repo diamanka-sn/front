@@ -1,0 +1,75 @@
+<nb-card>
+    <nb-card-header><b>Cout d'achats des matières premières:</b>
+        <!--<nb-select selected="2">
+            <nb-option value="1">2017</nb-option>
+            <nb-option value="2">2018</nb-option>
+            <nb-option value="3">2019</nb-option>
+            <nb-option value="4">2021</nb-option>
+        </nb-select>-->
+    </nb-card-header>
+    <nb-card-body>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Elements</th>
+                    <th scope="col">Bovins</th>
+                    <th scope="col">Alimentation</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">Prix d'achats</th>
+                    <th>{{nbreBovin}} | {{coutBovin | currency : 'XOF' }}</th>
+                    <th>1500 | 100 000</th>
+                </tr>
+                <tr>
+                    <th scope="row">Frais d'approvisionnement</th>
+                    <th>{{nbreBovin}} | {{coutTransport | currency : 'XOF' }}</th>
+                    <th>1500 | 15000</th>
+                </tr>
+                <tr>
+                    <th scope="row">Cout d'achat</th>
+                    <th>{{nbreBovin}} | {{coutBovin + coutTransport | currency : 'XOF'}}</th>
+                    <th>1500 | | </th>
+                </tr>
+                <tr>
+                    <th scope="row">Stock initial</th>
+                    <th>{{nbreBovinT - nbreBovin}} | {{coutExistant | currency : 'XOF' }}</th>
+                    <th></th>
+                </tr>
+                <tr>
+                    <th scope="row">Existant</th>
+                    <th>{{nombreTotaleBovin}} | {{ cump | currency : 'XOF'}} |{{coutBovinT | currency : 'XOF'}}
+                    </th>
+                    <th></th>
+                </tr>
+                <tr>
+                    <th scope="row">Sortie</th>
+                    <th>{{bovinVendu}} | {{cump | currency : 'XOF' }} | {{bovinVendu * cump | currency : 'XOF' }} </th>
+                    <th></th>
+                </tr>
+                <tr>
+                    <th scope="row">Stock final theorique</th>
+                    <th>{{stockTheorique}} | {{cump | currency : 'XOF' }} | {{ stockTheorique * cump | currency : 'XOF' }} </th>
+                    <th></th>
+                </tr>
+                <tr> 
+                    <th scope="row">Stock final reel</th>
+                    <th>{{bovinReelle}} | {{cump | currency : 'XOF' }} | {{bovinReelle * cump | currency : 'XOF' }}</th>
+                    <th></th>
+                </tr>
+                <tr>
+                    <th scope="row">Difference inventaire</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+                <tr>
+                    <th scope="row">Difference Stock</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+
+            </tbody>
+        </table>
+    </nb-card-body>
+</nb-card>

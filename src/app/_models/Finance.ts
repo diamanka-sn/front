@@ -9,3 +9,8 @@ export interface chiffreAffaire {
     annee: string;
     mois:number;
 }
+
+export interface tansportBovin {
+    annee:number;
+    montant:number;
+}

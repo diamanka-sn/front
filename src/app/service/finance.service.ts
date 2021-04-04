@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { factureLait } from '../_models/Factures';
-import { chiffreAffaire, chiffreAnnuelle } from '../_models/Finance';
+import { chiffreAffaire, chiffreAnnuelle, tansportBovin } from '../_models/Finance';
 
 @Injectable({
   providedIn: 'root'
@@ -43,4 +43,17 @@ export class FinanceService {
     return this.http.get<factureLait[]>(this.api + '/listFactureLaitDetaille/')
     .map(resultat => resultat)
   }
+
+  getCotTransport(){
+    return this.http.get<tansportBovin[]>(this.api + '/coutTransportM/')
+    .map(resultat => resultat)
+  }
+
+  getCoutsBovin() {
+    return this.http.get(this.api + '/SommeAchatBovin/')
+  }
+  getCoutExistant() {
+    return this.http.get(this.api + '/prixBovinExistant/')
+  }
+  
 }

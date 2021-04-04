@@ -6,7 +6,7 @@ import {config} from '../_models/config'
   providedIn: 'root'
 })
 export class AchatService {
- // api: string = 'http://localhost:8000/api';
+
   constructor(private http: HttpClient) { }
 
   getNombreAchatBovin(){
