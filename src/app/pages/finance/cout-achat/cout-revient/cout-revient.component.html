@@ -20,37 +20,41 @@
             <tbody>
               <tr>
                 <th>Cout production</th>
-                <th>19 315 707 </th>
-                <th>3 150 000</th>
+                <th>{{coutTransport + coutBovin +
+                  transportAliment + prixAchats + salaire + sante + electricite + eau | currency : 'XOF'}} </th>
+                <th>{{coutSterilisant + coutEmballage + coutChauffage + salaireLait | currency : 'XOF'}}</th>
               </tr>
               <tr>
                 <th>Frais distribution</th>
-                <th>300 000</th>
+                <th>0</th>
                 <th>0</th>
               </tr>
               <tr>
                 <th>Distribution commissionnaire</th>
-                <th>704 000</th>
+                <th>0</th>
                 <th>0</th>
               </tr>
               <tr>
                 <th>Cout de revient</th>
-                <th>4 154 000</th>
-                <th>19 315 707</th>
+                <th>{{coutTransport + coutBovin +
+                  transportAliment + prixAchats + salaire + sante + electricite + eau | currency : 'XOF'}}</th>
+                <th>{{coutSterilisant + coutEmballage + coutChauffage + salaireLait | currency : 'XOF'}}</th>
               </tr>
               <tr>
                 <th>Chiffre d'affaire</th>
-                <th>12 600 000</th>
-                <th>15 308 00</th>
+                <th>{{vente | currency : 'XOF'}}</th>
+                <th>{{quantiteLait * 1000 | currency : 'XOF'}}</th>
               </tr>
               <tr>
                 <th>Resultat analythique</th>
-                <th>8 446 000</th>
-                <th>-4 007 707</th>
+                <th>{{vente - (coutTransport + coutBovin +
+                  transportAliment + prixAchats + salaire + sante + electricite + eau) | currency : 'XOF'}}</th>
+                <th>{{(quantiteLait * 1000) - (coutSterilisant + coutEmballage + coutChauffage + salaireLait) | currency : 'XOF'}}</th>
               </tr>
               <tr>
                 <th>Resusltat analythique globale</th>
-                <th colspan="2" align="center">4 438 293</th>
+                <th colspan="2" align="center">{{(vente - (coutTransport + coutBovin +
+                  transportAliment + prixAchats + salaire + sante + electricite + eau)) + ((quantiteLait * 1000) - (coutSterilisant + coutEmballage + coutChauffage + salaireLait))}}</th>
               </tr>
             
             </tbody>

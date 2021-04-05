@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { phaseVache, productionLait, productionTotale } from '../_models/Production';
+import { phaseVache, productionLait, productionTotale, VenteLait } from '../_models/Production';
 
 @Injectable({
   providedIn: 'root'
@@ -31,5 +31,10 @@ export class ProductionService {
   }
   getStockDisponible() {
     return this.http.get(this.api + '/stockDisponible/')
+  }
+
+  getLaitVenteLait() {
+    return this.http.get<VenteLait[]>(this.api + '/sommeLaitVendu/')
+      .map(resultat => resultat)
   }
 }

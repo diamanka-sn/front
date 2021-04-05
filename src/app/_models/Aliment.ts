@@ -20,3 +20,8 @@ export interface alimentationJour{
     quantite:number;
     date:Date;
 }
+
+export interface transportAliment {
+    montant:string;
+    annee:number;
+}

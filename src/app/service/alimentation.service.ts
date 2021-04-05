@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { alimentationJour, stock, stockAliment, type } from '../_models/Aliment';
+import { alimentationJour, stock, stockAliment, transportAliment, type } from '../_models/Aliment';
 import {config} from '../_models/config'
 
 @Injectable({
@@ -44,6 +44,11 @@ export class AlimentationService {
     return this.http.get<alimentationJour[]>(`${config.apiUrl}/listeAlimentationJour/`)
       .map(resultat => resultat)
 
+  }
+
+  getCoutTransportAlimentation(){
+    return this.http.get<transportAliment[]>(`${config.apiUrl}/coutTransportAlimentationM/`)
+      .map(resultat => resultat)
   }
 
 }

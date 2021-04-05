@@ -11,5 +11,10 @@ export class CoutProductionComponent implements OnInit {
 
   ngOnInit(): void {
   }
+  flipped = false;
+
+  toggleView() {
+    this.flipped = !this.flipped;
+  }
 
 }

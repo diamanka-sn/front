@@ -55,5 +55,13 @@ export class FinanceService {
   getCoutExistant() {
     return this.http.get(this.api + '/prixBovinExistant/')
   }
-  
+
+  getCoutSalaireBovin(){
+    return this.http.get<tansportBovin[]>(this.api + '/factureSalaire/')
+    .map(resultat => resultat)
+  }
+  getCoutSalaireLait(){
+    return this.http.get<tansportBovin[]>(this.api + '/salaireLait/')
+    .map(resultat => resultat)
+  }
 }

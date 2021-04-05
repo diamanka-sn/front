@@ -15,3 +15,8 @@ export interface phaseVache {
     annee: any;
     mois: number;
 }
+
+export interface VenteLait {
+    vente:number;
+    annee:number;
+}

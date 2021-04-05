@@ -15,7 +15,6 @@ export class Bovins {
 export interface Santebovin {
   nombre: number;
   sante: string;
-
 }
 
 export interface bovinMois {
@@ -28,4 +27,9 @@ export interface poidsBovin {
   poids : number;
   mois:number;
   annee:number;
+}
+
+export interface venteBovin {
+  annee:number;
+  vente:number;
 }

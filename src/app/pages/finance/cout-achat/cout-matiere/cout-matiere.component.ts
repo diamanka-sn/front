@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AchatService } from '../../../../service/achat.service';
+import { AlimentationService } from '../../../../service/alimentation.service';
 import { BovinService } from '../../../../service/bovin.service';
 import { FinanceService } from '../../../../service/finance.service';
 import { tansportBovin } from '../../../../_models/Finance';
@@ -10,6 +11,7 @@ import { tansportBovin } from '../../../../_models/Finance';
   styleUrls: ['./cout-matiere.component.scss']
 })
 export class CoutMatiereComponent implements OnInit {
+  //matiere premier bovins
   coutExistant: any;
   nbreBovinT: any;
   nbreBovin: any;
@@ -20,8 +22,18 @@ export class CoutMatiereComponent implements OnInit {
   cump: number;
   nombreTotaleBovin: number;
   bovinReelle: any;
-  stockTheorique:any;
-  constructor(private fn: FinanceService, private ach: AchatService, private bv: BovinService) { }
+  stockTheorique: any;
+  difference: any;
+
+  //matiere premiere alimentation
+
+  prixAchats: any;
+  transportAliment: number;
+
+  constructor(private fn: FinanceService,
+    private ach: AchatService,
+    private bv: BovinService,
+    private al: AlimentationService) { }
 
   ngOnInit(): void {
     this.fn.getCotTransport().subscribe(res => {
@@ -53,7 +65,7 @@ export class CoutMatiereComponent implements OnInit {
                   this.cump = this.coutBovinT / this.nombreTotaleBovin
 
                   this.stockTheorique = this.nombreTotaleBovin - this.bovinVendu
-
+                  this.difference = this.bovinReelle - this.stockTheorique
                 })
               })
             })
@@ -62,7 +74,15 @@ export class CoutMatiereComponent implements OnInit {
       })
     })
 
-  }
+    //Alimentation 
+    this.al.getChargeAlimentation().subscribe(res => {
+      this.prixAchats = parseInt(res['2021'].map(res => res.achetes.toString()));
+    })
+    this.al.getCoutTransportAlimentation().subscribe(res => {
 
+      this.transportAliment = parseInt(res['2021'].map(res => res.montant.toString()));
+
+    })
+  }
 
 }

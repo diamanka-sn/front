@@ -1,75 +1,14 @@
-<nb-card>
-    <nb-card-header><b>Cout et charge des Bovins:</b>
-        <!--<nb-select selected="2">
-            <nb-option value="1">2017</nb-option>
-            <nb-option value="2">2018</nb-option>
-            <nb-option value="3">2019</nb-option>
-            <nb-option value="4">2021</nb-option>
-        </nb-select>-->
-    </nb-card-header>
-    <nb-card-body>
-        <table class="table">
-            <thead>
-                <tr>
-                    <th rowspan="2" colspan="1">Elements</th>
-                    <th rowspan="1" colspan="3" align="center"> Bovins</th>
-                </tr>
-                <tr>
-                    <th>Qu</th>
-                    <th>CU</th>
-                    <th>Montants</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <th>Eau</th>
-                    <th>0</th>
-                    <th>0</th>
-                    <th>5 000 000</th>
-                </tr>
-                <tr>
-                    <th>Electricite</th>
-                    <th>0</th>
-                    <th>0</th>
-                    <th>5 000 000</th>
-                </tr>
-                <tr>
-                    <th>MOD Veterinaire</th>
-                    <th>0</th>
-                    <th>0</th>
-                    <th>5 000 000</th>
-                </tr>
-                <tr>
-                    <th>MOD entretien Bovins</th>
-                    <th>0</th>
-                    <th>0</th>
-                    <th>5 000 000</th>
-                </tr>
-                <tr>
-                    <th>Medicaments</th>
-                    <th>0</th>
-                    <th>0</th>
-                    <th>5 000 000</th>
-                </tr>
-                <tr>
-                    <th>Consommation</th>
-                    <th>0</th>
-                    <th>0</th>
-                    <th>5 000 000</th>
-                </tr>
-                <tr>
-                    <th>cout Bovins</th>
-                    <th>0</th>
-                    <th>0</th>
-                    <th>5 000 000</th>
-                </tr>
-            </tbody>
-            <tfoot>
-                <tr>
-                    <th>Cout globale</th>
-                    <th colspan="3"> <b style="float: right; margin-right : 48px">5 000 000</b></th>
-                </tr>
-            </tfoot>
-        </table>
-    </nb-card-body>
-</nb-card>
+<nb-flip-card [showToggleButton]="false" [flipped]="flipped">
+    <nb-card-front>
+        <nb-card size="large">
+           <ngx-charges-bovin></ngx-charges-bovin>
+            <nb-icon icon="chevron-right-outline" pack="eva" class="flip-icon" (click)="toggleView()"></nb-icon>
+        </nb-card>
+    </nb-card-front>
+    <nb-card-back>
+        <nb-card size="large">
+            <ngx-charges-lait></ngx-charges-lait>
+            <nb-icon icon="chevron-right-outline" pack="eva" class="flip-icon" (click)="toggleView()"></nb-icon>
+        </nb-card>
+    </nb-card-back>
+</nb-flip-card>

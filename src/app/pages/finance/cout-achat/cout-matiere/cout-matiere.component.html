@@ -1,5 +1,5 @@
 <nb-card>
-    <nb-card-header><b>Cout d'achats des matières premières:</b>
+    <nb-card-header><b>Cout d'achats des matières premières: <span>Cout d'achats aliment: {{prixAchats + transportAliment | currency : 'XOF' }}</span></b>
         <!--<nb-select selected="2">
             <nb-option value="1">2017</nb-option>
             <nb-option value="2">2018</nb-option>
@@ -8,67 +8,79 @@
         </nb-select>-->
     </nb-card-header>
     <nb-card-body>
-        <table class="table">
+        <table class="table table-striped table-hover">
             <thead>
+
                 <tr>
-                    <th scope="col">Elements</th>
-                    <th scope="col">Bovins</th>
-                    <th scope="col">Alimentation</th>
+                    <th rowspan="1" colspan="1">Elements</th>
+                    <!-- <th rowspan="1" colspan="3" style="width: 100px;">Bovins</th> -->
+                    <th>Quantite</th>
+                    <th>Cout unitaire</th>
+                    <th>Montants</th>
                 </tr>
+
             </thead>
             <tbody>
                 <tr>
                     <th scope="row">Prix d'achats</th>
-                    <th>{{nbreBovin}} | {{coutBovin | currency : 'XOF' }}</th>
-                    <th>1500 | 100 000</th>
+                    <th>{{nbreBovin}}</th>
+                    <th>---</th>
+                    <th>{{coutBovin | currency : 'XOF' }}</th>
                 </tr>
                 <tr>
                     <th scope="row">Frais d'approvisionnement</th>
-                    <th>{{nbreBovin}} | {{coutTransport | currency : 'XOF' }}</th>
-                    <th>1500 | 15000</th>
+                    <th>{{nbreBovin}}</th>
+                    <th>---</th>
+                    <th>{{coutTransport | currency : 'XOF' }}</th>
                 </tr>
                 <tr>
                     <th scope="row">Cout d'achat</th>
-                    <th>{{nbreBovin}} | {{coutBovin + coutTransport | currency : 'XOF'}}</th>
-                    <th>1500 | | </th>
+                    <th>{{nbreBovin}}</th>
+                    <th>---</th>
+                    <th> {{coutBovin + coutTransport | currency : 'XOF'}}</th>
                 </tr>
                 <tr>
                     <th scope="row">Stock initial</th>
-                    <th>{{nbreBovinT - nbreBovin}} | {{coutExistant | currency : 'XOF' }}</th>
-                    <th></th>
+                    <th>{{nbreBovinT - nbreBovin}}</th>
+                    <th>---</th>
+                    <th> {{coutExistant | currency : 'XOF' }}</th>
                 </tr>
                 <tr>
                     <th scope="row">Existant</th>
-                    <th>{{nombreTotaleBovin}} | {{ cump | currency : 'XOF'}} |{{coutBovinT | currency : 'XOF'}}
-                    </th>
-                    <th></th>
+                    <th>{{nombreTotaleBovin}}</th>
+                    <th>{{ cump | currency : 'XOF'}} </th>
+                    <th> {{coutBovinT | currency : 'XOF'}} </th>
                 </tr>
                 <tr>
                     <th scope="row">Sortie</th>
-                    <th>{{bovinVendu}} | {{cump | currency : 'XOF' }} | {{bovinVendu * cump | currency : 'XOF' }} </th>
-                    <th></th>
+                    <th>{{bovinVendu}} </th>
+                    <th>{{cump | currency : 'XOF' }} </th>
+                    <th> {{bovinVendu * cump | currency : 'XOF' }}</th>
                 </tr>
                 <tr>
                     <th scope="row">Stock final theorique</th>
-                    <th>{{stockTheorique}} | {{cump | currency : 'XOF' }} | {{ stockTheorique * cump | currency : 'XOF' }} </th>
-                    <th></th>
+                    <th>{{stockTheorique}} </th>
+                    <th>{{cump | currency : 'XOF' }} </th>
+                    <th> {{ stockTheorique * cump | currency : 'XOF'}}</th>
                 </tr>
-                <tr> 
+                <tr>
                     <th scope="row">Stock final reel</th>
-                    <th>{{bovinReelle}} | {{cump | currency : 'XOF' }} | {{bovinReelle * cump | currency : 'XOF' }}</th>
-                    <th></th>
+                    <th>{{bovinReelle}}</th>
+                    <th>{{cump | currency : 'XOF' }} </th>
+                    <th>{{bovinReelle * cump | currency : 'XOF' }}</th>
                 </tr>
                 <tr>
                     <th scope="row">Difference inventaire</th>
-                    <th></th>
-                    <th></th>
+                    <th>{{difference}}</th>
+                    <th>---</th>
+                    <th>{{ ((bovinReelle * cump ) - (stockTheorique * cump) ) | currency : 'XOF'}}</th>
                 </tr>
                 <tr>
                     <th scope="row">Difference Stock</th>
-                    <th></th>
-                    <th></th>
+                    <th>---</th>
+                    <th>---</th>
+                    <th>{{((bovinReelle * cump ) - coutExistant) | currency : 'XOF' }}</th>
                 </tr>
-
             </tbody>
         </table>
     </nb-card-body>

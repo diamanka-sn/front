@@ -1,0 +1,47 @@
+<nb-card>
+    <nb-card-header><b>Cout de production de lait: </b>
+        <!-- <nb-select selected="2">
+            <nb-option value="1">2017</nb-option>
+            <nb-option value="2">2018</nb-option>
+            <nb-option value="3">2019</nb-option>
+            <nb-option value="4">2021</nb-option>
+        </nb-select> -->
+    </nb-card-header>
+    <nb-card-body>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th rowspan="1" colspan="1">Elements</th>               
+                    <th>Montants</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th>MOD laits</th>
+                    <th>{{salaireLait | currency : 'XOF'}}</th>
+                </tr>
+                <tr>
+                    <th>Chauffage</th>
+                   
+                    <th>{{coutChauffage | currency : 'XOF'}}</th>
+                </tr>
+                <tr>
+                    <th>Emballage</th>
+                   
+                    <th>{{coutEmballage | currency : 'XOF'}}</th>
+                </tr>
+                <tr>
+                    <th>Sterilisant</th>
+                    
+                    <th>{{coutSterilisant | currency : 'XOF'}}</th>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <th>Cout globale</th>
+                    <th> {{coutSterilisant + coutEmballage + coutChauffage + salaireLait | currency : 'XOF'}}</th>
+                </tr>
+            </tfoot>
+        </table>
+    </nb-card-body>
+</nb-card>
