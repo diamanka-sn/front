@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { config } from '../_models/config'
 
 
 import 'rxjs/add/operator/map'
@@ -14,11 +15,11 @@ export class RaceService {
   constructor(private http: HttpClient) { }
 
   getNombreRace(){
-    return this.http.get(this.api+'/nbrerace/')
+    return this.http.get(`${config.apiUrl}/nbrerace/`)
   }
 
   getRaceExistant() : Observable<RaceExistant[]>{
-    return this.http.get<RaceExistant[]>(this.api+'/bovins')
+    return this.http.get<RaceExistant[]>(`${config.apiUrl}/bovins`)
       .map(resultat =>resultat)
   }
 }

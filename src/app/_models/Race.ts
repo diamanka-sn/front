@@ -10,5 +10,4 @@ export class Race{
 export interface RaceExistant {
     nombre : number;
     race : string;
-
 }

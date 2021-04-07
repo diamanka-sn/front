@@ -4,6 +4,9 @@ import { Observable } from 'rxjs';
 import { venteBovin } from '../_models/Bovins';
 import { vente } from '../_models/Vente';
 
+import { config } from '../_models/config'
+
+
 @Injectable({
   providedIn: 'root'
 })
@@ -14,17 +17,17 @@ export class VenteService {
   constructor(private http: HttpClient) { }
 
   getVenteLait(annee): Observable<vente[]> {
-    return this.http.get<vente[]>(this.api + '/api/chiffreLait/'+annee)
+    return this.http.get<vente[]>(`${config.apiUrl}/chiffreLait/`+annee)
       .map(resultat => resultat)
   }
 
   getVenteBovin(annee): Observable<vente[]> {
-    return this.http.get<vente[]>(this.api + '/api/chiffreLait/'+annee)
+    return this.http.get<vente[]>(`${config.apiUrl}/chiffreLait/`+annee)
       .map(resultat => resultat)
   }
 
   getVenteBovinM() {
-    return this.http.get<venteBovin[]>(this.api + '/api/sommeBovinVendu/')
+    return this.http.get<venteBovin[]>(`${config.apiUrl}/sommeBovinVendu/`)
       .map(resultat => resultat)
   }
 }

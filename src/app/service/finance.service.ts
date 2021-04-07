@@ -3,6 +3,8 @@ import { Injectable } from '@angular/core';
 import { factureLait } from '../_models/Factures';
 import { chiffreAffaire, chiffreAnnuelle, tansportBovin } from '../_models/Finance';
 
+import {config} from '../_models/config'
+
 @Injectable({
   providedIn: 'root'
 })
@@ -12,27 +14,27 @@ export class FinanceService {
   constructor(private http: HttpClient) { }
 
   getChiffreAnnuelleLait() {
-    return this.http.get<chiffreAnnuelle[]>(this.api + '/chiffreAnnuelleLait/')
+    return this.http.get<chiffreAnnuelle[]>(`${config.apiUrl}/chiffreAnnuelleLait/`)
       .map(resultat => resultat)
   }
   getChiffreAnnuelleBovin() {
-    return this.http.get<chiffreAnnuelle[]>(this.api + '/chiffreAnnuelleBovin/')
+    return this.http.get<chiffreAnnuelle[]>(`${config.apiUrl}/chiffreAnnuelleBovin/`)
       .map(resultat => resultat)
   }
   getCoutBovin() {
-    return this.http.get(this.api + '/coutBovin/')
+    return this.http.get(`${config.apiUrl}/coutBovin/`)
   }
   getChiffreLait() {
-    return this.http.get<chiffreAffaire[]>(this.api + '/chiffreAffaireLait/')
+    return this.http.get<chiffreAffaire[]>(`${config.apiUrl}/chiffreAffaireLait/`)
       .map(resultat => resultat)
   }
   getChiffreBovin() {
-    return this.http.get<chiffreAffaire[]>(this.api + '/chiffreAffaireBovin/')
+    return this.http.get<chiffreAffaire[]>(`${config.apiUrl}/chiffreAffaireBovin/`)
       .map(resultat => resultat)
   }
 
   getChargeAutreDepense(){
-    return this.http.get(this.api + '/chargeAutreDepense/')
+    return this.http.get(`${config.apiUrl}/chargeAutreDepense/`)
     .map(resultat => resultat)
   }
 
@@ -40,28 +42,28 @@ export class FinanceService {
 
   //factures Lait
   getFactureLait(){
-    return this.http.get<factureLait[]>(this.api + '/listFactureLaitDetaille/')
+    return this.http.get<factureLait[]>(`${config.apiUrl}/listFactureLaitDetaille/`)
     .map(resultat => resultat)
   }
 
   getCotTransport(){
-    return this.http.get<tansportBovin[]>(this.api + '/coutTransportM/')
+    return this.http.get<tansportBovin[]>(`${config.apiUrl}/coutTransportM/`)
     .map(resultat => resultat)
   }
 
   getCoutsBovin() {
-    return this.http.get(this.api + '/SommeAchatBovin/')
+    return this.http.get(`${config.apiUrl}/SommeAchatBovin/`)
   }
   getCoutExistant() {
-    return this.http.get(this.api + '/prixBovinExistant/')
+    return this.http.get(`${config.apiUrl}/prixBovinExistant/`)
   }
 
   getCoutSalaireBovin(){
-    return this.http.get<tansportBovin[]>(this.api + '/factureSalaire/')
+    return this.http.get<tansportBovin[]>(`${config.apiUrl}/factureSalaire/`)
     .map(resultat => resultat)
   }
   getCoutSalaireLait(){
-    return this.http.get<tansportBovin[]>(this.api + '/salaireLait/')
+    return this.http.get<tansportBovin[]>(`${config.apiUrl}/salaireLait/`)
     .map(resultat => resultat)
   }
 }

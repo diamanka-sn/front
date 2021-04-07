@@ -7,10 +7,12 @@ import {
   
 } from '@nebular/auth';
 import { NgxLoginComponent } from './auth/login/login.component';
+import { AuthGuard } from './service/auth-guard.service';
 
 export const routes: Routes = [
   {
     path: 'pages',
+    // canActivate: [AuthGuard],
     loadChildren: () => import('./pages/pages.module')
       .then(m => m.PagesModule),
   },

@@ -11,7 +11,9 @@ import { CoreModule } from './@core/core.module';
 import { ThemeModule } from './@theme/theme.module';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-import {NgxAuthModule} from './auth/auth.module'
+import { NgxAuthModule } from './auth/auth.module'
+
+import { AuthGuard } from './service/auth-guard.service';
 import {
   NbChatModule,
   NbDatepickerModule,
@@ -44,6 +46,9 @@ import {
     }),
     CoreModule.forRoot(),
     ThemeModule.forRoot(),
+  ], providers: [
+
+    AuthGuard
   ],
   bootstrap: [AppComponent],
 })

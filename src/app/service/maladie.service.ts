@@ -30,6 +30,7 @@ export class MaladieService {
     return this.http.get<depenseSante[]>(`${config.apiUrl}/listeDepenseSanteM`)
       .map(resultat => resultat)
   }
+  
   getCoutSante(): Observable<chargeSante[]> {
     return this.http.get<chargeSante[]>(`${config.apiUrl}/chargeSanteM`)
       .map(resultat => resultat)

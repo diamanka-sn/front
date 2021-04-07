@@ -3,6 +3,9 @@ import { Injectable } from '@angular/core';
 import { periodeVache, phaseVache } from '../_models/Vache';
 import { Observable } from 'rxjs';
 
+import { config } from '../_models/config'
+
+
 @Injectable({
   providedIn: 'root'
 })
@@ -13,11 +16,11 @@ export class VacheService {
   constructor(private http: HttpClient) { }
 
   getPhaseVache(): Observable<phaseVache[]> {
-    return this.http.get<phaseVache[]>(this.api + '/api/phaseVache')
+    return this.http.get<phaseVache[]>(`${config.apiUrl}/phaseVache`)
       .map(resultat => resultat)
   }
   getPeriodeVache(): Observable<periodeVache[]> {
-    return this.http.get<periodeVache[]>(this.api + '/api/periodeVache')
+    return this.http.get<periodeVache[]>(`${config.apiUrl}/periodeVache`)
     .map(resultat => resultat)
   }
 }

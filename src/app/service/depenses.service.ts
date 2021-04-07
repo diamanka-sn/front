@@ -3,6 +3,8 @@ import { Injectable } from '@angular/core';
 import { transportAliment } from '../_models/Aliment';
 import { listeDepense } from '../_models/Depense';
 
+import {config} from '../_models/config'
+
 @Injectable({
   providedIn: 'root'
 })
@@ -12,23 +14,23 @@ export class DepensesService {
   constructor(private http: HttpClient) { }
 
   getAlldepense() {
-    return this.http.get<listeDepense[]>(this.api + '/autreDepense/')
+    return this.http.get<listeDepense[]>(`${config.apiUrl}/autreDepense/`)
   }
-
+  
   getFactureEau(){
-    return this.http.get<transportAliment[]>(this.api + '/factureEau/')
+    return this.http.get<transportAliment[]>(`${config.apiUrl}/factureEau/`)
 
   }
   getFactureElectricite(){
-    return this.http.get<transportAliment[]>(this.api + '/factureElectricite/')
+    return this.http.get<transportAliment[]>(`${config.apiUrl}/factureElectricite/`)
   }
   getcoutChauffage(){
-    return this.http.get<transportAliment[]>(this.api + '/coutChauffage/')
+    return this.http.get<transportAliment[]>(`${config.apiUrl}/coutChauffage/`)
   }
   getcoutEmballage(){
-    return this.http.get<transportAliment[]>(this.api + '/coutEmballage/')
+    return this.http.get<transportAliment[]>(`${config.apiUrl}/coutEmballage/`)
   }
   getcoutSterilisant(){
-    return this.http.get<transportAliment[]>(this.api + '/coutSterilisant/')
+    return this.http.get<transportAliment[]>(`${config.apiUrl}/coutSterilisant/`)
   }
 }

@@ -47,4 +47,9 @@ export const MENU_ITEMS: NbMenuItem[] = [
     icon: 'file-outline',
     link: '/pages/rapport',
   }, 
+  {
+    title: 'factures',
+    icon: 'file-outline',
+    link: '/pages/factures',
+  }, 
 ];

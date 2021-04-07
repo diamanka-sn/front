@@ -45,6 +45,7 @@ import { CoutRevientComponent } from './cout-achat/cout-revient/cout-revient.com
 import { CoutMatiereComponent } from './cout-achat/cout-matiere/cout-matiere.component';
 import { ChargesLaitComponent } from './cout-production/charges-lait/charges-lait.component';
 import { ChargesBovinComponent } from './cout-production/charges-bovin/charges-bovin.component';
+import { PaiementComponent } from './paiement/paiement.component';
 // import { CoutMatiereComponent } from './coutAchat/cout-matiere/cout-matiere.component';
 // import { CoutRevientComponent } from './coutAchat/cout-revient/cout-revient.component';
 @NgModule({
@@ -69,6 +70,7 @@ import { ChargesBovinComponent } from './cout-production/charges-bovin/charges-b
     CoutMatiereComponent,
     ChargesLaitComponent,
     ChargesBovinComponent,
+    PaiementComponent,
   ],
   imports: [
     NbDatepickerModule,

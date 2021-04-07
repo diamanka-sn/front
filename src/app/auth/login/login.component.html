@@ -5,23 +5,14 @@
   }
 </style>
 <p class="sub-title">La connexion est requise.</p>
-<form aria-labelledby="title">
-
-  <div class="form-control-group">
-    <label class="label" for="input-text">Nom d'utilisateur:</label>
-    <input nbInput fullWidth name="name" id="input-text"  placeholder="Saisir le nom d'utilisateur"
-      fieldSize="large" autofocus>
+<form (ngSubmit)="SeConnecter()">
+  <div class="form-group">
+    <label for="exampleInputEmail1">Nom d'utilisateur</label>
+    <input type="text" class="form-control" id="exampleInputEmail1" name="email" aria-describedby="emailHelp" [(ngModel)]="user.email">
   </div>
-
-  <div class="form-control-group">
-    <span class="label-with-link">
-      <label class="label" for="input-password">Mot de passe:</label>
-    </span>
-    <input nbInput fullWidth name="password" type="password" id="input-password" placeholder="Saisir le mot de passe"
-      fieldSize="large">
+  <div class="form-group">
+    <label for="exampleInputPassword1">Mot de passe</label>
+    <input type="password" class="form-control" id="exampleInputPassword1" name="password" [(ngModel)]="user.password">
   </div>
-
-  <button nbButton fullWidth status="primary" size="large">
-    Se Connecter
-  </button>
+  <button type="submit" class="btn btn-primary">Se connecter</button>
 </form>

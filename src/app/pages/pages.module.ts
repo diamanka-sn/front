@@ -10,6 +10,7 @@ import { MiscellaneousModule } from './miscellaneous/miscellaneous.module';
 
 import { FinanceModule } from './finance/finance.module';
 import { BovinModule } from './bovin/bovin.module';
+import { SaisirModule} from './saisir/saisir.module'
 
 
 import { ReproductionModule } from './reproduction/reproduction.module';
@@ -42,6 +43,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
     RapportModule,
     AlimentationModule,
     ProductionModule,
+    SaisirModule,
 
    
   ],

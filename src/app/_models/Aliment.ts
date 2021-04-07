@@ -10,7 +10,8 @@ export interface stock {
 }
 
 export interface stockAliment{
-    stock :any;
+    consomes :any;
+    achetes:any;
     aliment:string;
     annee:any;
 }

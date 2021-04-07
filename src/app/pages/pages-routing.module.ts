@@ -13,6 +13,7 @@ import { ReproductionComponent } from './reproduction/reproduction.component';
 import { SanteComponent } from './sante/sante.component';
 import { RapportComponent } from './rapport/rapport.component';
 import { ProfilComponent } from './profil/profil.component';
+import { SaisirComponent } from './saisir/saisir.component';
 // import { AuthentificationComponent } from './authentification/authentification.component';
 
 
@@ -55,6 +56,9 @@ const routes: Routes = [{
     {
       path: 'rapport',
       component: RapportComponent,
+    },{
+      path: 'factures',
+      component: SaisirComponent,
     },
     {
       path:'profil',

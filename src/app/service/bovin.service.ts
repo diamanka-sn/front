@@ -2,7 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { bovinMois, Bovins, poidsBovin, Santebovin } from '../_models/Bovins';
 import { DetailsBovin } from '../_models/DetailsBovin';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
+import {config} from '../_models/config'
 
 @Injectable({
   providedIn: 'root'
@@ -13,73 +14,76 @@ export class BovinService {
   constructor(private http: HttpClient) { }
 
   getBovin() {
-    return this.http.get<Bovins[]>(this.api + '/api/bovin/')
+    return this.http.get<Bovins[]>(`${config.apiUrl}/bovin/`)
   }
-
+  
   getBovinDetails(idBovin) {
-    return this.http.get<DetailsBovin[]>(this.api + '/api/listBovinAvecDetaille/' + idBovin)
+    return this.http.get<DetailsBovin[]>(`${config.apiUrl}/listBovinAvecDetaille/` + idBovin)
   }
   getNombreBovin() {
-    return this.http.get(this.api + '/api/nombreBovin/')
+    return this.http.get(`${config.apiUrl}/nombreBovinMd/`)
   }
   getNombreBovinM() {
-    return this.http.get(this.api + '/api/nombreBovinM/')
+    return this.http.get(`${config.apiUrl}/nombreBovinM/`)
   }
   getNombreBovinAchetes() {
-    return this.http.get(this.api + '/api/nbreachatbovin/')
+    return this.http.get(`${config.apiUrl}/nbreachatbovin/`)
   }
 
   getNombreVache() {
-    return this.http.get(this.api + '/api/nbrevache/')
+    return this.http.get(`${config.apiUrl}/nombreVacheM/`)
   }
   getNombreTaureau() {
-    return this.http.get(this.api + '/api/nombreTaureau/')
+    return this.http.get(`${config.apiUrl}/nombreTaureauM/`)
   }
   getNombreGenisse() {
-    return this.http.get(this.api + '/api/nombreGenisse/')
+    return this.http.get(`${config.apiUrl}/nombreGenisseM/`)
   }
   getNombreVeau() {
-    return this.http.get(this.api + '/api/nombreVeau/')
+    return this.http.get(`${config.apiUrl}/nombreVeauM/`)
   }
   getNombreVelle() {
-    return this.http.get(this.api + '/api/nombreVelle/')
+    return this.http.get(`${config.apiUrl}/nombreVelleM/`)
   }
   getRace() {
-    return this.http.get(this.api + '/api/nbrerace/')
+    return this.http.get(`${config.apiUrl}/nbrerace/`)
   }
 
   getSanteBovin(): Observable<Santebovin[]> {
-    return this.http.get<Santebovin[]>(this.api + '/api/santeBovin')
+    return this.http.get<Santebovin[]>(`${config.apiUrl}/santeBovin`)
       .map(resultat => resultat)
   }
 
   getVacheMois(): Observable<bovinMois[]> {
-    return this.http.get<bovinMois[]>(this.api + '/api/evolutionVache')
+   
+    return this.http.get<bovinMois[]>(`${config.apiUrl}/evolutionVache`)
       .map(resultat => resultat)
   }
 
   getTaureauMois(): Observable<bovinMois[]> {
-    return this.http.get<bovinMois[]>(this.api + '/api/evolutionTaureau')
+    return this.http.get<bovinMois[]>(`${config.apiUrl}/evolutionTaureau`)
       .map(resultat => resultat)
   }
   getVelleMois(): Observable<bovinMois[]> {
-    return this.http.get<bovinMois[]>(this.api + '/api/nombreVelleMois')
+    return this.http.get<bovinMois[]>(`${config.apiUrl}/nombreVelleMois`)
       .map(resultat => resultat)
   }
   getVeauMois(): Observable<bovinMois[]> {
-    return this.http.get<bovinMois[]>(this.api + '/api/nombreVeauMois')
+    return this.http.get<bovinMois[]>(`${config.apiUrl}/nombreVeauMois`)
       .map(resultat => resultat)
   }
   getGenisseMois(): Observable<bovinMois[]> {
-    return this.http.get<bovinMois[]>(this.api + '/api/nombreGenisseMois')
+    return this.http.get<bovinMois[]>(`${config.apiUrl}/nombreGenisseMois`)
       .map(resultat => resultat)
   }
   getPoidsBovin(idBovin): Observable<poidsBovin[]> {
-    return this.http.get<poidsBovin[]>(this.api + '/api/evolutionPoids/' + idBovin)
+    return this.http.get<poidsBovin[]>(`${config.apiUrl}/evolutionPoids/` + idBovin)
       .map(resultat => resultat)
   }
 
   getNombreBovinVendu() {
-    return this.http.get(this.api + '/api/nombreBovinVendueM/')
+    return this.http.get(`${config.apiUrl}/nombreBovinVendueM/`)
   }
+
+  
 }
