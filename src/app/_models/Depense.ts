@@ -11,3 +11,8 @@ export class listeDepense{
         this.dateDepenses = dateDepenses;
     }
 }
+
+export interface achatBovin{
+    prix:any;
+    annee:number;
+}

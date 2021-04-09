@@ -5,6 +5,8 @@
   }
 </style>
 <p class="sub-title">La connexion est requise.</p>
+<div class="alert alert-success" *ngIf="messages">{{messages}}</div>
+<div class="alert alert-danger" *ngIf="errors">{{errors}}</div>
 <form (ngSubmit)="SeConnecter()">
   <div class="form-group">
     <label for="exampleInputEmail1">Nom d'utilisateur</label>

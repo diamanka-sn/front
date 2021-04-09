@@ -15,7 +15,7 @@ export class ProductionService {
 
   getProductionLait(): Observable<productionLait[]> {
     return this.http.get<productionLait[]>(`${config.apiUrl}/productionLaitM/`)
-      .map(resultat => resultat)
+      
   }
 
   getQuantiteProduite() {

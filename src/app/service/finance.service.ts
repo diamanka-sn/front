@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { factureLait } from '../_models/Factures';
-import { chiffreAffaire, chiffreAnnuelle, tansportBovin } from '../_models/Finance';
+import { chiffre, chiffreAffaire, chiffreAnnuelle, tansportBovin } from '../_models/Finance';
 
 import {config} from '../_models/config'
 
@@ -64,6 +64,11 @@ export class FinanceService {
   }
   getCoutSalaireLait(){
     return this.http.get<tansportBovin[]>(`${config.apiUrl}/salaireLait/`)
+    .map(resultat => resultat)
+  }
+
+  getSommeLait(){
+    return this.http.get<chiffre[]>(`${config.apiUrl}/sommeLaitM/`)
     .map(resultat => resultat)
   }
 }

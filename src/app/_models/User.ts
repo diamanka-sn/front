@@ -3,6 +3,7 @@ export class User{
     nom: string;
     prenom: string;
     login:string;
+    telephone:number;
     email:string;
     password:string;
     token:string;

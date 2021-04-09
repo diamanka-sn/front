@@ -1,0 +1,27 @@
+<!-- <nb-flip-card [showToggleButton]="false" [flipped]="flipped">
+    <nb-card-front>
+        <nb-card size="tiny">
+            <ngx-front-alimentation></ngx-front-alimentation>
+            <nb-icon icon="chevron-right-outline" pack="eva" class="flip-icon" (click)="toggleView()"></nb-icon>
+        </nb-card>
+    </nb-card-front>
+    <nb-card-back>
+        <nb-card size="tiny">
+            <ngx-back-sante></ngx-back-sante>
+            <nb-icon icon="chevron-right-outline" pack="eva" class="flip-icon" (click)="toggleView()"></nb-icon>
+        </nb-card>
+    </nb-card-back>
+</nb-flip-card> -->
+
+<nb-reveal-card>
+    <nb-card-front>
+        <nb-card accent="success">
+            <ngx-front-alimentation></ngx-front-alimentation>
+        </nb-card>
+    </nb-card-front>
+    <nb-card-back>
+        <nb-card accent="primary">
+            <ngx-back-sante></ngx-back-sante>
+        </nb-card>
+    </nb-card-back>
+</nb-reveal-card>

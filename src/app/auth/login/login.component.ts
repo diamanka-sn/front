@@ -17,10 +17,13 @@ import { User } from '../../_models/User';
 export class NgxLoginComponent implements OnInit {
   token: any;
   userData: any;
-  statut: any;
-  message: any;
+  showMessages: any;
+  strategy: string;
+  errors: string;
+  messages: string;
+  statut:any;
   user = new User()
-
+ 
   constructor(private auth: AuthenticationService, private router: Router) { }
   ngOnInit(): void {
     // this.token = localStorage.getItem('token');
@@ -33,11 +36,13 @@ export class NgxLoginComponent implements OnInit {
       this.statut = this.userData.status
       if (this.statut == "ok" && this.userData.profile == "admin") {
         this.isAuth = true
+        this.messages = "connexion reussie...patientez"
         this.router.navigate(['pages/dashboard']);
-      } else {
+      } if (this.statut != "ok") {
         this.isAuth = false;
+        this.errors= "Nom d'utilisateur ou le mot de passe est incorrecte"
       }
-
+       console.log(this.userData)     
 
     })
   }

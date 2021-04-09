@@ -1,0 +1,28 @@
+<!-- <nb-flip-card [showToggleButton]="false" [flipped]="flipped">
+  <nb-card-front>
+    <nb-card size="tiny">
+      <ngx-front-commande></ngx-front-commande>
+      <nb-icon icon="chevron-right-outline" pack="eva" class="flip-icon" (click)="toggleView()"></nb-icon>
+    </nb-card>
+  </nb-card-front>
+  <nb-card-back>
+    <nb-card size="tiny">
+      <ngx-back-commande></ngx-back-commande>
+      <nb-icon icon="chevron-right-outline" pack="eva" class="flip-icon" (click)="toggleView()"></nb-icon>
+    </nb-card>
+  </nb-card-back>
+</nb-flip-card> -->
+<nb-reveal-card>
+  <nb-card-front>
+    <nb-card accent="success">
+      <ngx-front-commande></ngx-front-commande>
+
+    </nb-card>
+  </nb-card-front>
+  <nb-card-back>
+    <nb-card accent="primary">
+      <ngx-back-commande></ngx-back-commande>
+
+    </nb-card>
+  </nb-card-back>
+</nb-reveal-card>

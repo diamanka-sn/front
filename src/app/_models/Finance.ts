@@ -14,3 +14,8 @@ export interface tansportBovin {
     annee:number;
     montant:number;
 }
+
+export interface chiffre {
+    annee:number;
+    vente:any;
+}

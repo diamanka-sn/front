@@ -37,7 +37,7 @@ export class AlimentationService {
 
   getChargeAlimentation() {
     return this.http.get(`${config.apiUrl}/chargeAlimentation/`)
-      .map(resultat => resultat)
+      
   }
 
   getAlimentationDuJour() {

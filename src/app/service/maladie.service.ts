@@ -33,6 +33,6 @@ export class MaladieService {
   
   getCoutSante(): Observable<chargeSante[]> {
     return this.http.get<chargeSante[]>(`${config.apiUrl}/chargeSanteM`)
-      .map(resultat => resultat)
+      
   }
 }

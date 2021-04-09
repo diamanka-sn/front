@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { config } from '../_models/config'
+import { achatBovin } from '../_models/Depense';
 import { moyenPaiement } from '../_models/Facture';
 
 
@@ -18,6 +19,11 @@ export class AchatService {
   getMoyenPaiement() {
     return this.http.get<moyenPaiement[]>(`${config.apiUrl}/paiementM`)
       .map(resultat => resultat)
+
+  }
+  getAchatBovinM() {
+    return this.http.get<achatBovin[]>(`${config.apiUrl}/achatBovinM`)
+      
 
   }
 }

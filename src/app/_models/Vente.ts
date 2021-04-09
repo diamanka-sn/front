@@ -1,11 +1,17 @@
 export interface vente {
-    vente : any;
+    vente: any;
     annee: any;
-    mois : any;
+    mois: any;
 }
 
 export interface chiffreAffaire {
-        chiffre:any;
-        annee:any;
-        mois:any;
+    chiffre: any;
+    annee: any;
+    mois: any;
+}
+
+export interface venteLait {
+    vente: any;
+    annee: number;
+    mois: number;
 }

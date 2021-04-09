@@ -2,9 +2,10 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { venteBovin } from '../_models/Bovins';
-import { vente } from '../_models/Vente';
+import { vente, venteLait } from '../_models/Vente';
 
 import { config } from '../_models/config'
+import { chiffre } from '../_models/Finance';
 
 
 @Injectable({
@@ -27,7 +28,13 @@ export class VenteService {
   }
 
   getVenteBovinM() {
-    return this.http.get<venteBovin[]>(`${config.apiUrl}/sommeBovinVendu/`)
+    return this.http.get<chiffre[]>(`${config.apiUrl}/sommeBovinVendu/`)
       .map(resultat => resultat)
+  }
+
+  
+  getVenteLaitMensuelle() {
+    return this.http.get<venteLait[]>(`${config.apiUrl}/sommeVenteMensuelleM/`)
+      
   }
 }
