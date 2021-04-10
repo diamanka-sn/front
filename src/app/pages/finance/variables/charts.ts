@@ -1,4 +1,6 @@
 import Chart from 'chart.js';
+import  {CommandeService} from '../../../service/commande.service';
+import { commandeMensuelle } from '../../../_models/Commande';
 //
 // Chart extension for making the bars rounded
 // Code from: https://codepen.io/jedtrow/full/ygRYgo
@@ -291,7 +293,7 @@ export const chartExample1 = {
         ticks: {
           callback: function(value) {
             if (!(value % 10)) {
-              return 'F cfa' + value;
+              return value + ' F cfa' ;
             }
           }
         }
@@ -308,6 +310,7 @@ export const chartExample1 = {
 }
 
 export const chartExample2 = {
+  
   options: {
     scales: {
       yAxes: [
@@ -338,13 +341,12 @@ export const chartExample2 = {
       }
     }
   },
-
   data: {
     labels: ["Jan", "Fev", "Mars", "Avril", "Mai", "Juin","Juil","Aout","Sept","Oct","Nov","Dec"],
     datasets: [
       {
         label: "Commandes",
-        data: [5, 20, 30, 22, 17, 29,25, 20, 30, 22, 17, 29]
+        data: []
       }
     ]
   }

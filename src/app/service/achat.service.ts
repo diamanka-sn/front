@@ -19,11 +19,14 @@ export class AchatService {
   getMoyenPaiement() {
     return this.http.get<moyenPaiement[]>(`${config.apiUrl}/paiementM`)
       .map(resultat => resultat)
+  }
 
+  getNombreTransaction() {
+    return this.http.get(`${config.apiUrl}/nombreFacture`)
   }
   getAchatBovinM() {
     return this.http.get<achatBovin[]>(`${config.apiUrl}/achatBovinM`)
-      
+
 
   }
 }

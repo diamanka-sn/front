@@ -69,4 +69,9 @@
 @import "custom/vendors";
 
 // Angular Differences
-@import "angular-differences/angular-differences"
+@import "angular-differences/angular-differences";
+
+
+.total{
+    float: right;
+}

@@ -1,14 +1,13 @@
 import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core';
 import { NbThemeService } from '@nebular/theme';
-import { BovinService } from '../../../service/bovin.service';
-import { VacheService } from '../../../service/vache.service';
+import { BovinService } from '../../../../service/bovin.service';
 
 @Component({
-  selector: 'ngx-ensemble-bovin',
-  templateUrl: './ensemble-bovin.component.html',
-  styleUrls: ['./ensemble-bovin.component.scss']
+  selector: 'ngx-front-bovin',
+  templateUrl: './front-bovin.component.html',
+  styleUrls: ['./front-bovin.component.scss']
 })
-export class EnsembleBovinComponent implements AfterViewInit, OnDestroy, OnInit {
+export class FrontBovinComponent implements AfterViewInit, OnDestroy, OnInit {
   options: any = {};
   themeSubscription: any;
   dataVache: any;
@@ -111,8 +110,4 @@ export class EnsembleBovinComponent implements AfterViewInit, OnDestroy, OnInit 
   ngOnDestroy(): void {
     this.themeSubscription.unsubscribe();
   }
-  private random() {
-    return Math.round(Math.random() * 1000);
-  }
-
 }

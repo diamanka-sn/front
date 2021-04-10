@@ -131,7 +131,7 @@
               "node_modules/nebular-icons/scss/nebular-icons.scss",
               "node_modules/pace-js/templates/pace-theme-flash.tmpl.css",
               "src/styles.scss",
-              "src/app/pages/finance/scss/argon.scss",
+             
               "src/app/@theme/styles/styles.scss",
               "src/assets/scss/black-dashboard.scss"
             ],

@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { EnsembleBovinComponent } from './ensemble-bovin.component';
+import { FrontBovinComponent } from './front-bovin.component';
 
-describe('EnsembleBovinComponent', () => {
-  let component: EnsembleBovinComponent;
-  let fixture: ComponentFixture<EnsembleBovinComponent>;
+describe('FrontBovinComponent', () => {
+  let component: FrontBovinComponent;
+  let fixture: ComponentFixture<FrontBovinComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ EnsembleBovinComponent ]
+      declarations: [ FrontBovinComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(EnsembleBovinComponent);
+    fixture = TestBed.createComponent(FrontBovinComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

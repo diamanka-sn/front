@@ -6,6 +6,7 @@ import { vente, venteLait } from '../_models/Vente';
 
 import { config } from '../_models/config'
 import { chiffre } from '../_models/Finance';
+import { depensesMensuelle } from '../_models/Depense';
 
 
 @Injectable({
@@ -18,12 +19,12 @@ export class VenteService {
   constructor(private http: HttpClient) { }
 
   getVenteLait(annee): Observable<vente[]> {
-    return this.http.get<vente[]>(`${config.apiUrl}/chiffreLait/`+annee)
+    return this.http.get<vente[]>(`${config.apiUrl}/chiffreLait/` + annee)
       .map(resultat => resultat)
   }
 
   getVenteBovin(annee): Observable<vente[]> {
-    return this.http.get<vente[]>(`${config.apiUrl}/chiffreLait/`+annee)
+    return this.http.get<vente[]>(`${config.apiUrl}/chiffreLait/` + annee)
       .map(resultat => resultat)
   }
 
@@ -32,9 +33,19 @@ export class VenteService {
       .map(resultat => resultat)
   }
 
-  
+
   getVenteLaitMensuelle() {
     return this.http.get<venteLait[]>(`${config.apiUrl}/sommeVenteMensuelleM/`)
-      
   }
+  getVenteBovintMensuelle() {
+    return this.http.get<venteLait[]>(`${config.apiUrl}/sommeBovinVenduMois/`)
+  }
+  getVenteLaitMoisCourant() {
+    return this.http.get<depensesMensuelle[]>(`${config.apiUrl}/chiffreLaitDuMoisCourant/`)
+  } 
+  getVenteLaitMoisPasse() {
+    return this.http.get<depensesMensuelle[]>(`${config.apiUrl}/chiffreLaitDuMoisPasse/`)
+  }
+
+
 }

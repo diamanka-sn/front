@@ -388,7 +388,7 @@ this.us.getFerme().subscribe(res => {
     gradientStroke.addColorStop(0, 'rgba(66,134,121,0)'); //green colors
 
     var data = {
-      labels: ['JUL', 'AUG', 'SEP', 'OCT', 'NOV'],
+      labels: ['JUL', 'AUG', ],
       datasets: [{
         label: "My First dataset",
         fill: true,
@@ -404,12 +404,12 @@ this.us.getFerme().subscribe(res => {
         pointHoverRadius: 4,
         pointHoverBorderWidth: 15,
         pointRadius: 4,
-        data: [90, 27, 60, 12, 80],
+        data: [90, 27],
       }]
     };
 
     var myChart = new Chart(this.ctx, {
-      type: 'line',
+      type: 'pie',
       data: data,
       options: gradientChartOptionsConfigurationWithTooltipGreen
 
@@ -497,7 +497,7 @@ this.us.getFerme().subscribe(res => {
                   display: false
                 },
                 data: {
-                  labels: ['Aliments', 'Bovins', 'Eau', 'Sante', 'Autres'],
+                  labels: ['Aliments', 'Bovins', 'Eau', 'Santé', 'Autres'],
                   datasets: [{
                     label: "Dépenses",
                     fill: true,

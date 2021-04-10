@@ -84,6 +84,13 @@ export class BovinService {
   getNombreBovinVendu() {
     return this.http.get(`${config.apiUrl}/nombreBovinVendueM/`)
   }
-
-  
+  getEvolutionFerme() {
+    return this.http.get<bovinMois[]>(`${config.apiUrl}/evolutionFermeM/`)
+      .map(resultat => resultat)
+  }
+  getNombreBovinSansVendu() {
+    return this.http.get(`${config.apiUrl}/nombreBovinsansVendu/`)
+    .map(resultat => resultat)
+      
+  }
 }

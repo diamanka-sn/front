@@ -1,18 +1,13 @@
-import { getLocaleDateFormat } from '@angular/common';
-import { SimpleChanges } from '@angular/core';
-import { AfterViewInit, Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core';
 import { NbThemeService } from '@nebular/theme';
-import { ChartCommonModule } from '@swimlane/ngx-charts';
-import { takeWhile } from 'rxjs/operators';
-import { RaceService } from '../../../service/race.service';
-import { RaceExistant } from '../../../_models/Race';
+import { RaceService } from '../../../../service/race.service';
 
 @Component({
-  selector: 'ngx-race',
-  templateUrl: './race.component.html',
-  styleUrls: ['./race.component.scss']
+  selector: 'ngx-front-race',
+  templateUrl: './front-race.component.html',
+  styleUrls: ['./front-race.component.scss']
 })
-export class RaceComponent implements AfterViewInit, OnDestroy, OnInit {
+export class FrontRaceComponent implements AfterViewInit, OnDestroy, OnInit {
 
 
   nbreRace: any;
@@ -137,5 +132,6 @@ export class RaceComponent implements AfterViewInit, OnDestroy, OnInit {
   ngOnDestroy(): void {
     this.themeSubscription.unsubscribe();
   }
+
 
 }

@@ -23,4 +23,8 @@ export class VacheService {
     return this.http.get<periodeVache[]>(`${config.apiUrl}/periodeVache`)
     .map(resultat => resultat)
   }
+  getPhaseGenisse(): Observable<phaseVache[]> {
+    return this.http.get<phaseVache[]>(`${config.apiUrl}/phaseGenisse`)
+      .map(resultat => resultat)
+  }
 }

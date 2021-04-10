@@ -39,7 +39,7 @@
               <div class="row">
                 <div class="col">
                   <h5 class="card-title text-uppercase text-muted mb-0">Chiffre d'affaire</h5>
-                  <span class="h2 font-weight-bold mb-0">350,897</span>
+                  <span class="h2 font-weight-bold mb-0">{{sommeca}} F cfa</span>
                 </div>
                 <div class="col-auto">
                   <div class="icon icon-shape bg-danger text-white rounded-circle shadow">
@@ -47,9 +47,13 @@
                   </div>
                 </div>
               </div>
-              <p class="mt-3 mb-0 text-muted text-sm">
-                <span class="text-success mr-2"><i class="fa fa-arrow-up"></i> 3.48%</span>
-                <span class="text-nowrap"></span>
+              <p class="mt-3 mb-0 text-muted text-sm" *ngIf="pourcentageLait < 0">
+                <span class="text-danger mr-2"><i class="fas fa-arrow-down"></i> {{pourcentageLait * (-1) | number: '2.2-2'}}%</span>
+                <span class="text-nowrap">Depuis le mois passé</span>
+              </p>
+              <p class="mt-3 mb-0 text-muted text-sm" *ngIf="pourcentageLait >= 0">
+                <span class="text-success mr-2"><i class="fa fa-arrow-up"></i> {{pourcentageLait | number: '2.2-2'}}%</span>
+                <span class="text-nowrap">Depuis le mois passé</span>
               </p>
             </div>
           </div>
@@ -59,8 +63,8 @@
             <div class="card-body">
               <div class="row">
                 <div class="col">
-                  <h5 class="card-title text-uppercase text-muted mb-0">Depense mensuelle</h5>
-                  <span class="h2 font-weight-bold mb-0">2,356</span>
+                  <h5 class="card-title text-uppercase text-muted mb-0">Depenses mensuelle</h5>
+                  <span class="h2 font-weight-bold mb-0">{{coutMois}} F cfa</span>
                 </div>
                 <div class="col-auto">
                   <div class="icon icon-shape bg-warning text-white rounded-circle shadow">
@@ -68,9 +72,13 @@
                   </div>
                 </div>
               </div>
-              <p class="mt-3 mb-0 text-muted text-sm">
-                <span class="text-danger mr-2"><i class="fas fa-arrow-down"></i> 3.48%</span>
-                <span class="text-nowrap">Since last week</span>
+              <p class="mt-3 mb-0 text-muted text-sm" *ngIf="pourcentage < 0">
+                <span class="text-danger mr-2"><i class="fas fa-arrow-down"></i> {{pourcentage * (-1) | number: '2.2-2'}}%</span>
+                <span class="text-nowrap">Depuis le mois passé</span>
+              </p>
+              <p class="mt-3 mb-0 text-muted text-sm" *ngIf="pourcentage >= 0">
+                <span class="text-success mr-2"><i class="fa fa-arrow-up"></i> {{pourcentage | number: '2.2-2'}}%</span>
+                <span class="text-nowrap">Depuis le mois passé</span>
               </p>
             </div>
           </div>
@@ -80,8 +88,8 @@
             <div class="card-body">
               <div class="row">
                 <div class="col">
-                  <h5 class="card-title text-uppercase text-muted mb-0">Ventes</h5>
-                  <span class="h2 font-weight-bold mb-0">924</span>
+                  <h5 class="card-title text-uppercase text-muted mb-0">Commandes</h5>
+                  <span class="h2 font-weight-bold mb-0">{{nombrecommande}} </span>
                 </div>
                 <div class="col-auto">
                   <div class="icon icon-shape bg-yellow text-white rounded-circle shadow">
@@ -89,9 +97,13 @@
                   </div>
                 </div>
               </div>
-              <p class="mt-3 mb-0 text-muted text-sm">
-                <span class="text-warning mr-2"><i class="fas fa-arrow-down"></i> 1.10%</span>
-                <span class="text-nowrap">Since yesterday</span>
+              <p class="mt-3 mb-0 text-muted text-sm" *ngIf="pourcentageCommande < 0">
+                <span class="text-danger mr-2"><i class="fas fa-arrow-down"></i> {{pourcentageCommande * (-1) | number: '2.2-2'}}%</span>
+                <span class="text-nowrap">Depuis le mois passé</span>
+              </p>
+              <p class="mt-3 mb-0 text-muted text-sm" *ngIf="pourcentageCommande >= 0">
+                <span class="text-success mr-2"><i class="fa fa-arrow-up"></i> {{pourcentageCommande | number: '2.2-2'}}%</span>
+                <span class="text-nowrap">Depuis le mois passé</span>
               </p>
             </div>
           </div>
@@ -101,8 +113,8 @@
             <div class="card-body">
               <div class="row">
                 <div class="col">
-                  <h5 class="card-title text-uppercase text-muted mb-0">Performance</h5>
-                  <span class="h2 font-weight-bold mb-0">49,65%</span>
+                  <h5 class="card-title text-uppercase text-muted mb-0">Benefices</h5>
+                  <span class="h2 font-weight-bold mb-0">{{sommeca - total }} F cfa</span>
                 </div>
                 <div class="col-auto">
                   <div class="icon icon-shape bg-info text-white rounded-circle shadow">
@@ -111,8 +123,12 @@
                 </div>
               </div>
               <p class="mt-3 mb-0 text-muted text-sm">
-                <span class="text-success mr-2"><i class="fas fa-arrow-up"></i> 12%</span>
-                <span class="text-nowrap">Since last month</span>
+                <span class="text-success mr-2">{{ ((sommeca - total ) / total) * 100 | number: '2.2-2'}}%</span>
+                <span class="text-nowrap">Des dépenses</span>
+              </p>
+              <p class="mt-3 mb-0 text-muted text-sm">
+                <span class="text-success mr-2">{{ ((sommeca - total ) / total) * 100 | number: '2.2-2'}}%</span>
+                <span class="text-nowrap">Des dépenses</span>
               </p>
             </div>
           </div>
@@ -137,16 +153,16 @@
                   (click)="data=datasets[0];updateOptions()">
                   <a href="javascript:void(0)" class="nav-link py-2 px-3" [ngClass]="{'active':clicked===true}"
                     data-toggle="tab" (click)="clicked=true;clicked1=false">
-                    <span class="d-none d-md-block">Mois</span>
-                    <span class="d-md-none">M</span>
+                    <span class="d-none d-md-block">Lait</span>
+                    <span class="d-md-none">L</span>
                   </a>
                 </li>
                 <li class="nav-item" data-toggle="chart" data-target="#chart-sales"
                   (click)="data=datasets[1];updateOptions()">
                   <a href="javascript:void(0)" class="nav-link py-2 px-3" [ngClass]="{'active':clicked1===true}"
                     data-toggle="tab" (click)="clicked=false;clicked1=true">
-                    <span class="d-none d-md-block">Semaine</span>
-                    <span class="d-md-none">W</span>
+                    <span class="d-none d-md-block">Bovin</span>
+                    <span class="d-md-none">B</span>
                   </a>
                 </li>
               </ul>
@@ -168,7 +184,7 @@
           <div class="row align-items-center">
             <div class="col">
               <h6 class="text-uppercase text-muted ls-1 mb-1">Ventes</h6>
-              <h2 class="mb-0">Ensemble des commandes</h2>
+              <h2 class="mb-0">Nombre de commandes</h2>
             </div>
           </div>
         </div>
@@ -187,7 +203,7 @@
         <div class="card-header border-0">
           <div class="row align-items-center">
             <div class="col">
-              <h3 class="mb-0">Les depenses de la ferme</h3>
+              <h3 class="mb-0">Les depenses de la ferme: <span class="total"> {{total}} F cfa</span></h3>
             </div>
           </div>
         </div>
@@ -202,61 +218,89 @@
               </tr>
             </thead>
             <tbody>
+              
               <tr>
                 <th scope="row">
-                  /argon/
+                 Achats bovins
                 </th>
                 <td>
-                  4,569
+                 {{bovin}} F cfa
                 </td>
                 
                 <td>
-                  <i class="fas fa-arrow-up text-success mr-3"></i> 46,53%
+                  <div class="d-flex align-items-center">
+                    <span class="mr-2"> {{bovin / total * 100 | number: '2.2-2'}} %</span>
+                   
+                    <div>
+                      <div class="progress">
+                        <div class="progress-bar bg-gradient-danger" role="progressbar" aria-valuenow="60"
+                          aria-valuemin="0" aria-valuemax="100" style="width: {{bovin / total * 100}}%;"></div>
+                      </div>
+                    </div>
+                  </div> 
                 </td>
               </tr>
               <tr>
                 <th scope="row">
-                  /argon/index.html
+                 Achats aliments
                 </th>
                 <td>
-                  3,985
+                 {{aliment}} F cfa
                 </td>
-               
+                
                 <td>
-                  <i class="fas fa-arrow-down text-warning mr-3"></i> 46,53%
+                  <div class="d-flex align-items-center">
+                    <span class="mr-2"> {{aliment / total * 100 | number: '2.2-2'}} %</span>
+                   
+                    <div>
+                      <div class="progress">
+                        <div class="progress-bar bg-gradient-danger" role="progressbar" aria-valuenow="60"
+                          aria-valuemin="0" aria-valuemax="100" style="width: {{aliment / total * 100}}%;"></div>
+                      </div>
+                    </div>
+                  </div>                 
                 </td>
               </tr>
               <tr>
                 <th scope="row">
-                  /argon/charts.html
+                Autres depenses
                 </th>
                 <td>
-                  3,513
+                  {{autre}} F cfa
                 </td>
+                
                 <td>
-                  <i class="fas fa-arrow-down text-warning mr-3"></i> 36,49%
+                  <div class="d-flex align-items-center">
+                    <span class="mr-2"> {{autre / total * 100 | number: '2.2-2'}} %</span>
+                   
+                    <div>
+                      <div class="progress">
+                        <div class="progress-bar bg-gradient-danger" role="progressbar" aria-valuenow="60"
+                          aria-valuemin="0" aria-valuemax="100" style="width: {{autre / total * 100}}%;"></div>
+                      </div>
+                    </div>
+                  </div> 
                 </td>
               </tr>
               <tr>
                 <th scope="row">
-                  /argon/tables.html
+                Masses salariale
                 </th>
                 <td>
-                  2,050
+                  {{masseSalaire}} F cfa
                 </td>
+                
                 <td>
-                  <i class="fas fa-arrow-up text-success mr-3"></i> 50,87%
-                </td>
-              </tr>
-              <tr>
-                <th scope="row">
-                  /argon/profile.html
-                </th>
-                <td>
-                  1,795
-                </td>
-                <td>
-                  <i class="fas fa-arrow-down text-danger mr-3"></i> 46,53%
+                  <div class="d-flex align-items-center">
+                    <span class="mr-2"> {{masseSalaire / total * 100 | number: '2.2-2'}} %</span>
+                   
+                    <div>
+                      <div class="progress">
+                        <div class="progress-bar bg-gradient-danger" role="progressbar" aria-valuenow="60"
+                          aria-valuemin="0" aria-valuemax="100" style="width: {{masseSalaire / total * 100}}%;"></div>
+                      </div>
+                    </div>
+                  </div> 
                 </td>
               </tr>
             </tbody>
@@ -269,7 +313,7 @@
         <div class="card-header border-0">
           <div class="row align-items-center">
             <div class="col">
-              <h3 class="mb-0">Social traffic</h3>
+              <h3 class="mb-0">Moyen de paiement</h3>
             </div>
            
           </div>
@@ -279,102 +323,23 @@
           <table class="table align-items-center table-flush">
             <thead class="thead-light">
               <tr>
-                <th scope="col">Referral</th>
-                <th scope="col">Visitors</th>
-                <th scope="col"></th>
+                <th scope="col">Type paiement</th>
+                <th scope="col">Pourcentages</th>
+                
               </tr>
             </thead>
             <tbody>
-              <tr>
+              <tr *ngFor="let p of paiement">
                 <th scope="row">
-                  Facebook
+                  {{p.paiement}}
                 </th>
                 <td>
-                  1,480
-                </td>
-                <td>
                   <div class="d-flex align-items-center">
-                    <span class="mr-2">60%</span>
+                    <span class="mr-2">{{p.nombre / transaction * 100 | number: '2.2-2' }}%</span>
                     <div>
                       <div class="progress">
-                        <div class="progress-bar bg-gradient-danger" role="progressbar" aria-valuenow="60"
-                          aria-valuemin="0" aria-valuemax="100" style="width: 60%;"></div>
-                      </div>
-                    </div>
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <th scope="row">
-                  Facebook
-                </th>
-                <td>
-                  5,480
-                </td>
-                <td>
-                  <div class="d-flex align-items-center">
-                    <span class="mr-2">70%</span>
-                    <div>
-                      <div class="progress">
-                        <div class="progress-bar bg-gradient-success" role="progressbar" aria-valuenow="70"
-                          aria-valuemin="0" aria-valuemax="100" style="width: 70%;"></div>
-                      </div>
-                    </div>
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <th scope="row">
-                  Google
-                </th>
-                <td>
-                  4,807
-                </td>
-                <td>
-                  <div class="d-flex align-items-center">
-                    <span class="mr-2">80%</span>
-                    <div>
-                      <div class="progress">
-                        <div class="progress-bar bg-gradient-primary" role="progressbar" aria-valuenow="80"
-                          aria-valuemin="0" aria-valuemax="100" style="width: 80%;"></div>
-                      </div>
-                    </div>
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <th scope="row">
-                  Instagram
-                </th>
-                <td>
-                  3,678
-                </td>
-                <td>
-                  <div class="d-flex align-items-center">
-                    <span class="mr-2">75%</span>
-                    <div>
-                      <div class="progress">
-                        <div class="progress-bar bg-gradient-info" role="progressbar" aria-valuenow="75"
-                          aria-valuemin="0" aria-valuemax="100" style="width: 75%;"></div>
-                      </div>
-                    </div>
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <th scope="row">
-                  twitter
-                </th>
-                <td>
-                  2,645
-                </td>
-                <td>
-                  <div class="d-flex align-items-center">
-                    <span class="mr-2">30%</span>
-                    <div>
-                      <div class="progress">
-                        <div class="progress-bar bg-gradient-warning" role="progressbar" aria-valuenow="30"
-                          aria-valuemin="0" aria-valuemax="100" style="width: 30%;"></div>
+                        <div class="progress-bar bg-gradient-success" role="progressbar" aria-valuenow="60"
+                          aria-valuemin="0" aria-valuemax="100" style="width:{{ p.nombre / transaction * 100}}%;"></div>
                       </div>
                     </div>
                   </div>

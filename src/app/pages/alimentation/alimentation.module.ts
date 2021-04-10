@@ -23,6 +23,9 @@ import { ConsommationComponent } from './consommation/consommation.component';
 import { AlimentComponent } from './aliment/aliment.component';
 import { ConsommationJourComponent } from './consommation-jour/consommation-jour.component';
 import { ChartModule } from 'angular2-chartjs';
+import { AlimentStockComponent } from './aliment-stock/aliment-stock.component';
+import { FrontStockComponent } from './aliment-stock/front-stock/front-stock.component';
+import { BackAlimentComponent } from './aliment-stock/back-aliment/back-aliment.component';
 @NgModule({
   declarations: [
     AlimentationComponent,
@@ -31,6 +34,9 @@ import { ChartModule } from 'angular2-chartjs';
     ConsommationComponent,
     AlimentComponent,
     ConsommationJourComponent,
+    AlimentStockComponent,
+    FrontStockComponent,
+    BackAlimentComponent,
   ],
   imports: [
     CommonModule,

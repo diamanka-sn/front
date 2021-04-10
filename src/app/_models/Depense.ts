@@ -16,3 +16,14 @@ export interface achatBovin{
     prix:any;
     annee:number;
 }
+
+export interface typeDepense {
+    annee:number;
+    type:string;
+    montant:number;
+}
+
+export interface depensesMensuelle {
+    montant:any;
+    annee:number;
+}
