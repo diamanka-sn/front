@@ -33,10 +33,6 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   userMenu = [
     {
-      title: 'Profil',
-      link: '/pages/profil',
-    },
-    {
       title: 'Se deconnecter',
       link: '/pages/authentification'
     }

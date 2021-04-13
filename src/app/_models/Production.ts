@@ -20,3 +20,18 @@ export interface VenteLait {
     vente:number;
     annee:number;
 }
+export interface Stock {
+    stock:any;
+    annee:number;
+}
+
+export interface quantiteVendu{
+    mois:number;
+    annee:number;
+    montant:any;
+}
+export interface quantiteTotal{
+    total : number;
+    annee :number;
+    mois:number;
+}

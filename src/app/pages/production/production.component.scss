@@ -13,4 +13,54 @@
         width: 530px;
       }
   }
+  
+  .card {
+    margin-bottom: 24px;
+    border: none;
+    box-shadow: 0 0 0.875rem 0 rgba(33, 37, 41, .05);
+}
+
+.card-body {
+    flex: 1 1 auto;
+    min-height: 1px;
+    padding: 1.25rem;
+}
+
+.card-title {
+    font-size: .875rem;
+    color: #495057;
+}
+
+.card-body h1 {
+    font-size: 1.75rem;
+    font-weight: 400;
+    line-height: 1.2;
+    color: #000;
+}
+
+
+.text-gray-800 {
+    color: #5a5c69 !important;
+    font-size: 1.75rem;
+    font-weight: 400;
+    line-height: 1.2;
+}
+
+.shadow-sm {
+    box-shadow: 0 .125rem .25rem 0 rgba(58, 59, 69, .2) !important;
+}
+
+
+.btn-sm {
+    padding: .25rem .5rem;
+    font-size: .875rem;
+    line-height: 1.5;
+    border-radius: .2rem;
+}
+
+
+.font-16 {
+    font-size: 16px;
+}
+
 }

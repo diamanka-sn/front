@@ -18,21 +18,24 @@ import { NgxEchartsModule } from 'ngx-echarts';
 import { FormsModule } from '@angular/forms';
 import { ThemeModule } from '../../@theme/theme.module';
 import { ProductionComponent } from './production.component';
-import { LaitComponent } from './lait/lait.component';
-import { StockLaitComponent } from './stock-lait/stock-lait.component';
+
 import { CourbeProductionComponent } from './courbe-production/courbe-production.component';
 import { ChargesProductionComponent } from './charges-production/charges-production.component';
-import { PeriodiciteComponent } from './periodicite/periodicite.component';
+// import { PeriodiciteComponent } from './periodicite/periodicite.component';
+import { CoutPeriodiciteComponent } from './cout-periodicite/cout-periodicite.component';
+import { BackProductionComponent } from './cout-periodicite/back-production/back-production.component';
+import { FrontPeriodiciteComponent } from './cout-periodicite/front-periodicite/front-periodicite.component';
 
 
 @NgModule({
   declarations: [
     ProductionComponent,
-    LaitComponent,
-    StockLaitComponent,
+   
     CourbeProductionComponent,
     ChargesProductionComponent,
-    PeriodiciteComponent,
+    CoutPeriodiciteComponent,
+    BackProductionComponent,
+    FrontPeriodiciteComponent,
 
   ],
   imports: [

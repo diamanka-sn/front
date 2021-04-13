@@ -18,7 +18,7 @@ import { User } from '../../_models/User';
   templateUrl: './dashboard.component.html',
 })
 
-export class DashboardComponent implements AfterViewInit,OnInit, OnDestroy {
+export class DashboardComponent implements AfterViewInit, OnInit, OnDestroy {
   public canvas: any;
   public ctx;
   public datasets: any;
@@ -29,27 +29,27 @@ export class DashboardComponent implements AfterViewInit,OnInit, OnDestroy {
   public clicked2: boolean = false;
 
   somme: any;
-  fermiers : User [] = []
+  fermiers: User[] = []
   themeSubscription: any;
-  constructor(private theme: NbThemeService,private vte: VenteService,
+  constructor(private theme: NbThemeService, private vte: VenteService,
     private prod: ProductionService,
     private al: AlimentationService,
     private ach: AchatService,
     private dep: DepensesService,
     private mal: MaladieService,
     private fn: FinanceService,
-    private us:UtilisateurService) { }
- 
-    ngAfterViewInit(): void {
-      this.themeSubscription = this.theme.getJsTheme().subscribe(config => {
-        this.ngOnInit();
-      })
-    }
+    private us: UtilisateurService) { }
+
+  ngAfterViewInit(): void {
+    this.themeSubscription = this.theme.getJsTheme().subscribe(config => {
+      this.ngOnInit();
+    })
+  }
   ngOnInit() {
-this.us.getFerme().subscribe(res => {
-  this.fermiers = res;
-  // console.log(this.fermiers)
-})
+    this.us.getFerme().subscribe(res => {
+      this.fermiers = res;
+      // console.log(this.fermiers)
+    })
 
     var gradientChartOptionsConfigurationWithTooltipBlue: any = {
       maintainAspectRatio: false,
@@ -388,7 +388,7 @@ this.us.getFerme().subscribe(res => {
     gradientStroke.addColorStop(0, 'rgba(66,134,121,0)'); //green colors
 
     var data = {
-      labels: ['JUL', 'AUG', ],
+      labels: ['JUL', 'AUG',],
       datasets: [{
         label: "My First dataset",
         fill: true,
@@ -423,12 +423,15 @@ this.us.getFerme().subscribe(res => {
 
       this.prod.getProductionLait().subscribe(res => {
         const total = res['2021'].map(res => res.total)
-        this.datasets = [
-          somme,
-          total,
-          [60, 80, 65, 130, 80, 105, 90, 130, 70, 115, 60, 130]
-        ];
-        this.data = this.datasets[0];
+        this.prod.getProductionvendu().subscribe(res => {
+          const vendu = res['2021'].map(res => res.montant)
+          this.datasets = [
+            somme,
+            total,
+          vendu
+          ];
+          this.data = this.datasets[0];
+        })
       })
     })
 
