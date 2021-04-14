@@ -1,1 +1,91 @@
-<p>saisir works!</p>
+<form #invoiceForm="ngForm">
+    <div class="container-fluid pt-2 mb-5">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Details client</h4>
+                        <div class="row">
+                            <div class="col-md-8">
+                                <div class="form-group">
+                                    <label for="name">Nom Complet</label>
+                                    <input type="text" class="form-control" name="name" id="name"
+                                        [ngClass]="{'is-invalid': invoiceForm.submitted && CustName.invalid}"
+                                        [(ngModel)]="invoice.customerName" #CustName="ngModel" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="address">Adresse</label>
+                                    <textarea class="form-control" name="address" id="address" row="3"
+                                        [ngClass]="{'is-invalid': invoiceForm.submitted && Address.invalid}"
+                                        [(ngModel)]="invoice.address" #Address="ngModel" required></textarea>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="email">Adresse email</label>
+                                    <input type="email" class="form-control" name="email" id="email"
+                                        [(ngModel)]="invoice.email" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="contactNo">Numero de telephone</label>
+                                    <input type="number" class="form-control" name="contactNo" id="contactNo"
+                                        [ngClass]="{'is-invalid': invoiceForm.submitted && ContactNo.invalid}"
+                                        [(ngModel)]="invoice.contactNo" #ContactNo="ngModel" required>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card mt-2">
+                    <div class="card-body">
+                        <h4 class="card-title d-flex justify-content-between">Details Commande <button type="button"
+                                class="btn btn-primary" (click)="addProduct()">+</button></h4>
+                        <div class="row">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th width="25%">Nom produit</th>
+                                        <th width="25%">Prix unitaire</th>
+                                        <th width="25%">Quantité</th>
+                                        <th width="25%">Totale</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let product of invoice.products; let i=index">
+                                        <td scope="row">
+                                            <input type="text" class="form-control" name="productName{{i}}"
+                                                [ngClass]="{'is-invalid': invoiceForm.submitted && ProductName.invalid}"
+                                                id="productName" [(ngModel)]="product.name" #ProductName="ngModel"
+                                                required>
+                                        </td>
+                                        <td>
+                                            <input type="number" class="form-control" name="price{{i}}" id="price"
+                                                [ngClass]="{'is-invalid': invoiceForm.submitted && ProductPrice.invalid}"
+                                                [(ngModel)]="product.price" #ProductPrice="ngModel" required>
+                                        </td>
+                                        <td>
+                                            <input type="number" class="form-control" name="quantity{{i}}" id="quantity"
+                                                [ngClass]="{'is-invalid': invoiceForm.submitted && ProductQty.invalid}"
+                                                [(ngModel)]="product.qty" #ProductQty="ngModel" required>
+                                        </td>
+                                        <td>
+                                            {{product.price * product.qty || ''}}
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <button type="button" class="btn btn-primary btn-lg btn-block"
+                    (click)="invoiceForm.valid ? generatePDF('download') : ''">Telecharger</button>
+                <button type="button" class="btn btn-warning btn-lg btn-block"
+                    (click)="invoiceForm.valid ? generatePDF('print') : ''">Imprimer</button>
+                <button type="submit" class="btn btn-secondary btn-lg btn-block"
+                    (click)="invoiceForm.valid ? generatePDF() : ''">Ouvrir</button>
+            </div>
+        </div>
+    </div>
+</form>

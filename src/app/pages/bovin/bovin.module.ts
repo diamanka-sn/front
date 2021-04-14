@@ -77,7 +77,7 @@ import { BackBovinComponent } from './bovin-achat/back-bovin/back-bovin.componen
     NbAccordionModule,
 
     ngFormsModule,
-    Ng2OrderModule,
+    Ng2OrderModule, 
     Ng2SearchPipeModule,
     NgxPaginationModule,
     NgbModule,
