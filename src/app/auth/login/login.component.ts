@@ -37,14 +37,13 @@ export class NgxLoginComponent implements OnInit {
       if (this.statut == "ok" && this.userData.profile == "admin") {
         this.isAuth = true
         this.messages = "connexion reussie...patientez"
-        // console.log(this.userData)
+       console.log(localStorage.getItem(this.userData.token))
+      //  console.log(this.messages)
         this.router.navigate(['pages/dashboard']);
-      } if (this.statut == 401) {
-        // console.log(this.statut)
+      }else {
+        this.errors = "Etes-vous vraiment l'administrateur"
         this.isAuth = false;
-        this.messages= "Nom d'utilisateur ou le mot de passe est incorrecte"
       }
-      // console.log(this.userData)   
     
 
     })

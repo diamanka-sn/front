@@ -42,7 +42,7 @@ export class SaisirComponent {
           fontSize: 23,
           bold: true,
           alignment: 'center',
-          color: '#047886',
+          color: 'skyblue',
         },
         {
           text: 'FACTURE',
@@ -50,7 +50,8 @@ export class SaisirComponent {
           bold: true,
           alignment: 'center',
           decoration: 'underline',
-          color: 'skyblue'
+          color: 'skyblue',
+          
         },
         {
           text: 'Information du client',
@@ -81,6 +82,7 @@ export class SaisirComponent {
         },
         {
           text: 'Details de la facture',
+          alignment: 'center',
           style: 'sectionHeader'
         },
         {
@@ -108,17 +110,6 @@ export class SaisirComponent {
             [{ text: 'Signature', alignment: 'right', italics: true }],
           ]
         },
-        {
-          text: 'Termes et conditions',
-          style: 'sectionHeader'
-        },
-        {
-          ul: [
-            'Order can be return in max 10 days.',
-            'Warrenty of the product will be subject to the manufacturer terms and conditions.',
-
-          ],
-        }
       ],
       styles: {
         sectionHeader: {

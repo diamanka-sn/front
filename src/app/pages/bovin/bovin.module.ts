@@ -24,7 +24,7 @@ import { FormsModule as ngFormsModule } from '@angular/forms';
 import { ThemeModule } from '../../@theme/theme.module';
 import { BovinComponent } from './bovin.component';
 // import { EnsembleBovinComponent } from './ensemble-bovin/ensemble-bovin.component';
-import { CardNombreComponent } from './card-nombre/card-nombre.component';
+// import { CardNombreComponent } from './card-nombre/card-nombre.component';
 import { ListeTableComponent } from './liste-table/liste-table.component';
 // import { RaceComponent } from './race/race.component';
 import { BovinAchatsComponent } from './bovin-achats/bovin-achats.component';
@@ -46,7 +46,6 @@ import { BackBovinComponent } from './bovin-achat/back-bovin/back-bovin.componen
 @NgModule({
   declarations: [
     BovinComponent,
-    CardNombreComponent,
     ListeTableComponent,
     BovinAchatsComponent,
     DetailBovinComponent,

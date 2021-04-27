@@ -1,11 +1,92 @@
-<div class="row">
-    <div class="col col-lg-6">
-        <ngx-courbe-velage></ngx-courbe-velage>
+<div class="header bg-gradient-success pb-8 pt-5 pt-md-8">
+    <div class="container-fluid">
+        <div class="header-body">
+            <!-- Card stats -->
+            <div class="row">
+                <div class="col-xl-3 col-lg-6">
+                    <div class="card card-stats mb-4 mb-xl-0">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col">
+                                    <h5 class="card-title text-uppercase text-muted mb-0" *ngIf="nombreVeau > 1">Veaus</h5>
+                                    <h5 class="card-title text-uppercase text-muted mb-0" *ngIf="nombreVeau <= 1">Veau</h5>
+                                    <span class="h2 font-weight-bold mb-0">{{nombreVeau}}</span>
+                                </div>
+                                <div class="col-auto">
+                                    <div class="icon icon-shape bg-danger text-white rounded-circle shadow">
+                                        Veau
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-lg-6">
+                    <div class="card card-stats mb-4 mb-xl-0">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col">
+                                    <h5 class="card-title text-uppercase text-muted mb-0" *ngIf="nombreGenisse > 1 ">Genisses</h5>
+                                    <h5 class="card-title text-uppercase text-muted mb-0" *ngIf="nombreGenisse <= 1 ">Genisse</h5>
+                                    <span class="h2 font-weight-bold mb-0">{{nombreGenisse}}</span>
+                                </div>
+                                <div class="col-auto">
+                                    <div class="icon icon-shape bg-warning text-white rounded-circle shadow">
+                                        genisse
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-lg-6">
+                    <div class="card card-stats mb-4 mb-xl-0">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col">
+                                    <h5 class="card-title text-uppercase text-muted mb-0" *ngIf="nombreVelle > 1">Velles</h5>
+                                    <h5 class="card-title text-uppercase text-muted mb-0" *ngIf="nombreVelle <= 1">Velle</h5>
+                                    <span class="h2 font-weight-bold mb-0">{{nombreVelle}}</span>
+                                </div>
+                                <div class="col-auto">
+                                    <div class="icon icon-shape bg-yellow text-white rounded-circle shadow">
+                                        velle
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-lg-6">
+                    <div class="card card-stats mb-4 mb-xl-0">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col">
+                                    <h5 class="card-title text-uppercase text-muted mb-0">Nouveaux neés</h5>
+                                    <span class="h2 font-weight-bold mb-0">{{nombreGenisse + nombreVeau +
+                                        nombreVelle}}</span>
+                                </div>
+                                <div class="col-auto">
+                                    <div class="icon icon-shape bg-info text-white rounded-circle shadow">
+                                        Née
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="col col-lg-6">
-      <ngx-accroissement></ngx-accroissement>
-    </div>
-    <div class="col col-lg-6">
-        <ngx-courbe-periode></ngx-courbe-periode>
+</div>
+<div class="container-fluid mt--7">
+    <div class="row">
+        <div class="col col-md-3 col-lg-6 ">
+            <ngx-courbe-velage></ngx-courbe-velage>
+        </div>
+        <div class="col col-md-3 col-lg-6">
+            <ngx-accroissement></ngx-accroissement>
+        </div>
     </div>
 </div>

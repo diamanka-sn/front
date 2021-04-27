@@ -10,6 +10,7 @@ export class BovinAchatComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    
   }
   flipped = false;
 

@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { config } from '../_models/config'
 
-import { phaseVache, productionLait, productionTotale, quantiteTotal, quantiteVendu, Stock, VenteLait } from '../_models/Production';
+import { phaseVache, productionLait, productionTotale, quantiteTotal, quantiteVendu, Stock, VenteLait, venteMois } from '../_models/Production';
 
 @Injectable({
   providedIn: 'root'
@@ -15,16 +15,16 @@ export class ProductionService {
 
   getProductionLait(): Observable<productionLait[]> {
     return this.http.get<productionLait[]>(`${config.apiUrl}/productionLaitM/`)
-      
+
   }
 
   getQuantiteProduite() {
     return this.http.get(`${config.apiUrl}/productionM/`)
-    
-  } 
+
+  }
   getQuantiteVendue() {
     return this.http.get(`${config.apiUrl}/quantiteVenduM/`)
-    
+
   }
 
   getPhaseVache() {
@@ -33,6 +33,14 @@ export class ProductionService {
   }
   getStockDisponible() {
     return this.http.get<Stock[]>(`${config.apiUrl}/bouteilleStockM/`)
+  }
+
+  getStockMoisCourant() {
+    return this.http.get<Stock[]>(`${config.apiUrl}/stockMoisCourant/`)
+  }
+
+  getStockMoisPasse() {
+    return this.http.get<Stock[]>(`${config.apiUrl}/stockMoisPasse/`)
   }
 
   getLaitVenteLait() {
@@ -44,16 +52,27 @@ export class ProductionService {
       .map(resultat => resultat)
   }
 
-  getProductionTotale(){
+  getProductionTotale() {
     return this.http.get<quantiteTotal[]>(`${config.apiUrl}/productionTotale/`)
-    .map(resultat => resultat)
+      .map(resultat => resultat)
   }
-  getProductionDuMois(){
+  getProductionDuMois() {
     return this.http.get<quantiteTotal[]>(`${config.apiUrl}/prdoductionDuMois/`)
-    .map(resultat => resultat)
+      .map(resultat => resultat)
   }
-  getProductionMoisPasse(){
+  getProductionMoisPasse() {
     return this.http.get<quantiteTotal[]>(`${config.apiUrl}/prdoductionMoisPasse/`)
-    .map(resultat => resultat)
+      .map(resultat => resultat)
   }
+  getVenteMoisCourant() {
+    return this.http.get<venteMois[]>(`${config.apiUrl}/quantiteVenteMoisCourant/`)
+  }
+  getVenteMoisPasse() {
+    return this.http.get<venteMois[]>(`${config.apiUrl}/quantiteVenteMoisPasse/`)
+  }
+
+  getVenteLaitTotal() {
+    return this.http.get<venteMois[]>(`${config.apiUrl}/quantitesVendu/`)
+  }
+
 }

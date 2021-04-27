@@ -17,21 +17,26 @@ export interface phaseVache {
 }
 
 export interface VenteLait {
-    vente:number;
-    annee:number;
+    vente: number;
+    annee: number;
 }
 export interface Stock {
-    stock:any;
-    annee:number;
+    stock: any;
+    annee: number;
 }
 
-export interface quantiteVendu{
-    mois:number;
-    annee:number;
-    montant:any;
+export interface quantiteVendu {
+    mois: number;
+    annee: number;
+    montant: any;
 }
-export interface quantiteTotal{
-    total : number;
-    annee :number;
-    mois:number;
+export interface quantiteTotal {
+    total: number;
+    annee: number;
+    mois: number;
+}
+
+export interface venteMois {
+    quantite: any;
+    annee: number;
 }
