@@ -1,0 +1,126 @@
+<nb-card>
+    <nb-card-header>Rapport periode bien determinée</nb-card-header>
+    <nb-card-body>
+        <form name="form" [formGroup]="form">
+            <div>
+                <div class="alert alert-danger" id="alerte" *ngIf="error.isError">{{ error.errorMessage}}</div>
+                <div class="row">
+
+                    <div class="col-auto">
+                        <label>Date debut</label>
+                        <input type="date" class="form-control" formControlName="dateDebut" [(ngModel)]=dateDebut
+                            [ngClass]="{'is-invalid': form.get('dateDebut').touched && form.get('dateDebut').invalid}"
+                            placeholder="renseigner la date de début">
+                        <div class="invalid-feedback">
+                            <div>La date de debut est obligatoire....</div>
+                        </div>
+                    </div>
+                    <div class="col-auto">
+                        <label>Date fin</label>
+                        <input type="date" class="form-control" formControlName="dateFin" [(ngModel)]=dateFin
+                            [ngClass]="{'is-invalid': form.get('dateFin').touched && form.get('dateFin').invalid}"
+                            placeholder="renseigner la date de fin" (blur)="compareToDate()">
+                        <div class="invalid-feedback">
+                            <div>La date de fin doit obligatoirement</div>
+                            <div> etre superieure à la date de debut</div>
+                        </div>
+                    </div>
+                </div><br>
+                <div class="row g-4">
+                    <div class="col-auto">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="flexCheckDefault">
+                            <label for="flexCheckDefault" class="form-check-label">Finance</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="flexCheckDefault">
+                            <label for="flexCheckDefault" class="form-check-label">Santé</label>
+                        </div>
+                        <!-- </div>
+                    <div class="col-auto"> -->
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="flexCheckDefault">
+                            <label for="flexCheckDefault" class="form-check-label">Production</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="flexCheckDefault">
+                            <label for="flexCheckChecked" class="form-check-label">Reproduction</label>
+                        </div>
+                    </div>
+                </div><br>
+                <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                    [disabled]="!form.valid" (click)='rapportPeriode()'>Rapport periode</button>
+
+            </div>
+
+        </form>
+    </nb-card-body>
+</nb-card>
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg  modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Rapport periodique</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">X</button>
+            </div>
+            <div class="modal-body">
+                <div class="body" id="content" #content>
+                    <div class="entete">
+                        <img src="../../../../assets/images/logo.jpg" class="rounded float-start" alt="photo Bovin"
+                            class="imagePdf">
+                        <div class="titre">KoSsam Ferme</div>
+                        <div class="rapport">Ce rapport est demandée le {{dateRapport}}</div>
+                    </div>
+                    <div class="corps">
+                        <chart type="pie" [data]="data" [options]="options"></chart>
+                    </div>
+                           
+
+
+
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+                <button type="button" class="btn btn-primary" (click)="telechargerPdf()">Telecharger</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    #content {
+        width: 592px;
+        height: 842px;
+    }
+
+    .titre {
+        text-align: center;
+    }
+
+    .rapport {
+        text-align: center;
+    }
+
+    .imagePdf {
+        display: block;
+        margin-top: 100px;
+        margin-left: auto;
+        margin-right: auto;
+        width: 17%;
+    }
+
+    .corps {
+        margin-top: 150px;
+    }
+
+    .total {
+        float: right;
+    }
+</style>
+
+<script src="../../bovin/liste-table/bovin.js"></script>

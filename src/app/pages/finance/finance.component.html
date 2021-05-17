@@ -75,12 +75,12 @@
                 </div>
               </div>
               <p class="mt-3 mb-0 text-muted text-sm" *ngIf="pourcentage < 0">
-                <span class="text-danger mr-2"><i class="fas fa-arrow-down"></i> {{pourcentage * (-1) | number:
+                <span class="text-success mr-2"><i class="fas fa-arrow-down"></i> {{pourcentage * (-1) | number:
                   '2.2-2'}}%</span>
                 <span class="text-nowrap">Depuis le mois passé</span>
               </p>
               <p class="mt-3 mb-0 text-muted text-sm" *ngIf="pourcentage >= 0">
-                <span class="text-success mr-2"><i class="fa fa-arrow-up"></i> {{pourcentage | number: '2.2-2'}}%</span>
+                <span class="text-danger mr-2"><i class="fa fa-arrow-up"></i> {{pourcentage | number: '2.2-2'}}%</span>
                 <span class="text-nowrap">Depuis le mois passé</span>
               </p>
             </div>
@@ -128,7 +128,7 @@
                 </div>
               </div>
               <p class="mt-3 mb-0 text-muted text-sm" *ngIf="((sommeca - total ) / total) * 100  < 0">
-                <span class="text-success mr-2"><i class="fa fa-arrow-down"></i>{{ ((sommeca - total ) / total) * 100 *
+                <span class="text-danger mr-2"><i class="fa fa-arrow-down"></i>{{ ((sommeca - total ) / total) * 100 *
                   (-1) | number: '2.2-2'}}%</span>
                 <span class="text-nowrap">RSI</span>
               </p>
@@ -291,7 +291,7 @@
               </tr>
               <tr>
                 <th scope="row">
-                  Masses salariale
+                  Masse salariale
                 </th>
                 <td>
                   {{masseSalaire}} F cfa

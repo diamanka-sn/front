@@ -95,7 +95,7 @@ export class SaisirComponent {
               [{ text: 'Total facture (F cfa)', colSpan: 3 }, {}, {}, this.invoice.products.reduce((sum, p) => sum + (p.qty * p.price), 0).toFixed(2)]
             ]
           }
-        },
+        },   
         {
           text: '',
           style: 'sectionHeader'

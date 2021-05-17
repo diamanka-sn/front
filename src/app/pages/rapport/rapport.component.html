@@ -1,20 +1,13 @@
 <div class="row">
-    <div class="col">
+    <div class="col col-md-5 col-xxxl-4">
         <nb-card>
             <nb-card-header>Telecharger rapport</nb-card-header>
             <nb-card-body>
-                <button type="button" class="btn btn-primary">Rapport Mensuel</button>
-            </nb-card-body>
-        </nb-card> 
-    </div>
-    <div class="col">
-        <nb-card>
-            <nb-card-header>Rapport periode bien determinée</nb-card-header>
-            <nb-card-body>
-                <button class="btn btn-success">
-                    Rapport periode
-                </button>
+                <button class="btn btn-primary" (click)="generatePDF()">Rapport Mensuel</button>
             </nb-card-body>
         </nb-card>
+    </div>
+    <div class="col-lg-7 col-md-12">
+        <ngx-periode></ngx-periode>
     </div>
 </div>

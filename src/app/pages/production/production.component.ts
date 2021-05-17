@@ -26,7 +26,6 @@ export class ProductionComponent implements OnInit {
   ngOnInit(): void {
     this.prod.getStockDisponible().subscribe(res => {
       this.stock = parseInt(res['2021'].map(res => res.stock.toString()))
-
     })
 
     this.prod.getStockMoisCourant().subscribe(res => {

@@ -1,7 +1,8 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit ,} from '@angular/core';
 import { Router } from '@angular/router';
 import { NbLoginComponent } from '@nebular/auth';
+import { FormGroup, FormControl, Validators } from '@angular/forms'
 
 import * as jwt_decode from "jwt-decode"
 import { AuthenticationService } from '../../service/auth.service';
@@ -33,6 +34,7 @@ export class NgxLoginComponent implements OnInit {
   SeConnecter() {
     this.auth.getLogin(this.user).subscribe(res => {
       this.userData = res;
+      console.log(this.userData.password)
       this.statut = this.userData.status
       if (this.statut == "ok" && this.userData.profile == "admin") {
         this.isAuth = true

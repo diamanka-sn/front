@@ -13,7 +13,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let bovin of bovins | orderBy: key: reverse | paginate: {itemsPerPage:25,currentPage:p};">
+        <tr *ngFor="let bovin of bovins | orderBy: key: reverse | paginate: {itemsPerPage:10,currentPage:p};">
           <th scope="row">{{ bovin.nom }}</th>
           <th>{{ bovin.situation }}</th>
           <th>{{ bovin.etatDeSante }}</th>
