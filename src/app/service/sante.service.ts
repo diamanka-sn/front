@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { listeSante } from '../_models/Bovins';
 import { config } from '../_models/config'
 
 @Injectable({
@@ -14,7 +15,7 @@ export class SanteService {
   }
 
   getNombreBovinMalade() {
-    return this.http.get(`${config.apiUrl}/nombreMaladie/`)
+    return this.http.get(`${config.apiUrl}/nombreBovinMaladeM/`)
   }
 
   getNombreBovinMort() {
@@ -23,5 +24,10 @@ export class SanteService {
 
   getNombreBovinGuerri() {
     return this.http.get(`${config.apiUrl}/NombreBovinGueriM/`)
+  }
+
+  getListeBovinMalade() {
+    return this.http.get<listeSante[]>(`${config.apiUrl}/ListeBovinMaladeM/`)
+      .map(resultat => resultat)
   }
 }

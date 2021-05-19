@@ -70,11 +70,6 @@ const routes: Routes = [{
         .then(m => m.ExtraComponentsModule),
     },
     {
-      path: 'charts',
-      loadChildren: () => import('./charts/charts.module')
-        .then(m => m.ChartsModule),
-    },
-    {
       path: 'miscellaneous',
       loadChildren: () => import('./miscellaneous/miscellaneous.module')
         .then(m => m.MiscellaneousModule),

@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { config } from '../_models/config'
-import { achatBovin } from '../_models/Depense';
+import { achatBovin, depensesMensuelle } from '../_models/Depense';
 import { moyenPaiement } from '../_models/Facture';
 
 
@@ -26,7 +26,13 @@ export class AchatService {
   }
   getAchatBovinM() {
     return this.http.get<achatBovin[]>(`${config.apiUrl}/achatBovinM`)
-
-
   }
+  getAchatBovinMoisCourant() {
+    return this.http.get<depensesMensuelle[]>(`${config.apiUrl}/bovinsachetesMensuel`)
+  }
+  getAchatAlimentMoisCourant() {
+    return this.http.get<depensesMensuelle[]>(`${config.apiUrl}/alimentachetesMensuel`)
+  }
+
+  
 }

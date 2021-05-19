@@ -33,3 +33,9 @@ export interface venteBovin {
   annee:number;
   vente:number;
 }
+
+export class listeSante {
+  nom: string;
+  maladie: string;
+  date: Date; 
+}

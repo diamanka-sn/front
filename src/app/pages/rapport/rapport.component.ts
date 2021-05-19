@@ -1,8 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import pdfMake from "pdfmake/build/pdfmake";
 import pdfFonts from "pdfmake/build/vfs_fonts";
+import { AchatService } from '../../service/achat.service';
+import { DepensesService } from '../../service/depenses.service';
 import { ProductionService } from '../../service/production.service';
+import { SanteService } from '../../service/sante.service';
 import { VenteService } from '../../service/vente.service';
+import { listeSante } from '../../_models/Bovins';
+import { depensesMensuelle, typeDepense } from '../../_models/Depense';
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
 class Product {
@@ -11,13 +16,13 @@ class Product {
   qty: number;
 }
 class Invoice {
-  customerName: string;
-  address: string;
-  contactNo: number;
-  email: string;
+  montant: string;
+  type: string;
+  annee: number;
+
 
   products: Product[] = [];
-  additionalDetails: string;
+
 
 }
 @Component({
@@ -35,7 +40,11 @@ export class RapportComponent implements OnInit {
   venteLait: number;
   coutLait: number;
   pourcentageLait: string;
-  constructor(private prod: ProductionService, private vente: VenteService) { }
+  depense: typeDepense[] = []
+  sante: listeSante[] = []
+  achatBovin: any;
+  achataliment:any;
+  constructor(private acht: AchatService, private ste: SanteService, private prod: ProductionService, private dep: DepensesService, private vente: VenteService) { }
 
   invoice = new Invoice();
 
@@ -88,10 +97,10 @@ export class RapportComponent implements OnInit {
           table: {
 
             headerRows: 1,
-            widths: ['*', '*', '*', '*'],
+            widths: ['*', '*', '*'],
             body: [
-              ['Quantité produite', 'Quantité vendue', 'Quantité restante', 'pourcentage'],
-              [this.quantiteTotal + ' litres', this.quantiteVendu + ' litres', this.quantiteRestante + ' litres', this.pourcentageVente],
+              ['Quantité produite', 'Quantité vendue', 'Quantité restante'],
+              [this.quantiteTotal + ' L', this.quantiteVendu + ' L', this.quantiteRestante + ' L'],
             ]
           }
         },
@@ -103,11 +112,11 @@ export class RapportComponent implements OnInit {
         {
           table: {
             headerRows: 1,
-            widths: ['*', '*', '*', '*'],
+            widths: ['*', '*', '*'],
             body: [
-              ['Produits', 'Quantité vendue', 'Cout Vente', 'Pourcentage'],
-              ['Lait', this.venteLait + ' litres', this.coutLait + ' F cfa', '2'],
-              ['Bovin', 'quantite', 'nombre', '2'],
+              ['Produits', 'Quantité vendue', 'Cout Vente'],
+              ['Lait', this.quantiteVendu + ' L', this.coutLait + ' F cfa'],
+              ['Bovin', 'quantite', 'nombre'],
             ]
           }
         },
@@ -119,11 +128,13 @@ export class RapportComponent implements OnInit {
         {
           table: {
             headerRows: 1,
-            widths: ['auto', '*', 'auto', 'auto'],
+            widths: ['*', '*'],
             body: [
-              ['Type de dépense', 'libellé', 'Cout dépense', 'Date dépense'],
-              ['478', 'quantite', 'nombre', '2'],
-            ]
+              ['Type de dépense', 'Montant'],
+              ...this.depense.map(p => ([p.type, p.montant + ' F cfa'])),
+              ['Achats bovins',this.achatBovin + ' F cfa'],
+              ['Achats aliments',this.achataliment + ' F cfa'],
+           ]
           }
         },
         {
@@ -134,10 +145,10 @@ export class RapportComponent implements OnInit {
         {
           table: {
             headerRows: 1,
-            widths: ['auto', '*', 'auto', 'auto'],
+            widths: ['*', '*', '*'],
             body: [
-              ['Maladies', 'Nombre Bovins atteint', 'Nombre bovin Mort', 'Nombre bovin guerri'],
-              ['478', 'quantite', 'nombre', '2'],
+              ['Nom bovin', 'Maladies', 'Date malade'],
+              ...this.sante.map(p => ([p.nom, p.maladie, p.date]))
             ]
           }
         },
@@ -172,6 +183,7 @@ export class RapportComponent implements OnInit {
       }
     }
     pdfMake.createPdf(docDefinition).open();
+    pdfMake.createPdf(docDefinition).download('rapport_mensuelle_' + new Date().toLocaleString() + '.pdf');
 
   }
 
@@ -183,17 +195,34 @@ export class RapportComponent implements OnInit {
         this.prod.getVenteMoisCourant().subscribe(
           res => {
             this.quantiteVendu = parseInt(res['2021'].map(res => res.quantite.toString()))
+
             this.quantiteRestante = this.quantiteTotal - this.quantiteVendu
-            this.pourcentageVente = this.quantiteVendu / this.quantiteTotal * 100 + '%'
+
           })
       })
-    this.prod.getVenteMoisCourant().subscribe(
-      res => {
-        this.venteLait = parseInt(res['2021'].map(res => res.quantite.toString()))
-      })
+
     this.vente.getVenteLaitMoisCourant().subscribe(
       res => {
         this.coutLait = parseInt(res['2021'].map(res => res.montant.toString()))
       })
+
+    this.dep.getListeDepenseCourant().subscribe(
+      res => {
+        this.depense = res['2021']
+      })
+    this.ste.getListeBovinMalade().subscribe(
+      res => {
+        this.sante = res
+      })
+
+      this.acht.getAchatBovinMoisCourant().subscribe(
+        res => {
+          this.achatBovin = parseInt(res['2021'].map(res => res.montant.toString()))
+        })
+
+        this.acht.getAchatAlimentMoisCourant().subscribe(
+          res => {
+            this.achataliment = parseInt(res['2021'].map(res => res.montant.toString()))
+          })
   }
 }

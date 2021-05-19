@@ -46,4 +46,10 @@ export class DepensesService {
     return this.http.get<depensesMensuelle[]>(`${config.apiUrl}/coutDepensesMoisPasse/`)
       .map(resultat => resultat)
   }
+  getListeDepenseCourant() {
+    return this.http.get<typeDepense[]>(`${config.apiUrl}/listedepensesMoisCourant/`)
+      .map(resultat => resultat)
+  }
+
+  
 }

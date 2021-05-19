@@ -75,12 +75,13 @@
                 </div>
               </div>
               <p class="mt-3 mb-0 text-muted text-sm" *ngIf="pourcentage < 0">
-                <span class="text-success mr-2"><i class="fas fa-arrow-down"></i> {{pourcentage * (-1) | number:
+                <span class="text-danger mr-2"><i class="fas fa-arrow-up"></i> {{pourcentage * (-1) | number:
                   '2.2-2'}}%</span>
                 <span class="text-nowrap">Depuis le mois passé</span>
               </p>
               <p class="mt-3 mb-0 text-muted text-sm" *ngIf="pourcentage >= 0">
-                <span class="text-danger mr-2"><i class="fa fa-arrow-up"></i> {{pourcentage | number: '2.2-2'}}%</span>
+                <span class="text-success mr-2"><i class="fa fa-arrow-down"></i> {{pourcentage | number:
+                  '2.2-2'}}%</span>
                 <span class="text-nowrap">Depuis le mois passé</span>
               </p>
             </div>
@@ -117,9 +118,13 @@
           <div class="card card-stats mb-4 mb-xl-0">
             <div class="card-body">
               <div class="row">
-                <div class="col">
+                <div class="col" *ngIf="sommeca - total > 0">
                   <h5 class="card-title text-uppercase text-muted mb-0">Benefices</h5>
                   <span class="h2 font-weight-bold mb-0">{{sommeca - total }} Fcfa</span>
+                </div>
+                <div class="col" *ngIf="sommeca - total < 0">
+                  <h5 class="card-title text-uppercase text-muted mb-0">Pertes</h5>
+                  <span class="h2 font-weight-bold mb-0">{{(sommeca - total) * -1}} Fcfa</span>
                 </div>
                 <div class="col-auto">
                   <div class="icon icon-shape bg-info text-white rounded-circle shadow">
@@ -130,12 +135,12 @@
               <p class="mt-3 mb-0 text-muted text-sm" *ngIf="((sommeca - total ) / total) * 100  < 0">
                 <span class="text-danger mr-2"><i class="fa fa-arrow-down"></i>{{ ((sommeca - total ) / total) * 100 *
                   (-1) | number: '2.2-2'}}%</span>
-                <span class="text-nowrap">RSI</span>
+                <span class="text-nowrap">retour sur investissement</span>
               </p>
               <p class="mt-3 mb-0 text-muted text-sm" *ngIf="((sommeca - total ) / total) * 100  >= 0">
                 <span class="text-success mr-2"><i class="fa fa-arrow-up"></i>{{ ((sommeca - total ) / total) * 100 |
                   number: '2.2-2'}}%</span>
-                <span class="text-nowrap">RSI</span>
+                <span class="text-nowrap">retour sur investissement</span>
               </p>
             </div>
           </div>

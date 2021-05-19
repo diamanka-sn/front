@@ -34,6 +34,9 @@ export class PeriodeComponent implements OnInit {
   dateFin = "";
   resultatDebut = ""
   achetes: any;
+  bovins: any;
+  autres: any;
+  depenses : any;
 
   //dates
   error: any = { isError: false, errorMessage: "" }
@@ -48,39 +51,41 @@ export class PeriodeComponent implements OnInit {
       const chartjs: any = config.variables.chartjs;
       this.rapport.getDetailAliment(this.dateDebut, this.dateFin).subscribe(res => {
         this.achetes = parseInt(res[0].achetes.toString())
-        console.log(res)
-        console.log(this.achetes)
-        this.data = {
-          labels: ['Aliments', 'Bovin'],
-          datasets: [{
-            data: [this.achetes, 200000],
-            backgroundColor: [colors.primaryLight, colors.successLight],
-          }],
-        };
+        this.rapport.getDetailBovin(this.dateDebut, this.dateFin).subscribe(res => {
+          this.bovins = parseInt(res[0].achetes.toString())
+          
+            this.data = {
+              labels: ['Aliments', 'Bovins'],
+              datasets: [{
+                data: [this.achetes, this.bovins],
+                backgroundColor: [colors.primaryLight, colors.successLight],
+              }],
+            };
 
 
 
-        this.options = {
-          maintainAspectRatio: false,
-          responsive: true,
-          scales: {
-            xAxes: [
-              {
-                display: false,
+            this.options = {
+              maintainAspectRatio: false,
+              responsive: true,
+              scales: {
+                xAxes: [
+                  {
+                    display: false,
+                  },
+                ],
+                yAxes: [
+                  {
+                    display: false,
+                  },
+                ],
               },
-            ],
-            yAxes: [
-              {
-                display: false,
+              legend: {
+                labels: {
+                  fontColor: chartjs.textColor,
+                },
               },
-            ],
-          },
-          legend: {
-            labels: {
-              fontColor: chartjs.textColor,
-            },
-          },
-        };
+            };
+        })
       })
     })
 

@@ -29,21 +29,21 @@
                 <div class="row g-4">
                     <div class="col-auto">
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="flexCheckDefault">
-                            <label for="flexCheckDefault" class="form-check-label">Finance</label>
+                            <input class="form-check-input" type="checkbox" id="flexCheckDefault" checked>
+                            <label for="flexCheckDefault" class="form-check-label" >Finance</label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="flexCheckDefault">
+                            <input class="form-check-input" type="checkbox" id="flexCheckDefault" disabled>
                             <label for="flexCheckDefault" class="form-check-label">Santé</label>
                         </div>
                         <!-- </div>
                     <div class="col-auto"> -->
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="flexCheckDefault">
+                            <input class="form-check-input" type="checkbox" id="flexCheckDefault" disabled>
                             <label for="flexCheckDefault" class="form-check-label">Production</label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="flexCheckDefault">
+                            <input class="form-check-input" type="checkbox" id="flexCheckDefault" disabled>
                             <label for="flexCheckChecked" class="form-check-label">Reproduction</label>
                         </div>
                     </div>
@@ -75,12 +75,17 @@
                         <div class="rapport">Ce rapport est demandée le {{dateRapport}}</div>
                     </div>
                     <div class="corps">
-                        <chart type="pie" [data]="data" [options]="options"></chart>
+                        <div class="card text-white bg-danger  mb-4" style="max-width: 18rem;">
+                            <div class="card-header">Les depenses effectuées</div>
+                            <div class="card-body">
+                                <chart type="pie" [data]="data" [options]="options"></chart>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                            </div>
+                        </div>    
                     </div>
-                           
-
-
-
                 </div>
 
             </div>

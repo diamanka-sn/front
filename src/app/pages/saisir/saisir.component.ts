@@ -122,7 +122,7 @@ export class SaisirComponent {
     };
 
     if (action === 'download') {
-      pdfMake.createPdf(docDefinition).download();
+      pdfMake.createPdf(docDefinition).download('Facture_de_'+this.invoice.customerName+'.pdf');
     } else if (action === 'print') {
       pdfMake.createPdf(docDefinition).print();
     } else {

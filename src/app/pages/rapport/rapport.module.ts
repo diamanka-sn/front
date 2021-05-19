@@ -20,10 +20,14 @@ import { RapportComponent } from './rapport.component';
 import { PeriodeComponent } from './periode/periode.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { ReactiveFormsModule } from '@angular/forms';
+// import { NgxEchartsModule } from 'ngx-echarts';
+
+
+
 @NgModule({
   declarations: [
     RapportComponent,
-    PeriodeComponent
+    PeriodeComponent,
   ],
   imports: [
     NgxEchartsModule,
