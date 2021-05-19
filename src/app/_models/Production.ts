@@ -40,3 +40,10 @@ export interface venteMois {
     quantite: any;
     annee: number;
 }
+ 
+
+export interface VenteBovin {
+    vente: number;
+    annee: number;
+    nombre : number;
+}

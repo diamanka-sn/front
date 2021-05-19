@@ -137,7 +137,8 @@ export class FinanceComponent implements OnInit, AfterViewInit, OnDestroy {
 
           this.ach.getAchatBovinM().subscribe(res => {
             this.bovin = parseInt(res['2021'].map(res => res.prix.toString()))
-            this.total = this.autre + this.aliment + this.bovin + this.masseSalaire;
+            this.total = this.autre + this.aliment + this.bovin;
+            // + this.masseSalaire
           })
         })
       })

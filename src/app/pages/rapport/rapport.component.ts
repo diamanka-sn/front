@@ -8,6 +8,7 @@ import { SanteService } from '../../service/sante.service';
 import { VenteService } from '../../service/vente.service';
 import { listeSante } from '../../_models/Bovins';
 import { depensesMensuelle, typeDepense } from '../../_models/Depense';
+import { VenteBovin, VenteLait } from '../../_models/Production';
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
 class Product {
@@ -44,6 +45,11 @@ export class RapportComponent implements OnInit {
   sante: listeSante[] = []
   achatBovin: any;
   achataliment:any;
+  venteBovin: VenteBovin [] = []
+
+
+  gainLait:any;
+  gainBovin:any;
   constructor(private acht: AchatService, private ste: SanteService, private prod: ProductionService, private dep: DepensesService, private vente: VenteService) { }
 
   invoice = new Invoice();
@@ -116,7 +122,8 @@ export class RapportComponent implements OnInit {
             body: [
               ['Produits', 'Quantité vendue', 'Cout Vente'],
               ['Lait', this.quantiteVendu + ' L', this.coutLait + ' F cfa'],
-              ['Bovin', 'quantite', 'nombre'],
+              ...this.venteBovin.map(p => (['Bovin',p.nombre +' b', p.vente + ' F cfa'])),
+              [{ text: 'Chiffre d\'affaire mensuel', colSpan: 2}, {}, this.gainBovin + this.coutLait + ' Fcfa']
             ]
           }
         },
@@ -152,21 +159,7 @@ export class RapportComponent implements OnInit {
             ]
           }
         },
-        {
-          text: 'Reproduction',
-          alignment: 'center',
-          style: 'sectionHeader'
-        },
-        {
-          table: {
-            headerRows: 1,
-            widths: ['*', '*', '*'],
-            body: [
-              ['Naissance', 'Veau', 'Velle'],
-              ['478', 'quantite', 'nombre'],
-            ]
-          }
-        },
+       
         {
           columns: [
             [{ text: 'Signature', alignment: 'right', italics: true }],
@@ -224,5 +217,11 @@ export class RapportComponent implements OnInit {
           res => {
             this.achataliment = parseInt(res['2021'].map(res => res.montant.toString()))
           })
+
+          this.prod.getVenteBovinMoisCourant().subscribe(
+            res => {
+              this.venteBovin = res['2021']
+              this.gainBovin = parseInt(res['2021'].map(res => res.vente.toString()))
+            })
   }
 }

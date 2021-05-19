@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { config } from '../_models/config'
 
-import { phaseVache, productionLait, productionTotale, quantiteTotal, quantiteVendu, Stock, VenteLait, venteMois } from '../_models/Production';
+import { phaseVache, productionLait, productionTotale, quantiteTotal, quantiteVendu, Stock, VenteBovin, VenteLait, venteMois } from '../_models/Production';
 
 @Injectable({
   providedIn: 'root'
@@ -75,4 +75,9 @@ export class ProductionService {
     return this.http.get<venteMois[]>(`${config.apiUrl}/quantitesVendu/`)
   }
 
+  getVenteBovinMoisCourant() {
+    return this.http.get<VenteBovin[]>(`${config.apiUrl}/BovinVenduMoisCourant/`)
+  }
+  
 }
+
